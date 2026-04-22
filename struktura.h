@@ -91,10 +91,10 @@ inline double GalVid() const { return gal_vid_; }
 inline double GalMed() const { return gal_med_; }
 
 //setters
-void Vardas(const string& v) { vardas_ = v; }
-void Pavarde(const string& p) { pavarde_ = p; }
-void Paz(const vector<int>& paz) { paz_ = paz; }
-void Egz(int egz) { egz_ = egz; }
+inline void Vardas(const string& v) { vardas_ = v; }
+inline void Pavarde(const string& p) { pavarde_ = p; }
+inline void Paz(const vector<int>& paz) { paz_ = paz; }
+inline void Egz(int egz) { egz_ = egz; }
 
 
 // Funkcijų prototipai
