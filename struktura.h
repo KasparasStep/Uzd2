@@ -70,6 +70,13 @@ private:
 	int egz = 0;
 	double gal_vid = 0.0;
 	double gal_med = 0.0;
+
+public:
+	//konstruktoriai
+	Studentas() = default;
+	
+	Studentas(string v, string p, vector<int> paz, int egz)
+		: vardas(move(v)), pavarde(move(p)), paz(move(paz)), egz(egz) {}
 };
 
 // Funkcijų prototipai
