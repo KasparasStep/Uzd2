@@ -83,6 +83,7 @@ public:
 const string& Vardas() const { return vardas_; }
 const string& Pavarde() const { return pavarde_; }
 const vector<int>& Paz() const { return paz_; }
+int Egz() const { return egz_; }
 // Funkcijų prototipai
 int gautiSkaiciu(string info, int min, int max);
 string genVarda();
