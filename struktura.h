@@ -65,18 +65,18 @@ namespace fs = std::filesystem;
 };*/
 class Studentas {
 private:
-	string vardas, pavarde;
-	vector<int> paz;
-	int egz = 0;
-	double gal_vid = 0.0;
-	double gal_med = 0.0;
+	string vardas_, pavarde_;
+	vector<int> paz_;
+	int egz_ = 0;
+	double gal_vid_ = 0.0;
+	double gal_med_ = 0.0;
 
 public:
 	//konstruktoriai
 	Studentas() = default;
 	
 	Studentas(string v, string p, vector<int> paz, int egz)
-		: vardas(move(v)), pavarde(move(p)), paz(move(paz)), egz(egz) {}
+		: vardas_(move(v)), pavarde_(move(p)), paz_(move(paz)), egz_(egz) {}
 };
 
 // Funkcijų prototipai
