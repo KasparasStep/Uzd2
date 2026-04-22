@@ -71,6 +71,9 @@ private:
 	double gal_vid_ = 0.0;
 	double gal_med_ = 0.0;
 
+	double skaiciuotiVidurki() const;
+	double skaiciuotiMediana() const;
+
 public:
 	//konstruktoriai
 	Studentas() = default;
@@ -92,6 +95,7 @@ void Vardas(const string& v) { vardas_ = v; }
 void Pavarde(const string& p) { pavarde_ = p; }
 void Paz(const vector<int>& paz) { paz_ = paz; }
 void Egz(int egz) { egz_ = egz; }
+
 
 // Funkcijų prototipai
 int gautiSkaiciu(string info, int min, int max);
