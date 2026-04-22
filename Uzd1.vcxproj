@@ -134,6 +134,7 @@
     <ClCompile Include="vektorius.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="funkcijos.h" />
     <ClInclude Include="struktura.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
