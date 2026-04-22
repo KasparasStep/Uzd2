@@ -56,13 +56,7 @@ namespace fs = std::filesystem;
 
 
 namespace fs = std::filesystem;
-/*struct Studentas {
-	string vardas, pavarde;
-	vector<int> paz;
-	int egz;
-	double gal_vid;
-	double gal_med;
-};*/
+
 class Studentas {
 private:
 	string vardas_, pavarde_;
@@ -83,39 +77,22 @@ public:
 
 
 //getters
-inline const string& Vardas() const { return vardas_; }
-inline const string& Pavarde() const { return pavarde_; }
-inline const vector<int>& Paz() const { return paz_; }
-inline int Egz() const { return egz_; }
-inline double GalVid() const { return gal_vid_; }
-inline double GalMed() const { return gal_med_; }
+	inline const string& Vardas() const { return vardas_; }
+	inline const string& Pavarde() const { return pavarde_; }
+	inline const vector<int>& Paz() const { return paz_; }
+	inline int Egz() const { return egz_; }
+	inline double GalVid() const { return gal_vid_; }
+	inline double GalMed() const { return gal_med_; }
 
-//setters
-inline void Vardas(const string& v) { vardas_ = v; }
-inline void Pavarde(const string& p) { pavarde_ = p; }
-inline void Paz(const vector<int>& paz) { paz_ = paz; }
-inline void Egz(int egz) { egz_ = egz; }
+	//setters
+	inline void Vardas(const string& v) { vardas_ = v; }
+	inline void Pavarde(const string& p) { pavarde_ = p; }
+	inline void Paz(const vector<int>& paz) { paz_ = paz; }
+	inline void Egz(int egz) { egz_ = egz; }
 
-std::istream& readStudent(std::istream& is);
-void apskaiciuoti(int metodas);
+	std::istream& readStudent(std::istream& is);
+	void apskaiciuoti(int metodas);
 
-bool compareByVardas(const Studentas& a, const Studentas& b);
-bool compareByPavarde(const Studentas& a, const Studentas& b);
-
-// Funkcijų prototipai
-int gautiSkaiciu(string info, int min, int max);
-string genVarda();
-string genPavarde(string vardas);
-void genPazymius(vector<int>& paz, int& egz);
-
-void skaitytiIsFailo(const string& failas, vector<Studentas>& grupe, int metodas);
-void spausdintiRezultatus(const vector<Studentas>& grupe, int rodyti, const string& failas);
-void vykdytiVector();
-
-void genFaila(const string& failas, int kiek);
-void splitStudents(const vector<Studentas>& visi, vector<Studentas>& kieti,
-	vector <Studentas>& tiniginiai, int metodas);
-
-void test1();
-void test2(const string& failas, int metodas);
-
+	bool compareByVardas(const Studentas& a, const Studentas& b);
+	bool compareByPavarde(const Studentas& a, const Studentas& b);
+};
