@@ -56,14 +56,20 @@ namespace fs = std::filesystem;
 
 
 namespace fs = std::filesystem;
-
-// paliktas tik vektorinis variantas
-struct Studentas {
-    string vardas, pavarde;
-    vector<int> paz;
-    int egz;
-    double gal_vid;
-    double gal_med;
+/*struct Studentas {
+	string vardas, pavarde;
+	vector<int> paz;
+	int egz;
+	double gal_vid;
+	double gal_med;
+};*/
+class Studentas {
+private:
+	string vardas, pavarde;
+	vector<int> paz;
+	int egz = 0;
+	double gal_vid = 0.0;
+	double gal_med = 0.0;
 };
 
 // Funkcijų prototipai
