@@ -79,11 +79,15 @@ double skaiciuotiMediana(vector<int> paz) {
     else return paz[n / 2];
 }
 
-void apskaiciuotiPagalMetoda(Studentas& st, int metodas) {
-    if (metodas == 1 || metodas == 3)
-        st.gal_vid = skaiciuotiVidurki(st.paz) * 0.4 + st.egz * 0.6;
-    if (metodas == 2 || metodas == 3)
-        st.gal_med = skaiciuotiMediana(st.paz) * 0.4 + st.egz * 0.6;
+void Studentas::apskaiciuoti(int metodas) {
+    // Naudojame tiesioginius kintamųjų vardus (su pabraukimais gale)
+    if (metodas == 1 || metodas == 3) {
+        gal_vid_ = skaiciuotiVidurki() * 0.4 + egz_ * 0.6;
+    }
+    if (metodas == 2 || metodas == 3) {
+        // Kadangi skaiciuotiMediana() grąžina double, tiesiog dauginame
+        gal_med_ = skaiciuotiMediana() * 0.4 + egz_ * 0.6;
+    }
 }
 
 // klaidu valymas skaiciu irasyme
