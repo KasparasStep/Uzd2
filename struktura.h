@@ -90,6 +90,7 @@ double GalMed() const { return gal_med_; }
 //setters
 void Vardas(const string& v) { vardas_ = v; }
 void Pavarde(const string& p) { pavarde_ = p; }
+void Paz(const vector<int>& paz) { paz_ = paz; }
 
 // Funkcijų prototipai
 int gautiSkaiciu(string info, int min, int max);
