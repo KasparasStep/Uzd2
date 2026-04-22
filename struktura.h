@@ -77,8 +77,12 @@ public:
 	
 	Studentas(string v, string p, vector<int> paz, int egz)
 		: vardas_(move(v)), pavarde_(move(p)), paz_(move(paz)), egz_(egz) {}
-};
 
+
+//getters
+const string& Vardas() const { return vardas_; }
+const string& Pavarde() const { return pavarde_; }
+const vector<int>& Paz() const { return paz_; }
 // Funkcijų prototipai
 int gautiSkaiciu(string info, int min, int max);
 string genVarda();
