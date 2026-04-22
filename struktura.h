@@ -83,12 +83,12 @@ public:
 
 
 //getters
-const string& Vardas() const { return vardas_; }
-const string& Pavarde() const { return pavarde_; }
-const vector<int>& Paz() const { return paz_; }
-int Egz() const { return egz_; }
-double GalVid() const { return gal_vid_; }
-double GalMed() const { return gal_med_; }
+inline const string& Vardas() const { return vardas_; }
+inline const string& Pavarde() const { return pavarde_; }
+inline const vector<int>& Paz() const { return paz_; }
+inline int Egz() const { return egz_; }
+inline double GalVid() const { return gal_vid_; }
+inline double GalMed() const { return gal_med_; }
 
 //setters
 void Vardas(const string& v) { vardas_ = v; }
