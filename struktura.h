@@ -86,6 +86,10 @@ const vector<int>& Paz() const { return paz_; }
 int Egz() const { return egz_; }
 double GalVid() const { return gal_vid_; }
 double GalMed() const { return gal_med_; }
+
+//setters
+void Vardas(const string& v) { vardas_ = v; }
+
 // Funkcijų prototipai
 int gautiSkaiciu(string info, int min, int max);
 string genVarda();
