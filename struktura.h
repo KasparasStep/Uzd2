@@ -85,6 +85,7 @@ const string& Pavarde() const { return pavarde_; }
 const vector<int>& Paz() const { return paz_; }
 int Egz() const { return egz_; }
 double GalVid() const { return gal_vid_; }
+double GalMed() const { return gal_med_; }
 // Funkcijų prototipai
 int gautiSkaiciu(string info, int min, int max);
 string genVarda();
