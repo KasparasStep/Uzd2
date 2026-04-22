@@ -83,10 +83,11 @@ public:
 	inline double GalMed() const { return gal_med_; }
 
 	//setters
-	inline void Vardas(const string& v) { vardas_ = v; }
-	inline void Pavarde(const string& p) { pavarde_ = p; }
-	inline void Paz(const vector<int>& paz) { paz_ = paz; }
-	inline void Egz(int egz) { egz_ = egz; }
+	inline void setVardas(const string& v) { vardas_ = v; }
+	inline void setPavarde(const string& p) { pavarde_ = p; }
+	inline void setEgz(int egz) { egz_ = egz; }
+	inline void addPaz(int p) { paz_.push_back(p); }
+	
 
 	std::istream& readStudent(std::istream& is);
 	void apskaiciuoti(int metodas);

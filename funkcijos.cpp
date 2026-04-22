@@ -6,8 +6,8 @@
 #endif
 
 #include <windows.h>
-
 #include "struktura.h"
+
 namespace fs = std::filesystem;
 static std::mt19937 mt(std::chrono::steady_clock::now().time_since_epoch().count());
 
@@ -121,49 +121,82 @@ int gautiSkaiciu(string info, int min, int max) {
 
 void skaitytiVector(string failas, vector<Studentas>& grupe, int metodas) {
     ifstream in(failas);
+    if (!in) return; // Saugiklis, jei failo nėra
+
     string line;
     getline(in, line); // Praleisti antrastę
     while (getline(in, line)) {
         stringstream ss(line);
         Studentas st;
-        ss >> st.vardas >> st.pavarde;
-        int p;
-        while (ss >> p) st.paz.push_back(p);
-        st.egz = st.paz.back();
-        st.paz.pop_back();
-        apskaiciuotiPagalMetoda(st, metodas);
+        string v, p;
+        
+        ss >> v >> p;
+        st.setVardas(v);
+        st.setPavarde(p);
+
+        int balas;
+        vector<int> temp_paz;
+        while (ss >> balas) {
+            temp_paz.push_back(balas);
+        }
+
+        if (!temp_paz.empty()) {
+            st.setEgz(temp_paz.back()); // paskutinis yra egz
+            temp_paz.pop_back();
+        }
+        for (int n : temp_paz) st.addPaz(n);
+
+		st.apskaiciuoti(metodas);
         grupe.push_back(st);
     }
 }
 void skaitytiList(string failas, list<Studentas>& grupe, int metodas) {
     ifstream in(failas);
+    if (!in) return;
+
     string line;
     getline(in, line);
     while (getline(in, line)) {
         stringstream ss(line);
         Studentas st;
-        ss >> st.vardas >> st.pavarde;
-        int p;
-        while (ss >> p) st.paz.push_back(p);
-        st.egz = st.paz.back();
-        st.paz.pop_back();
-        apskaiciuotiPagalMetoda(st, metodas);
+        string v, p;
+        ss >> v >> p;
+        st.setVardas(v);
+        st.setPavarde(p);
+        int val;
+        vector<int> temp;
+        while (ss >> val) temp.push_back(val);
+        if (!temp.empty()) {
+            st.setEgz(temp.back());
+            temp.pop_back();
+        }
+        for (int x : temp) st.addPaz(x);
+        st.apskaiciuoti(metodas);
         grupe.push_back(st);
     }
 }
 void skaitytiDeque(string failas, deque<Studentas>& grupe, int metodas) {
     ifstream in(failas);
+    if (!in) return;
+
     string line;
     getline(in, line);
     while (getline(in, line)) {
         stringstream ss(line);
         Studentas st;
-        ss >> st.vardas >> st.pavarde;
-        int p;
-        while (ss >> p) st.paz.push_back(p);
-        st.egz = st.paz.back();
-        st.paz.pop_back();
-        apskaiciuotiPagalMetoda(st, metodas);
+        string v, p;
+        ss >> v >> p;
+        st.setVardas(v);
+        st.setPavarde(p);
+        int val;
+        vector<int> temp;
+        while (ss >> val) temp.push_back(val);
+        if (!temp.empty()) {
+            st.setEgz(temp.back());
+            temp.pop_back();
+        }
+        for (int x : temp) st.addPaz(x);
+        st.apskaiciuoti(metodas);
         grupe.push_back(st);
     }
 }
@@ -171,19 +204,19 @@ void skaitytiDeque(string failas, deque<Studentas>& grupe, int metodas) {
 // 1 Strategijos skirstymas
 void skirstytiVector(const vector<Studentas>& visi, vector<Studentas>& kieti, vector<Studentas>& tinginiai) {
     for (const auto& s : visi) {
-        if (s.gal_vid < 5.0) tinginiai.push_back(s);
+        if (s.GalVid() < 5.0) tinginiai.push_back(s);
         else kieti.push_back(s);
     }
 }
 void skirstytiList(const list<Studentas>& visi, list<Studentas>& kieti, list<Studentas>& tinginiai) {
     for (const auto& s : visi) {
-        if (s.gal_vid < 5.0) tinginiai.push_back(s);
+        if (s.GalVid() < 5.0) tinginiai.push_back(s);
         else kieti.push_back(s);
     }
 }
 void skirstytiDeque(const deque<Studentas>& visi, deque<Studentas>& kieti, deque<Studentas>& tinginiai) {
     for (const auto& s : visi) {
-        if (s.gal_vid < 5.0) tinginiai.push_back(s);
+        if (s.GalVid() < 5.0) tinginiai.push_back(s);
         else kieti.push_back(s);
     }
 }
