@@ -77,9 +77,9 @@ private:
 public:
 	//konstruktoriai
 	Studentas() = default;
-	
-	Studentas(string v, string p, vector<int> paz, int egz)
-		: vardas_(move(v)), pavarde_(move(p)), paz_(move(paz)), egz_(egz) {}
+	Studentas(std::istream& is);
+	//Studentas(string v, string p, vector<int> paz, int egz)
+	//	: vardas_(move(v)), pavarde_(move(p)), paz_(move(paz)), egz_(egz) {}
 
 
 //getters
