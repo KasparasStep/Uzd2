@@ -96,16 +96,17 @@ inline void Pavarde(const string& p) { pavarde_ = p; }
 inline void Paz(const vector<int>& paz) { paz_ = paz; }
 inline void Egz(int egz) { egz_ = egz; }
 
+std::istream& readStudent(std::istream& is);
+void apskaiciuoti(int metodas);
+
+bool compareByVardas(const Studentas& a, const Studentas& b);
+bool compareByPavarde(const Studentas& a, const Studentas& b);
 
 // Funkcijų prototipai
 int gautiSkaiciu(string info, int min, int max);
 string genVarda();
 string genPavarde(string vardas);
 void genPazymius(vector<int>& paz, int& egz);
-
-double skaiciuotiVidurki(const vector<int>& paz);
-double skaiciuotiMediana(vector<int> paz);
-void apskaiciuotiPagalMetoda(Studentas& st, int metodas);
 
 void skaitytiIsFailo(const string& failas, vector<Studentas>& grupe, int metodas);
 void spausdintiRezultatus(const vector<Studentas>& grupe, int rodyti, const string& failas);
