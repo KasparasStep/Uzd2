@@ -1,3 +1,4 @@
+//testavimas.cpp
 #include "struktura.h"
 
 static const string DATA_DIR = "Data/";

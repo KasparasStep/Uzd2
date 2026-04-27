@@ -1,3 +1,4 @@
+//funkcijos.cpp
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif

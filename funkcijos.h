@@ -1,3 +1,4 @@
+//funkcijos.h
 #pragma once
 #include "struktura.h"
 // Funkcijų prototipai

@@ -1,3 +1,4 @@
+//vektorius.cpp
 #include "struktura.h"
 #include "funkcijos.h"
 static const string DATA_DIR = "Data/";
