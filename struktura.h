@@ -69,18 +69,19 @@ private:
 public:
 	//konstruktoriai
 	Studentas() = default;
+
 	Studentas(std::istream& is);
 	//Studentas(string v, string p, vector<int> paz, int egz)
 	//	: vardas_(move(v)), pavarde_(move(p)), paz_(move(paz)), egz_(egz) {}
 
 
 //getters
-	inline const string& Vardas() const { return vardas_; }
-	inline const string& Pavarde() const { return pavarde_; }
-	inline const vector<int>& Paz() const { return paz_; }
-	inline int Egz() const { return egz_; }
-	inline double GalVid() const { return gal_vid_; }
-	inline double GalMed() const { return gal_med_; }
+	inline const string& vardas() const { return vardas_; }
+	inline const string& pavarde() const { return pavarde_; }
+	inline const vector<int>& paz() const { return paz_; }
+	inline int egz() const { return egz_; }
+	inline double galVid() const { return gal_vid_; }
+	inline double galMed() const { return gal_med_; }
 
 	//setters
 	inline void setVardas(const string& v) { vardas_ = v; }

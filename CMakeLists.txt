@@ -30,29 +30,7 @@ add_executable(Uzd1
     ${SHARED_SRC}
 )
 
-# ---- Tyrimo projektai ----
-add_executable(stud_vector
-    stud_Vector.cpp
-    ${SHARED_SRC}
-)
 
-add_executable(stud_List
-    stud_List.cpp
-    ${SHARED_SRC}
-)
-
-add_executable(stud_Deque
-    stud_Deque.cpp
-    ${SHARED_SRC}
-)
-
-# Windows konsolės UTF-8 palaikymas
-if(WIN32)
-    target_compile_definitions(Uzd1   PRIVATE _WIN32)
-    target_compile_definitions(Vector PRIVATE _WIN32)
-    target_compile_definitions(List   PRIVATE _WIN32)
-    target_compile_definitions(Deque  PRIVATE _WIN32)
-endif()
 
 # g++ 8 reikalauja -lstdc++fs; g++ 9+ įtraukia automatiškai.
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")

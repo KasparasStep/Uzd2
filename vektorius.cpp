@@ -1,11 +1,10 @@
 #include "struktura.h"
+#include "funkcijos.h"
 
 static const string DATA_DIR = "Data/";
-
 // ============================================================
 // Duomenų skaitymas iš failo į vector
 // ============================================================
-
 void skaitytiIsFailo(const string& failas, vector<Studentas>& grupe, int metodas) {
     ifstream in(failas);
     if (!in) throw runtime_error("Failas nerastas: " + failas);
@@ -15,26 +14,49 @@ void skaitytiIsFailo(const string& failas, vector<Studentas>& grupe, int metodas
 
     while (getline(in, eilute)) {
         if (eilute.empty()) continue;
+
         stringstream ss(eilute);
         Studentas st;
-        if (!(ss >> st.vardas >> st.pavarde)) continue;
+        string v, p;
 
-        int p;
-        while (ss >> p) st.paz.push_back(p);
+        // 1. Skaitome vardą ir pavardę į laikinus string kintamuosius
+        if (!(ss >> v >> p)) continue;
+        st.setVardas(v);
+        st.setPavarde(p);
 
-        if (!st.paz.empty()) {
-            st.egz = st.paz.back();
-            st.paz.pop_back();
-            apskaiciuotiPagalMetoda(st, metodas);
+        int balas;
+        vector<int> tempPaz;
+
+        // 2. Skaitome visus skaičius į laikiną vektorių
+        while (ss >> balas) {
+            tempPaz.push_back(balas);
+        }
+
+        // 3. Jei radome skaičių, atskiriame egzaminą nuo pažymių
+        if (!tempPaz.empty()) {
+            st.setEgz(tempPaz.back()); // Paskutinis yra egzaminas
+            tempPaz.pop_back();        // Pašaliname egzaminą iš pažymių sąrašo
+
+            // Visus likusius skaičius sudedame kaip pažymius
+            for (int n : tempPaz) {
+                st.addPaz(n);
+            }
+
+            // 4. Skaičiuojame balus naudodami KLASĖS metodą
+            st.apskaiciuoti(metodas);
+
+            // 5. Išsaugome objektą grupėje (move paspartina procesą)
             grupe.push_back(move(st));
         }
     }
     cout << "Duomenys nuskaityti sėkmingai.\n";
 }
-
 // Rezultatų išvedimas (į ekraną arba failą)
  
 
+// ============================================================
+// Rezultatų išvedimas (į ekraną arba failą)
+// ============================================================
 void spausdintiRezultatus(const vector<Studentas>& grupe, int rodyti, const string& failas) {
     ostream* out = &cout;
     ofstream fout;
@@ -50,32 +72,39 @@ void spausdintiRezultatus(const vector<Studentas>& grupe, int rodyti, const stri
     (*out) << endl << string(70, '-') << endl;
 
     for (const auto& st : grupe) {
-        (*out) << left << setw(15) << st.vardas << setw(15) << st.pavarde;
+        // Naudojame GETERIUS vardas() ir pavarde()
+        (*out) << left << setw(15) << st.vardas() << setw(15) << st.pavarde();
+
         if (rodyti == 1 || rodyti == 3)
-            (*out) << fixed << setprecision(2) << setw(20) << st.gal_vid;
+            (*out) << fixed << setprecision(2) << setw(20) << st.galVid(); // Naudojame GETERĮ
         if (rodyti == 2 || rodyti == 3)
-            (*out) << fixed << setprecision(2) << setw(20) << st.gal_med;
+            (*out) << fixed << setprecision(2) << setw(20) << st.galMed(); // Naudojame GETERĮ
         (*out) << endl;
     }
 }
 
+// ============================================================
 // Skaidymas į dvi grupes (1 strategija: du nauji konteineriai)
-
+// ============================================================
 void splitStudents(const vector<Studentas>& visi,
     vector<Studentas>& kieti,
     vector<Studentas>& tinginiai, int metodas) {
+
+    // Lambda funkcija, nustatanti, kurį galutinį balą imti (naudojant geterius)
     auto galutinis = [&](const Studentas& st) {
-        return (metodas == 2) ? st.gal_med : st.gal_vid;
+        return (metodas == 2) ? st.galMed() : st.galVid();
         };
+
     copy_if(visi.begin(), visi.end(), back_inserter(kieti),
         [&](const Studentas& st) { return galutinis(st) >= 5.0; });
+
     copy_if(visi.begin(), visi.end(), back_inserter(tinginiai),
         [&](const Studentas& st) { return galutinis(st) < 5.0; });
 }
 
+// ============================================================
 // Pagrindinis meniu (senoji v0.4 programa)
- 
-
+// ============================================================
 void vykdytiVector() {
     vector<Studentas> grupe;
 
@@ -106,37 +135,57 @@ void vykdytiVector() {
 
         if (pas == 1 || pas == 2) {
             Studentas st;
-            cout << "Įveskite vardą: "; cin >> st.vardas;
-            cout << "Įveskite pavardę: "; cin >> st.pavarde;
+            string v, p;
+
+            cout << "Įveskite vardą: "; cin >> v;
+            st.setVardas(v); // Naudojame seterį
+
+            cout << "Įveskite pavardę: "; cin >> p;
+            st.setPavarde(p); // Naudojame seterį
 
             if (pas == 1) {
                 string input;
                 cout << "Įveskite N.D. pažymius (1-10). 'stop' - baigti:\n";
                 while (cin >> input && input != "stop") {
                     try {
-                        int p = stoi(input);
-                        if (p >= 1 && p <= 10) st.paz.push_back(p);
+                        int paz = stoi(input);
+                        if (paz >= 1 && paz <= 10) st.addPaz(paz); // Naudojame metodą priedui
                         else cout << "Tik 1-10!\n";
                     }
                     catch (...) { cout << "Neteisingas skaičius!\n"; }
                 }
-                st.egz = gautiSkaiciu("Įveskite egzamino balą (1-10): ", 1, 10);
+                int e = gautiSkaiciu("Įveskite egzamino balą (1-10): ", 1, 10);
+                st.setEgz(e); // Naudojame seterį
             }
             else {
-                genPazymius(st.paz, st.egz);
-                cout << "Sugeneruoti " << st.paz.size() << " pažymiai ir egzaminas.\n";
+                // Kadangi tavo genPazymius nori vectoriaus ir int adresų, geriau naudoti laikinus
+                vector<int> tempPaz;
+                int tempEgz;
+                genPazymius(tempPaz, tempEgz);
+
+                for (int paz : tempPaz) st.addPaz(paz);
+                st.setEgz(tempEgz);
+
+                cout << "Sugeneruota pažymių ir egzaminas.\n";
             }
-            apskaiciuotiPagalMetoda(st, metodas);
+            st.apskaiciuoti(metodas); // Pakeistas iš išorinės funkcijos į metodą
             grupe.push_back(move(st));
         }
         else if (pas == 3) {
             int kiek = gautiSkaiciu("Kiek studentų generuoti? ", 1, 1000000);
             for (int i = 0; i < kiek; i++) {
                 Studentas st;
-                st.vardas = genVarda();
-                st.pavarde = genPavarde(st.vardas);
-                genPazymius(st.paz, st.egz);
-                apskaiciuotiPagalMetoda(st, metodas);
+                st.setVardas(genVarda());
+                st.setPavarde(genPavarde(st.vardas())); // Naudojame vardas() gauti, ką tik įdėjome
+
+                vector<int> tempPaz;
+                int tempEgz;
+                genPazymius(tempPaz, tempEgz);
+
+                for (int paz : tempPaz) st.addPaz(paz);
+                st.setEgz(tempEgz);
+
+                st.apskaiciuoti(metodas);
                 grupe.push_back(move(st));
             }
             cout << "Sugeneruota.\n";
@@ -151,6 +200,7 @@ void vykdytiVector() {
             cout << "Nuskaityta per: " << duration<double>(e - s).count() << " s\n";
         }
         else if (pas == 5) {
+            // (Nepakeista, failų generavimas nepriklauso nuo Studentas klasės)
             cout << "\nKurį failą generuoti?\n";
             cout << "1 -      1 000 įrašų\n2 -     10 000 įrašų\n";
             cout << "3 -    100 000 įrašų\n4 -  1 000 000 įrašų\n";
@@ -193,18 +243,20 @@ void vykdytiVector() {
     cout << "\nKaip rūšiuoti?\n1 - Pagal vardą\n2 - Pagal pavardę\n3 - Pagal galutinį pažymį\n";
     int rPas = gautiSkaiciu("Pasirinkimas: ", 1, 3);
 
+    // Rūšiavimas taip pat naudoja GETERIUS
     sort(grupe.begin(), grupe.end(), [rPas, metodas](const Studentas& a, const Studentas& b) {
         switch (rPas) {
-        case 1: return a.vardas < b.vardas;
-        case 2: return a.pavarde < b.pavarde;
+        case 1: return a.vardas() < b.vardas();
+        case 2: return a.pavarde() < b.pavarde();
         case 3: {
-            double ga = (metodas == 2) ? a.gal_med : a.gal_vid;
-            double gb = (metodas == 2) ? b.gal_med : b.gal_vid;
-            return ga > gb;
+            double ga = (metodas == 2) ? a.galMed() : a.galVid();
+            double gb = (metodas == 2) ? b.galMed() : b.galVid();
+            return ga > gb; // Didesnis balas eina pirmas
         }
-        default: return a.pavarde < b.pavarde;
+        default: return a.pavarde() < b.pavarde();
         }
         });
+
 
     cout << "Kur išvesti?\n1 - Ekranas\n2 - Failas\n";
     int kur = gautiSkaiciu("Pasirinkimas: ", 1, 2);
