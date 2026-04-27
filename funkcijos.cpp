@@ -11,45 +11,65 @@
 namespace fs = std::filesystem;
 static std::mt19937 mt(std::chrono::steady_clock::now().time_since_epoch().count());
 
+// ============================================================
+// Generatoriai
+// ============================================================
+
 string genVarda() {
-    string vardai[] = { "Jonas", "Petras", "Simas", "Povilas", "Mykolas", "Tomas", "Dovydas", "Matas", "Lukas", "Rokas",
-                        "Evelina", "Gabija", "Ieva", "Greta", "Sandra", "Eglė", "Viktorija", "Kamilė", "Viltė", "Vėjūnė" };
+    string vardai[] = {
+        "Jonas",    "Petras",   "Simas",    "Povilas",  "Mykolas",
+        "Tomas",    "Dovydas",  "Matas",    "Lukas",    "Rokas",
+        "Evelina",  "Gabija",   "Ieva",     "Greta",    "Sandra",
+        "Eglė",     "Viktorija","Kamilė",   "Viltė",    "Vėjūnė"
+    };
     return vardai[mt() % 20];
 }
 
 string genPavarde(string vardas) {
-    string Vpavardes[] = { "Kazlauskas", "Jankauskas", "Petrauskas", "Stankevičius", "Vasiliauskas", "Butkus", "Žukauskas", "Paulauskas", "Urbonas", "Kavaliauskas" };
-    string Mpavardes[] = { "Kazlauskaitė", "Jankauskaitė", "Petrauskaitė", "Stankevičiūtė", "Vasiliauskaitė", "Butkutė", "Žukauskaitė", "Paulauskaitė", "Urbonaitė", "Kavaliauskaite" };
-    if (!vardas.empty() && vardas.back() == 's') {
+    string Vpavardes[] = {
+        "Kazlauskas",   "Jankauskas",  "Petrauskas",   "Stankevičius",
+        "Vasiliauskas", "Butkus",      "Žukauskas",    "Paulauskas",
+        "Urbonas",      "Kavaliauskas"
+    };
+    string Mpavardes[] = {
+        "Kazlauskaitė",  "Jankauskaitė",  "Petrauskaitė",   "Stankevičiūtė",
+        "Vasiliauskaitė","Butkutė",       "Žukauskaitė",    "Paulauskaitė",
+        "Urbonaitė",     "Kavaliauskaite"
+    };
+    if (!vardas.empty() && vardas.back() == 's')
         return Vpavardes[mt() % 10];
-    }
     return Mpavardes[mt() % 10];
 }
 
+// Generuoja 20 atsitiktinių namų darbų pažymių ir egzamino balą.
+// Rezultatai grąžinami per nuorodas, nes funkcija nenaudoja Studentas objekto —
+// ji yra universali pagalbinė priemonė.
+void genPazymius(vector<int>& paz, int& egz) {
+    paz.clear();
+    for (int i = 0; i < 20; i++) paz.push_back(mt() % 10 + 1);
+    egz = mt() % 10 + 1;
+}
+
+// ============================================================
+// Failo generavimas
+// ============================================================
 
 /*
-genFaila veikia greiciau, nei rezultatu spausdinimo funkcija,
-nes nereikia formatuoti duomenų ir skaičiuoti galutinių pažymių.
-Taip pat, generuojant failą, tiesiog rašome skaičius be papildomų formatavimo operacijų, o
-spausdinant rezultatus, kiekvienam studentui reikia apskaičiuoti galutinį pažymį ir
-formatuoti išvestį, kas užtrunka daugiau laiko.
-Be to, spausdinant didelį kiekį duomenų į konsolę, gali būti lėtesnis procesas nei
-rašant į failą.
+genFaila veikia greičiau nei rezultatų spausdinimo funkcija, nes:
+  - nereiia skaičiuoti galutinių pažymių (tiesiog rašomi skaičiai),
+  - nėra formatavimo operacijų kaip setprecision,
+  - rašymas į failą yra greitesnis nei išvestis į konsolę dideliems kiekiams.
 */
 void genFaila(const string& failas, int kiek) {
-    if (!fs::exists("Data")) {
-        fs::create_directory("Data");
-    }
-    string failoVardas = "Data/studentai" + to_string(kiek) + ".txt";
+    fs::create_directories("Data");
     ofstream out(failas);
-    //prideti throw error
-    
+    if (!out) throw runtime_error("Nepavyko atidaryti failo: " + failas);
+
     out << left << setw(15) << "Vardas" << setw(15) << "Pavardė";
     for (int i = 1; i <= 20; i++) out << setw(5) << ("ND" + to_string(i));
     out << setw(5) << "Egz." << "\n";
 
     for (int i = 1; i <= kiek; i++) {
-        // Šabloniniai vardai
         out << left << setw(15) << ("Vardas" + to_string(i))
             << setw(15) << ("Pavarde" + to_string(i));
         for (int j = 0; j < 20; j++)
@@ -58,39 +78,10 @@ void genFaila(const string& failas, int kiek) {
     }
 }
 
-void genPazymius(vector<int>& paz, int& egz) {
-    paz.clear();
-    for (int i = 0; i < 20; i++) paz.push_back(mt() % 10 + 1);
-    egz = mt() % 10 + 1;
-}
+// ============================================================
+// Klaidų valymas skaičių įvedimui
+// ============================================================
 
-double skaiciuotiVidurki(const vector<int>& paz) {
-    if (paz.empty()) return 0.0;
-    double suma = 0.0;
-    for (int p : paz) suma += p;
-    return suma / paz.size();
-}
-
-double skaiciuotiMediana(vector<int> paz) {
-    if (paz.empty()) return 0.0;
-    sort(paz.begin(), paz.end());
-    size_t n = paz.size();
-    if (n % 2 == 0) return (paz[n / 2 - 1] + paz[n / 2]) / 2.0;
-    else return paz[n / 2];
-}
-
-void Studentas::apskaiciuoti(int metodas) {
-    // Naudojame tiesioginius kintamųjų vardus (su pabraukimais gale)
-    if (metodas == 1 || metodas == 3) {
-        gal_vid_ = skaiciuotiVidurki() * 0.4 + egz_ * 0.6;
-    }
-    if (metodas == 2 || metodas == 3) {
-        // Kadangi skaiciuotiMediana() grąžina double, tiesiog dauginame
-        gal_med_ = skaiciuotiMediana() * 0.4 + egz_ * 0.6;
-    }
-}
-
-// klaidu valymas skaiciu irasyme
 int gautiSkaiciu(string info, int min, int max) {
     int sk;
     while (true) {
@@ -98,7 +89,7 @@ int gautiSkaiciu(string info, int min, int max) {
         try {
             if (!(cin >> sk)) {
                 cin.clear();
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw invalid_argument("Įvestas ne skaičius!");
             }
             if (cin.peek() != '\n' && cin.peek() != ' ' &&
@@ -117,106 +108,103 @@ int gautiSkaiciu(string info, int min, int max) {
         }
     }
 }
- 
 
-void skaitytiVector(string failas, vector<Studentas>& grupe, int metodas) {
+// ============================================================
+// Skaitymo funkcijos (naudojamos tyrimo programose: stud_Vector,
+// stud_List, stud_Deque). Naudoja Studentas klasės setter'ius ir
+// nustatytiEgzIsGalo() metodą vietoj tiesioginio laukų pasiekimo.
+// ============================================================
+
+void skaitytiVector(const string& failas, vector<Studentas>& grupe, int metodas) {
     ifstream in(failas);
-    if (!in) return; // Saugiklis, jei failo nėra
-
-    string line;
-    getline(in, line); // Praleisti antrastę
-    while (getline(in, line)) {
-        stringstream ss(line);
+    if (!in) throw runtime_error("Failas nerastas: " + failas);
+    string eilute;
+    getline(in, eilute); // praleisti antraštę
+    while (getline(in, eilute)) {
+        if (eilute.empty()) continue;
+        stringstream ss(eilute);
         Studentas st;
         string v, p;
-        
-        ss >> v >> p;
+        if (!(ss >> v >> p)) continue;
         st.setVardas(v);
         st.setPavarde(p);
-
-        int balas;
-        vector<int> temp_paz;
-        while (ss >> balas) {
-            temp_paz.push_back(balas);
-        }
-
-        if (!temp_paz.empty()) {
-            st.setEgz(temp_paz.back()); // paskutinis yra egz
-            temp_paz.pop_back();
-        }
-        for (int n : temp_paz) st.addPaz(n);
-
-		st.apskaiciuoti(metodas);
-        grupe.push_back(st);
-    }
-}
-void skaitytiList(string failas, list<Studentas>& grupe, int metodas) {
-    ifstream in(failas);
-    if (!in) return;
-
-    string line;
-    getline(in, line);
-    while (getline(in, line)) {
-        stringstream ss(line);
-        Studentas st;
-        string v, p;
-        ss >> v >> p;
-        st.setVardas(v);
-        st.setPavarde(p);
-        int val;
-        vector<int> temp;
-        while (ss >> val) temp.push_back(val);
-        if (!temp.empty()) {
-            st.setEgz(temp.back());
-            temp.pop_back();
-        }
-        for (int x : temp) st.addPaz(x);
+        int paz;
+        while (ss >> paz) st.addPazymys(paz);
+        // Paskutinis skaičius eilutėje yra egzaminas —
+        // nustatytiEgzIsGalo() jį išskiria iš pažymių sąrašo.
+        st.nustatytiEgzIsGalo();
         st.apskaiciuoti(metodas);
-        grupe.push_back(st);
+        grupe.push_back(move(st));
     }
 }
-void skaitytiDeque(string failas, deque<Studentas>& grupe, int metodas) {
-    ifstream in(failas);
-    if (!in) return;
 
-    string line;
-    getline(in, line);
-    while (getline(in, line)) {
-        stringstream ss(line);
+void skaitytiList(const string& failas, list<Studentas>& grupe, int metodas) {
+    ifstream in(failas);
+    if (!in) throw runtime_error("Failas nerastas: " + failas);
+    string eilute;
+    getline(in, eilute);
+    while (getline(in, eilute)) {
+        if (eilute.empty()) continue;
+        stringstream ss(eilute);
         Studentas st;
         string v, p;
-        ss >> v >> p;
+        if (!(ss >> v >> p)) continue;
         st.setVardas(v);
         st.setPavarde(p);
-        int val;
-        vector<int> temp;
-        while (ss >> val) temp.push_back(val);
-        if (!temp.empty()) {
-            st.setEgz(temp.back());
-            temp.pop_back();
-        }
-        for (int x : temp) st.addPaz(x);
+        int paz;
+        while (ss >> paz) st.addPazymys(paz);
+        st.nustatytiEgzIsGalo();
         st.apskaiciuoti(metodas);
-        grupe.push_back(st);
+        grupe.push_back(move(st));
     }
 }
 
-// 1 Strategijos skirstymas
-void skirstytiVector(const vector<Studentas>& visi, vector<Studentas>& kieti, vector<Studentas>& tinginiai) {
-    for (const auto& s : visi) {
-        if (s.galVid() < 5.0) tinginiai.push_back(s);
-        else kieti.push_back(s);
+void skaitytiDeque(const string& failas, deque<Studentas>& grupe, int metodas) {
+    ifstream in(failas);
+    if (!in) throw runtime_error("Failas nerastas: " + failas);
+    string eilute;
+    getline(in, eilute);
+    while (getline(in, eilute)) {
+        if (eilute.empty()) continue;
+        stringstream ss(eilute);
+        Studentas st;
+        string v, p;
+        if (!(ss >> v >> p)) continue;
+        st.setVardas(v);
+        st.setPavarde(p);
+        int paz;
+        while (ss >> paz) st.addPazymys(paz);
+        st.nustatytiEgzIsGalo();
+        st.apskaiciuoti(metodas);
+        grupe.push_back(move(st));
     }
 }
-void skirstytiList(const list<Studentas>& visi, list<Studentas>& kieti, list<Studentas>& tinginiai) {
+
+// ============================================================
+// Skirstymo funkcijos (1 strategija: du nauji konteineriai)
+// Naudoja galVid() getterį vietoj tiesioginio gal_vid lauko.
+// ============================================================
+
+void skirstytiVector(const vector<Studentas>& visi,
+    vector<Studentas>& kieti, vector<Studentas>& tinginiai) {
     for (const auto& s : visi) {
         if (s.galVid() < 5.0) tinginiai.push_back(s);
-        else kieti.push_back(s);
+        else                   kieti.push_back(s);
     }
 }
-void skirstytiDeque(const deque<Studentas>& visi, deque<Studentas>& kieti, deque<Studentas>& tinginiai) {
+
+void skirstytiList(const list<Studentas>& visi,
+    list<Studentas>& kieti, list<Studentas>& tinginiai) {
     for (const auto& s : visi) {
         if (s.galVid() < 5.0) tinginiai.push_back(s);
-        else kieti.push_back(s);
+        else                   kieti.push_back(s);
+    }
+}
+
+void skirstytiDeque(const deque<Studentas>& visi,
+    deque<Studentas>& kieti, deque<Studentas>& tinginiai) {
+    for (const auto& s : visi) {
+        if (s.galVid() < 5.0) tinginiai.push_back(s);
+        else                   kieti.push_back(s);
     }
 }
