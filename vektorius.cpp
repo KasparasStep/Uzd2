@@ -1,6 +1,5 @@
-//vektorius.cpp
 #include "struktura.h"
-#include "funkcijos.h"
+
 static const string DATA_DIR = "Data/";
 
 // ============================================================
@@ -27,7 +26,6 @@ void skaitytiIsFailo(const string& failas, vector<Studentas>& grupe, int metodas
         while (ss >> paz) st.addPazymys(paz);
 
         if (!st.paz().empty()) {
-            // Paskutinis skaičius eilutėje yra egzaminas
             st.nustatytiEgzIsGalo();
             st.apskaiciuoti(metodas);
             grupe.push_back(move(st));
@@ -68,7 +66,6 @@ void spausdintiRezultatus(const vector<Studentas>& grupe, int rodyti,
 
 // ============================================================
 // Skaidymas į dvi grupes — 1 strategija (du nauji konteineriai)
-// copy_if + lambda naudoja galVid()/galMed() getter'ius
 // ============================================================
 
 void splitStudents(const vector<Studentas>& visi,
@@ -119,8 +116,8 @@ void vykdytiVector() {
         if (pas == 1 || pas == 2) {
             Studentas st;
             string v, p;
-            cout << "Įveskite vardą: ";    cin >> v;
-            cout << "Įveskite pavardę: ";  cin >> p;
+            cout << "Įveskite vardą: ";   cin >> v;
+            cout << "Įveskite pavardę: "; cin >> p;
             st.setVardas(v);
             st.setPavarde(p);
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -144,8 +141,7 @@ void vykdytiVector() {
                 genPazymius(paz, egz);
                 for (int p2 : paz) st.addPazymys(p2);
                 st.setEgz(egz);
-                cout << "Sugeneruoti " << st.paz().size()
-                    << " pažymiai ir egzaminas.\n";
+                cout << "Sugeneruoti " << st.paz().size() << " pažymiai ir egzaminas.\n";
             }
 
             st.apskaiciuoti(metodas);
@@ -175,8 +171,7 @@ void vykdytiVector() {
             auto s = high_resolution_clock::now();
             skaitytiIsFailo(DATA_DIR + f, grupe, metodas);
             auto e = high_resolution_clock::now();
-            cout << "Nuskaityta per: "
-                << fixed << setprecision(4)
+            cout << "Nuskaityta per: " << fixed << setprecision(4)
                 << duration<double>(e - s).count() << " s\n";
         }
         else if (pas == 5) {
@@ -206,8 +201,7 @@ void vykdytiVector() {
             }
             else {
                 for (auto& [vardas, kiek] : failai) {
-                    cout << "Generuojama: " << vardas
-                        << " (" << kiek << " įrašų)...\n";
+                    cout << "Generuojama: " << vardas << " (" << kiek << " įrašų)...\n";
                     auto t1 = high_resolution_clock::now();
                     genFaila(vardas, kiek);
                     auto t2 = high_resolution_clock::now();
