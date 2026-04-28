@@ -1,5 +1,12 @@
 // struktura.h
 #pragma once
+
+// NOMINMAX būtina prieš windows.h —
+// be jos windows.h apibrėžia min/max kaip makrosus ir sugadina
+// std::numeric_limits<T>::max() bei std::min/std::max kvietimus.
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+
 #include <iostream>
 #include <vector>
 #include <string>

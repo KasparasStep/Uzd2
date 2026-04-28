@@ -1,4 +1,3 @@
-//testavimas.cpp
 #include "struktura.h"
 
 static const string DATA_DIR = "Data/";
@@ -29,13 +28,15 @@ void test1() {
 
 // ============================================================
 // Pagalbinė: splitStudents_S3 — 3 strategija su stable_partition
-// (naudojama tik test2 lyginimui; vector versija)
+// Naudoja galVid()/galMed() getter'ius — ne tiesioginius laukus.
 // ============================================================
 
 static void splitStudents_S3(vector<Studentas>& grupe,
     vector<Studentas>& vargsiukai, int metodas) {
     auto yraKietas = [&](const Studentas& st) {
-        double g = (metodas == 2) ? st.gal_med : st.gal_vid;
+        // galMed()/galVid() yra public getter'iai —
+        // gal_med_ ir gal_vid_ private, todėl tiesioginė prieiga draudžiama
+        double g = (metodas == 2) ? st.galMed() : st.galVid();
         return g >= 5.0;
         };
     auto riba = stable_partition(grupe.begin(), grupe.end(), yraKietas);
@@ -46,7 +47,6 @@ static void splitStudents_S3(vector<Studentas>& grupe,
 
 // ============================================================
 // test2 — duomenų apdorojimo greičio tyrimas (std::vector)
-// Matuojami žingsniai: nuskaitymas, rūšiavimas, skaidymas (S1 ir S3)
 // ============================================================
 
 void test2(const string& /* nenaudojamas */, int metodas) {
@@ -71,8 +71,7 @@ void test2(const string& /* nenaudojamas */, int metodas) {
     for (const auto& failas : failai) {
         ifstream tikrinimas(failas);
         if (!tikrinimas) {
-            cout << setw(22) << failas
-                << "NERASTAS — paleiskite Tyrimą 1.\n";
+            cout << setw(22) << failas << "NERASTAS — paleiskite Tyrimą 1.\n";
             continue;
         }
         tikrinimas.close();
@@ -83,11 +82,11 @@ void test2(const string& /* nenaudojamas */, int metodas) {
         skaitytiIsFailo(failas, originalas, metodas);
         auto t2 = high_resolution_clock::now();
 
-        // Rūšiavimas
+        // Rūšiavimas — galVid()/galMed() vietoj st.gal_vid/st.gal_med
         vector<Studentas> rusiotas = originalas;
         sort(rusiotas.begin(), rusiotas.end(), [&](const Studentas& a, const Studentas& b) {
-            double ga = (metodas == 2) ? a.gal_med : a.gal_vid;
-            double gb = (metodas == 2) ? b.gal_med : b.gal_vid;
+            double ga = (metodas == 2) ? a.galMed() : a.galVid();
+            double gb = (metodas == 2) ? b.galMed() : b.galVid();
             return ga > gb;
             });
         auto t3 = high_resolution_clock::now();
@@ -98,7 +97,7 @@ void test2(const string& /* nenaudojamas */, int metodas) {
         splitStudents(rusiotas, kieti_s1, vargsiukai_s1, metodas);
         auto t5 = high_resolution_clock::now();
 
-        // S3 — stable_partition + move (dirbame su kopija)
+        // S3 — stable_partition + move
         vector<Studentas> s3 = rusiotas;
         vector<Studentas> vargsiukai_s3;
         auto t6 = high_resolution_clock::now();
