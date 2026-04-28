@@ -168,11 +168,18 @@ void vykdytiVector() {
             string f;
             cout << "Įveskite failo pavadinimą (iš Data/ katalogo): ";
             cin >> f;
-            auto s = high_resolution_clock::now();
-            skaitytiIsFailo(DATA_DIR + f, grupe, metodas);
-            auto e = high_resolution_clock::now();
-            cout << "Nuskaityta per: " << fixed << setprecision(4)
-                << duration<double>(e - s).count() << " s\n";
+            try {
+                auto s = high_resolution_clock::now();
+                skaitytiIsFailo(DATA_DIR + f, grupe, metodas);
+                auto e = high_resolution_clock::now();
+                cout << "Nuskaityta per: " << fixed << setprecision(4)
+                    << duration<double>(e - s).count() << " s\n";
+            }
+            catch (const exception& e) {
+                // Failas nerastas arba kita I/O klaida —
+                // pranešame ir grįžtame į meniu be programos uždarymo
+                cout << "Klaida: " << e.what() << " Bandykite dar kartą.\n";
+            }
         }
         else if (pas == 5) {
             cout << "\nKurį failą generuoti?\n"
