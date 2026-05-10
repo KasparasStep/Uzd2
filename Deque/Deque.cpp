@@ -5,16 +5,16 @@
 //   - Nėra reserve() (deque to nepalaiko)
 //   - std::sort veikia (yra atsitiktinės prieigos iteratorius)
 //   - S3 logika identiška vector versijai
-//   - Privalumas prieš vector: greitesnis push_front, nereikia perkopijuoti
-//     kai viršijamas talpyklos dydis
 //
 // Kompiliavimas:
-//   g++ -O2 -std=c++17 deque.cpp funkcijos.cpp -o deque
+//   g++ -O2 -std=c++17 Deque.cpp funkcijos.cpp -o stud_Deque
 // ============================================================
 #include "struktura.h"
 #ifdef _WIN32
 #include <windows.h>
 #endif
+
+static const string DATA_DIR = "Data/";
 
 // ---- Duomenų skaitymas ----
 
@@ -29,13 +29,15 @@ static void skaityti(const string& failas, deque<Studentas>& grupe, int metodas)
         if (eilute.empty()) continue;
         stringstream ss(eilute);
         Studentas st;
-        if (!(ss >> st.vardas >> st.pavarde)) continue;
-        int p;
-        while (ss >> p) st.paz.push_back(p);
-        if (!st.paz.empty()) {
-            st.egz = st.paz.back();
-            st.paz.pop_back();
-            apskaiciuotiPagalMetoda(st, metodas);
+        string v, p;
+        if (!(ss >> v >> p)) continue;
+        st.setVardas(v);
+        st.setPavarde(p);
+        int paz;
+        while (ss >> paz) st.addPazymys(paz);
+        if (!st.paz().empty()) {
+            st.nustatytiEgzIsGalo();
+            st.apskaiciuoti(metodas);
             grupe.push_back(move(st));
         }
     }
@@ -46,20 +48,19 @@ static void skaityti(const string& failas, deque<Studentas>& grupe, int metodas)
 
 static void rusiuoti(deque<Studentas>& grupe, int metodas) {
     sort(grupe.begin(), grupe.end(), [&](const Studentas& a, const Studentas& b) {
-        double ga = (metodas == 2) ? a.gal_med : a.gal_vid;
-        double gb = (metodas == 2) ? b.gal_med : b.gal_vid;
+        double ga = (metodas == 2) ? a.galMed() : a.galVid();
+        double gb = (metodas == 2) ? b.galMed() : b.galVid();
         return ga > gb;
         });
 }
 
 // ---- 1 strategija: copy_if į du naujus konteinerius ----
-// Originalas nekeičiamas. Studentas saugomas dviejose vietose atmintyje.
 
 static void split_S1(const deque<Studentas>& grupe,
     deque<Studentas>& kieti,
     deque<Studentas>& tinginiai, int metodas) {
     auto galutinis = [&](const Studentas& st) {
-        return (metodas == 2) ? st.gal_med : st.gal_vid;
+        return (metodas == 2) ? st.galMed() : st.galVid();
         };
     copy_if(grupe.begin(), grupe.end(), back_inserter(kieti),
         [&](const Studentas& st) { return galutinis(st) >= 5.0; });
@@ -67,28 +68,18 @@ static void split_S1(const deque<Studentas>& grupe,
         [&](const Studentas& st) { return galutinis(st) < 5.0; });
 }
 
-// ---- 3 strategija: stable_partition + perkėlimas ----
-// Grupe tvarkoma vietoje: [kieti | tinginiai].
-// tinginiai perkeliami (move) į naują konteinerį ir ištrinami.
-// Po funkcijos: grupe = kieti, tinginiai = tinginiai.
+// ---- 3 strategija: stable_partition + move ----
 
 static void split_S3(deque<Studentas>& grupe,
     deque<Studentas>& tinginiai, int metodas) {
     auto yraKietas = [&](const Studentas& st) {
-        double g = (metodas == 2) ? st.gal_med : st.gal_vid;
+        double g = (metodas == 2) ? st.galMed() : st.galVid();
         return g >= 5.0;
         };
-
-    // Pertvarko vietoje be papildomos atminties iteracijoms
     auto riba = stable_partition(grupe.begin(), grupe.end(), yraKietas);
-
-    // Move semantics: perkeliame be kopijavimo
     tinginiai.assign(make_move_iterator(riba), make_move_iterator(grupe.end()));
     grupe.erase(riba, grupe.end());
 }
-
-// Bendras katalogas duomenų failams (naudojamas visų trijų programų)
-static const string DATA_DIR = "Data/";
 
 // ---- Tyrimo lentelė ----
 
@@ -125,7 +116,7 @@ static void vykdytiTyryma(int metodas) {
         skaityti(failas, originalas, metodas);
         auto t2 = high_resolution_clock::now();
 
-        // 2. Rūšiavimas (kopija, kad originalas liktų nepakitęs)
+        // 2. Rūšiavimas
         deque<Studentas> rusiotas = originalas;
         auto t3 = high_resolution_clock::now();
         rusiuoti(rusiotas, metodas);
@@ -137,7 +128,7 @@ static void vykdytiTyryma(int metodas) {
         split_S1(rusiotas, kieti_s1, tinginiai_s1, metodas);
         auto t6 = high_resolution_clock::now();
 
-        // 4. S3 strategija (kopija — S3 keičia konteinerį vietoje)
+        // 4. S3 strategija
         deque<Studentas> s3 = rusiotas;
         deque<Studentas> tinginiai_s3;
         auto t7 = high_resolution_clock::now();

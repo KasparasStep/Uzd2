@@ -29,4 +29,12 @@
     <Text Include="..\studentai10M.txt" />
     <Text Include="..\studentai100k.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\funkcijos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\struktura.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 CXX      := g++
-CXXFLAGS := -std=c++17 -O2 -Wall
+CXXFLAGS := -std=c++17 -O3 -Wall
 
 TARGETS := Uzd1 stud_Vector stud_List stud_Deque
 

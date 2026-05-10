@@ -1,5 +1,5 @@
 // ============================================================
-// — tyrimas su std::list
+// tyrimas su std::list
 //
 // Pagrindiniai skirtumai nuo vector:
 //   - Rūšiavimui naudojamas grupe.sort() (narys), ne std::sort
@@ -7,12 +7,14 @@
 //   - Nėra reserve() (list to nepalaiko)
 //
 // Kompiliavimas:
-//   g++ -O2 -std=c++17 list.cpp funkcijos.cpp -o list
+//   g++ -O2 -std=c++17 List.cpp funkcijos.cpp -o stud_List
 // ============================================================
 #include "struktura.h"
 #ifdef _WIN32
 #include <windows.h>
 #endif
+
+static const string DATA_DIR = "Data/";
 
 // ---- Duomenų skaitymas ----
 
@@ -27,13 +29,15 @@ static void skaityti(const string& failas, list<Studentas>& grupe, int metodas) 
         if (eilute.empty()) continue;
         stringstream ss(eilute);
         Studentas st;
-        if (!(ss >> st.vardas >> st.pavarde)) continue;
-        int p;
-        while (ss >> p) st.paz.push_back(p);
-        if (!st.paz.empty()) {
-            st.egz = st.paz.back();
-            st.paz.pop_back();
-            apskaiciuotiPagalMetoda(st, metodas);
+        string v, p;
+        if (!(ss >> v >> p)) continue;
+        st.setVardas(v);
+        st.setPavarde(p);
+        int paz;
+        while (ss >> paz) st.addPazymys(paz);
+        if (!st.paz().empty()) {
+            st.nustatytiEgzIsGalo();
+            st.apskaiciuoti(metodas);
             grupe.push_back(move(st));
         }
     }
@@ -45,20 +49,19 @@ static void skaityti(const string& failas, list<Studentas>& grupe, int metodas) 
 
 static void rusiuoti(list<Studentas>& grupe, int metodas) {
     grupe.sort([&](const Studentas& a, const Studentas& b) {
-        double ga = (metodas == 2) ? a.gal_med : a.gal_vid;
-        double gb = (metodas == 2) ? b.gal_med : b.gal_vid;
+        double ga = (metodas == 2) ? a.galMed() : a.galVid();
+        double gb = (metodas == 2) ? b.galMed() : b.galVid();
         return ga > gb;
         });
 }
 
 // ---- 1 strategija: copy_if į du naujus konteinerius ----
-// Originalas nekeičiamas. Studentas saugomas dviejose vietose atmintyje.
 
 static void split_S1(const list<Studentas>& grupe,
     list<Studentas>& kieti,
     list<Studentas>& tinginiai, int metodas) {
     auto galutinis = [&](const Studentas& st) {
-        return (metodas == 2) ? st.gal_med : st.gal_vid;
+        return (metodas == 2) ? st.galMed() : st.galVid();
         };
     copy_if(grupe.begin(), grupe.end(), back_inserter(kieti),
         [&](const Studentas& st) { return galutinis(st) >= 5.0; });
@@ -67,26 +70,18 @@ static void split_S1(const list<Studentas>& grupe,
 }
 
 // ---- 3 strategija: stable_partition + splice ----
-// stable_partition sutvarko elementus vietoje: [kieti | tinginiai].
 // splice() perima mazgus tiesiai iš grupe — nekopijuoja duomenų, tik perkelia rodykles.
-// Po funkcijos: grupe = kieti, tinginiai = tinginiai.
 
 static void split_S3(list<Studentas>& grupe,
     list<Studentas>& tinginiai, int metodas) {
     auto yraKietas = [&](const Studentas& st) {
-        double g = (metodas == 2) ? st.gal_med : st.gal_vid;
+        double g = (metodas == 2) ? st.galMed() : st.galVid();
         return g >= 5.0;
         };
-
-    // Pertvarko vietoje, išsaugodamas tvarką abiejose pusėse
     auto riba = stable_partition(grupe.begin(), grupe.end(), yraKietas);
-
     // splice: O(k) mazgų perkėlimas be kopijavimo (tik rodyklių pakeitimas)
     tinginiai.splice(tinginiai.end(), grupe, riba, grupe.end());
 }
-
-// Bendras katalogas duomenų failams (naudojamas visų trijų programų)
-static const string DATA_DIR = "Data/";
 
 // ---- Tyrimo lentelė ----
 
@@ -123,7 +118,7 @@ static void vykdytiTyryma(int metodas) {
         skaityti(failas, originalas, metodas);
         auto t2 = high_resolution_clock::now();
 
-        // 2. Rūšiavimas (kopija, kad originalas liktų nepakitęs)
+        // 2. Rūšiavimas
         list<Studentas> rusiotas = originalas;
         auto t3 = high_resolution_clock::now();
         rusiuoti(rusiotas, metodas);
@@ -135,7 +130,7 @@ static void vykdytiTyryma(int metodas) {
         split_S1(rusiotas, kieti_s1, tinginiai_s1, metodas);
         auto t6 = high_resolution_clock::now();
 
-        // 4. S3 strategija (kopija — S3 keičia konteinerį vietoje)
+        // 4. S3 strategija
         list<Studentas> s3 = rusiotas;
         list<Studentas> tinginiai_s3;
         auto t7 = high_resolution_clock::now();

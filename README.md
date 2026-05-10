@@ -264,3 +264,72 @@ Originalas nekeičiamas. Kiekvienas studentas saugomas **dviejose** vietose atmi
 
 Duomenys tvarkomi **vietoje** — nereikia papildomos atminties iteracijoms. Vargšiukai perkeliami (`move`) be kopijavimo.
  `list` versijoje vietoj `move` naudojamas `splice()` — tik rodyklių pakeitimas.
+
+
+### v1.1
+
+Struct pakeista į Class
+Su visual studio
+
+Skaidymas naudojant vector (be optimizacijos):
+
+| Failas          	  | vector |
+|---------------------|--------|
+| 1 000 įrašų     	  | 0.0000 |
+| 10 000 įrašų    	  | 0.0001 |
+| 100 000 įrašų   	  | 0.0011 |
+| 1 000 000 įrašų     | 0.0125 |
+| 10 000 000 įrašų    | 0.2181 |
+
+(su /O1)
+| Failas          	  | vector |
+|---------------------|--------|
+| 1 000 įrašų     	  | 0.0000 |
+| 10 000 įrašų    	  | 0.0001 |
+| 100 000 įrašų   	  | 0.0010 |
+| 1 000 000 įrašų     | 0.0124 |
+| 10 000 000 įrašų    | 0.3042 |
+
+(su /O2)
+| Failas          	  | vector |
+|---------------------|--------|
+| 1 000 įrašų     	  | 0.0000 |
+| 10 000 įrašų    	  | 0.0001 |
+| 100 000 įrašų   	  | 0.0009 |
+| 1 000 000 įrašų     | 0.0133 |
+| 10 000 000 įrašų    | 0.1656 |
+
+
+Su cmake:
+
+(su /O1)
+| Failas          	  | vector |
+|---------------------|--------|
+| 1 000 įrašų     	  | 0.0000 |
+| 10 000 įrašų    	  | 0.0001 |
+| 100 000 įrašų   	  | 0.0021 |
+| 1 000 000 įrašų     | 0.0273 |
+| 10 000 000 įrašų    | 0.3471 |
+
+(su /O2)
+| Failas          	  | vector |
+|---------------------|--------|
+| 1 000 įrašų     	  | 0.0000 |
+| 10 000 įrašų    	  | 0.0003 |
+| 100 000 įrašų   	  | 0.0025 |
+| 1 000 000 įrašų     | 0.0282 |
+| 10 000 000 įrašų    | 0.3588 |
+
+(su /O3)
+| Failas          	  | vector |
+|---------------------|--------|
+| 1 000 įrašų     	  | 0.0000 |
+| 10 000 įrašų    	  | 0.0003 |
+| 100 000 įrašų   	  | 0.0023 |
+| 1 000 000 įrašų     | 0.0272 |
+| 10 000 000 įrašų    | 0.4811 |
+
+
+Nors naudojant cmake dalinimas užtrunka ilgiau (apie 2x), tačiau
+failų nuskaitymas vyskta kelis kart greičiau. Tokio dydžio duomenimis programa bendrai veikia greičiau.
+O naudojant Visual Studio ar CMake vis tiek bus greičiau nei naudojant struct be optimizacijos.

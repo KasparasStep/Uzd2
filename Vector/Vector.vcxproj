@@ -106,7 +106,8 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\kaspa\source\repos\Uzd1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kaspa\source\repos\Uzd2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,7 +123,8 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\kaspa\source\repos\Uzd1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kaspa\source\repos\Uzd2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,6 +141,10 @@
     <Text Include="..\studentai10M.txt" />
     <Text Include="..\studentai1k.txt" />
     <Text Include="..\studentai1M.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\funkcijos.h" />
+    <ClInclude Include="..\struktura.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,7 +2,7 @@
 // tyrimas su std::vector
 //
 // Kompiliavimas:
-//   g++ -O2 -std=c++17 stud_Vector.cpp funkcijos.cpp -o stud_Vector
+//   g++ -O2 -std=c++17 Vector.cpp funkcijos.cpp -o stud_Vector
 // ============================================================
 #include "struktura.h"
 #ifdef _WIN32
@@ -184,5 +184,6 @@ int main() {
         cerr << "Klaida: " << e.what() << "\n";
         return 1;
     }
+    system("pause");
     return 0;
 }
