@@ -79,7 +79,8 @@ public:
     // Sukuria tuščią studentą su nulinėmis reikšmėmis.
     Studentas() = default;
 
-    // Pilnas konstruktorius su iš karto atliekamu skaičiavimu
+    // 2. Pilnas konstruktorius
+    // Iš karto apskaičiuoja galutinį pažymį pagal metodą.
     Studentas(string v, string p, vector<int> paz, int egz, int metodas)
         : vardas_(move(v)), pavarde_(move(p)),
         paz_(move(paz)), egz_(egz)
