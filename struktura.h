@@ -75,7 +75,8 @@ private:
 public:
     // ---- Konstruktoriai ----
 
-    // Numatytasis konstruktorius (reikalingas konteineriams)
+    // 1. Numatytasis konstruktorius
+    // Sukuria tuščią studentą su nulinėmis reikšmėmis.
     Studentas() = default;
 
     // Pilnas konstruktorius su iš karto atliekamu skaičiavimu
