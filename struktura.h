@@ -40,6 +40,7 @@ using std::cerr;
 using std::stringstream;
 using std::move;
 using std::ostream;
+using std::istream;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
 using std::chrono::duration;
@@ -56,6 +57,10 @@ using std::to_string;
 using std::pair;
 using std::list;
 using std::deque;
+using std::stable_partition;
+using std::copy_if;
+using std::back_inserter;
+using std::make_move_iterator;
 namespace fs = std::filesystem;
 
 // ============================================================
@@ -189,6 +194,33 @@ public:
         if (st.gal_med_ > 0.0)
             os << fixed << setprecision(2) << "  Med: " << st.gal_med_;
         return os;
+    }
+
+    friend istream& operator>>(istream& is, Studentas& st) {
+        string eilute;
+        if (!getline(is, eilute)) return is;
+        if (eilute.empty()) return is;
+
+        stringstream ss(eilute);
+        string v, p;
+        if (!(ss >> v >> p)) return is;
+
+        st.vardas_ = v;
+        st.pavarde_ = p;
+        st.paz_.clear();
+        st.egz_ = 0;
+        st.gal_vid_ = 0.0;
+        st.gal_med_ = 0.0;
+
+        int n;
+        while (ss >> n) st.paz_.push_back(n);
+
+        // Paskutinis skaičius — egzaminas
+        if (!st.paz_.empty()) {
+            st.egz_ = st.paz_.back();
+            st.paz_.pop_back();
+        }
+        return is;
     }
    
     // ---- Getteriai ----
