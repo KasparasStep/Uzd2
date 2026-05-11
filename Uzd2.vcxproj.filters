@@ -27,6 +27,9 @@
     <ClCompile Include="failu_greicio_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="metodu_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struktura.h">
