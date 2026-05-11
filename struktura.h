@@ -88,6 +88,10 @@ public:
         apskaiciuoti(metodas);
     }
 
+   // ==========================================================
+   // Rule of Five
+   // ==========================================================
+
     // 3. Destruktorius
     // vector ir string patys išvalo atmintį, todėl explicit logikos nereikia.
     // Parašomas aiškiai — kad būtų matoma, jog jis apsvarstytas.
@@ -105,6 +109,22 @@ public:
         gal_vid_(kitas.gal_vid_),
         gal_med_(kitas.gal_med_)
     {}
+
+    // 5. Kopijavimo priskyrimo operatorius
+    // Pakeičia esamo objekto turinį kito objekto kopija.
+    // Patikrina savipriskyrimą (a = a) — be šio patikrinimo
+    // galėtume išvalyti savo duomenis prieš nukopijuodami juos.
+    Studentas& operator=(const Studentas& kitas) {
+        if (this != &kitas) {
+            vardas_ = kitas.vardas_;
+            pavarde_ = kitas.pavarde_;
+            paz_ = kitas.paz_;
+            egz_ = kitas.egz_;
+            gal_vid_ = kitas.gal_vid_;
+            gal_med_ = kitas.gal_med_;
+        }
+        return *this;
+    }
     // ---- Getteriai ----
 
     const string& vardas()  const { return vardas_; }
