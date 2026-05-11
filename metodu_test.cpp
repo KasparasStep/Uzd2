@@ -178,6 +178,116 @@ static void testPerkelimoPriskyrimas() {
     b = move(b);
     tikrinti("saviperk. (b = move(b)): programa necrasha", true);
 }
+// ============================================================
+// 8. operator<<
+// ============================================================
+static void testOutputOperatorius() {
+    skyrius("8. operator<<");
+    vector<int> paz = { 7, 8, 9 };
+    Studentas st("Lukas", "Lukaitis", paz, 8, 3);
+
+    // Išvedame į stringstream ir tikriname rezultatą
+    stringstream ss;
+    ss << st;
+    string rezultatas = ss.str();
+
+    tikrinti("operator<< turi varda", rezultatas.find("Lukas") != string::npos);
+    tikrinti("operator<< turi pavarde", rezultatas.find("Lukaitis") != string::npos);
+    tikrinti("operator<< turi egz", rezultatas.find("8") != string::npos);
+    tikrinti("operator<< netusti", !rezultatas.empty());
+
+    // Tiesioginis cout išvedimas
+    cout << "  [INFO] operator<< isveda: " << st << "\n";
+}
+
+// ============================================================
+// 9. operator>>
+// ============================================================
+static void testInputOperatorius() {
+    skyrius("9. operator>>");
+
+    // Formatas: Vardas Pavarde ND1 ND2 ... NDn Egzaminas
+    string eilute = "Gabija Gabjaite 7 8 9 6 10 8";
+    stringstream ss(eilute);
+    Studentas st;
+    ss >> st;
+
+    tikrinti("operator>> nuskaite varda", st.vardas() == "Gabija");
+    tikrinti("operator>> nuskaite pavarde", st.pavarde() == "Gabjaite");
+    // Paskutinis skaičius (8) yra egzaminas
+    tikrinti("operator>> nuskaite egz", st.egz() == 8);
+    // Liko 5 ND pažymiai (7 8 9 6 10)
+    tikrinti("operator>> nuskaite 5 paz", st.paz().size() == 5);
+
+    // Patikrinti, kad skaitymas iš failo formato veikia
+    stringstream ss2("Tomas Tomaitis 5 6 7 8 9 10 7\n");
+    Studentas st2;
+    ss2 >> st2;
+    tikrinti("operator>> antras nuskaitymas veikia", st2.vardas() == "Tomas");
+    tikrinti("operator>> paskutinis skaicius = egz", st2.egz() == 7);
+}
+
+// ============================================================
+// 10. Getter'iai ir setter'iai
+// ============================================================
+static void testGetterSetter() {
+    skyrius("10. Getteriai ir setteriai");
+    Studentas st;
+
+    st.setVardas("Rokas");
+    st.setPavarde("Rokaitis");
+    st.setEgz(9);
+    st.addPazymys(7);
+    st.addPazymys(8);
+    st.addPazymys(9);
+
+    tikrinti("setVardas / vardas()", st.vardas() == "Rokas");
+    tikrinti("setPavarde / pavarde()", st.pavarde() == "Rokaitis");
+    tikrinti("setEgz / egz()", st.egz() == 9);
+    tikrinti("addPazymys 3x / paz()", st.paz().size() == 3);
+    tikrinti("paz()[0] == 7", st.paz()[0] == 7);
+    tikrinti("paz()[2] == 9", st.paz()[2] == 9);
+
+    // nustatytiEgzIsGalo
+    Studentas st2;
+    st2.addPazymys(5);
+    st2.addPazymys(6);
+    st2.addPazymys(10); // bus egzaminas
+    st2.nustatytiEgzIsGalo();
+    tikrinti("nustatytiEgzIsGalo: egz == 10", st2.egz() == 10);
+    tikrinti("nustatytiEgzIsGalo: paz dydzis == 2", st2.paz().size() == 2);
+}
+
+// ============================================================
+// 11. Skaičiavimo metodai
+// ============================================================
+static void testSkaiciavimai() {
+    skyrius("11. Skaiciavimo metodai");
+    Studentas st;
+    st.addPazymys(6);
+    st.addPazymys(8);
+    st.addPazymys(10);
+    st.setEgz(9);
+
+    // Vidurkis: (6+8+10)/3 = 8.0; galutinis: 8.0*0.4 + 9*0.6 = 3.2 + 5.4 = 8.6
+    st.apskaiciuoti(1);
+    tikrinti("apskaiciuoti(1): galVid == 8.6",
+        std::abs(st.galVid() - 8.6) < 0.01);
+
+    // Mediana: surikiuota {6,8,10} → mediana = 8; 8*0.4 + 9*0.6 = 3.2 + 5.4 = 8.6
+    st.apskaiciuoti(2);
+    tikrinti("apskaiciuoti(2): galMed == 8.6",
+        std::abs(st.galMed() - 8.6) < 0.01);
+
+    // Lyginė mediana: {6, 8} → (6+8)/2 = 7.0
+    Studentas st2;
+    st2.addPazymys(6);
+    st2.addPazymys(8);
+    st2.setEgz(7);
+    st2.apskaiciuoti(2);
+    tikrinti("mediana lyginis kiekis: (6+8)/2 = 7.0; galMed = 7*0.4+7*0.6 = 7.0",
+        std::abs(st2.galMed() - 7.0) < 0.01);
+}
 
 // ============================================================
 // main — paleidžia visus testus
@@ -200,6 +310,10 @@ int main() {
     testKopijavimoKonstruktoriusPriskyrimas();
     testPerkelimoKonstruktorius();
     testPerkelimoPriskyrimas();
+    testOutputOperatorius();
+    testInputOperatorius();
+    testGetterSetter();
+    testSkaiciavimai();
     cout << "\n========================================\n";
     cout << "  Rezultatai: " << praejo << " PASS, "
         << nepraejo << " FAIL\n";
