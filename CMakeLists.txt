@@ -10,11 +10,12 @@ endif()
 
 # ---- Optimizavimo lygis ----
 # Pakeiskite šią eilutę norėdami keisti lygį: -O1, -O2, arba -O3
-# MSVC (Visual Studio) naudoja /O1, /O2, /Ox — keičiama per Project Properties → C/C++ → Optimization
+# MSVC (Visual Studio) naudoja /O1, /O2, /Ox — keičiama per
+# Project Properties → C/C++ → Optimization
 if(MSVC)
-    set(CMAKE_CXX_FLAGS_RELEASE "/O1")
+    set(CMAKE_CXX_FLAGS_RELEASE "/O2")
 else()
-    set(CMAKE_CXX_FLAGS_RELEASE "-O1")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 endif()
 
 # Visi vykdomieji failai rašomi tiesiai į šaltinio katalogą,
@@ -31,7 +32,7 @@ set(SHARED_SRC funkcijos.cpp)
 
 # ---- Pagrindinis projektas ----
 add_executable(Uzd2
-    Uzd1.cpp
+    Uzd2.cpp
     vektorius.cpp
     testavimas.cpp
     ${SHARED_SRC}
@@ -39,30 +40,32 @@ add_executable(Uzd2
 
 # ---- Tyrimo projektai ----
 add_executable(stud_Vector
-    Vector/Vector.cpp
+    stud_Vector.cpp
     ${SHARED_SRC}
 )
 
 add_executable(stud_List
-    List/List.cpp
+    stud_List.cpp
     ${SHARED_SRC}
 )
 
 add_executable(stud_Deque
-    Deque/Deque.cpp
+    stud_Deque.cpp
     ${SHARED_SRC}
 )
 
-target_include_directories(stud_Vector PRIVATE ${CMAKE_SOURCE_DIR})
-target_include_directories(stud_List PRIVATE ${CMAKE_SOURCE_DIR})
-target_include_directories(stud_Deque PRIVATE ${CMAKE_SOURCE_DIR})
-target_include_directories(Uzd2 PRIVATE ${CMAKE_SOURCE_DIR})
-# _WIN32 apibrėžiamas automatiškai Windows kompiliatoriaus —
-# papildoma target_compile_definitions eilutė nereikalinga.
+# ---- Vienetų testai (v1.2) ----
+# Paleidimas: ./testas
+add_executable(testas
+    testas.cpp
+    ${SHARED_SRC}
+)
+
+# _WIN32 apibrėžiamas automatiškai Windows kompiliatoriaus.
 
 # g++ 8 reikalauja -lstdc++fs; g++ 9+ įtraukia automatiškai.
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")
-    foreach(tgt Uzd2 stud_Vector stud_List stud_Deque)
+    foreach(tgt Uzd2 stud_Vector stud_List stud_Deque testas)
         target_link_libraries(${tgt} stdc++fs)
     endforeach()
 endif()

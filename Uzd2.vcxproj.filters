@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Uzd1.cpp">
+    <ClCompile Include="Uzd2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="vektorius.cpp">

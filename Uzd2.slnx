@@ -10,6 +10,6 @@
   </Folder>
   <Project Path="Deque/Deque.vcxproj" Id="2ab459b6-1fb9-4781-a484-6cd05b347ead" />
   <Project Path="List/List.vcxproj" Id="dd483c90-63d1-4d31-84f0-0df533b63566" />
-  <Project Path="Uzd1.vcxproj" Id="90d86dd9-0ed0-48c8-82fb-9c9d9e5ea8c3" />
+  <Project Path="Uzd2.vcxproj" Id="90d86dd9-0ed0-48c8-82fb-9c9d9e5ea8c3" />
   <Project Path="Vector/Vector.vcxproj" Id="7b3f7a6f-0904-4fd3-a5a9-bc17640a008b" />
 </Solution>
