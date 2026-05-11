@@ -196,6 +196,15 @@ public:
         return os;
     }
 
+    // operator>> — įvestis iš srauto (klaviatūra arba failas)
+    //
+    // Tikisi tokio formato vienoje eilutėje:
+    //   Vardas Pavardė ND1 ND2 ... NDn Egzaminas
+    // Paskutinis skaičius traktuojamas kaip egzamino balas.
+    //
+    // Naudojimas:
+    //   cin >> studentas;          // įvedimas iš klaviatūros
+    //   failasStream >> studentas; // įvedimas iš failo
     friend istream& operator>>(istream& is, Studentas& st) {
         string eilute;
         if (!getline(is, eilute)) return is;
