@@ -92,6 +92,19 @@ public:
     // vector ir string patys išvalo atmintį, todėl explicit logikos nereikia.
     // Parašomas aiškiai — kad būtų matoma, jog jis apsvarstytas.
     ~Studentas() = default;
+
+    // 4. Kopijavimo konstruktorius
+    // Sukuria naują objektą kaip tikslią kito kopiją.
+    // Kiekvienas laukas nukopijuojamas atskirai — gaunamos dvi nepriklausomos
+    // paz_ vektorių kopijos (deep copy).
+    Studentas(const Studentas& kitas)
+        : vardas_(kitas.vardas_),
+        pavarde_(kitas.pavarde_),
+        paz_(kitas.paz_),
+        egz_(kitas.egz_),
+        gal_vid_(kitas.gal_vid_),
+        gal_med_(kitas.gal_med_)
+    {}
     // ---- Getteriai ----
 
     const string& vardas()  const { return vardas_; }
