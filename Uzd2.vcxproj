@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="funkcijos.cpp" />
-    <ClCompile Include="testavimas.cpp" />
+    <ClCompile Include="failu_greicio_test.cpp" />
     <ClCompile Include="Uzd2.cpp" />
     <ClCompile Include="vektorius.cpp" />
   </ItemGroup>

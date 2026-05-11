@@ -24,7 +24,7 @@
     <ClCompile Include="funkcijos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testavimas.cpp">
+    <ClCompile Include="failu_greicio_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
