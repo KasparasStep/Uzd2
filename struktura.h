@@ -178,6 +178,19 @@ public:
     // Naudojimas:
     //   cout << studentas;
     //   failas << studentas;
+    friend ostream& operator<<(ostream& os, const Studentas& st) {
+        os << left << setw(15) << st.vardas_
+            << setw(15) << st.pavarde_;
+        os << "ND:";
+        for (int p : st.paz_) os << " " << p;
+        os << "  Egz: " << st.egz_;
+        if (st.gal_vid_ > 0.0)
+            os << fixed << setprecision(2) << "  Vid: " << st.gal_vid_;
+        if (st.gal_med_ > 0.0)
+            os << fixed << setprecision(2) << "  Med: " << st.gal_med_;
+        return os;
+    }
+   
     // ---- Getteriai ----
 
     const string& vardas()  const { return vardas_; }
