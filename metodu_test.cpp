@@ -54,6 +54,24 @@ static void testNumatytasisKonstruktorius() {
     tikrinti("galVid == 0.0", st.galVid() == 0.0);
     tikrinti("galMed == 0.0", st.galMed() == 0.0);
 }
+// ============================================================
+// 2. Pilnas konstruktorius
+// ============================================================
+static void testPilnasKonstruktorius() {
+    skyrius("2. Pilnas konstruktorius");
+    vector<int> paz = { 6, 7, 8, 9, 10 };
+    Studentas st("Jonas", "Jonaitis", paz, 9, 3); // metodas 3 = abu
+
+    tikrinti("vardas == Jonas", st.vardas() == "Jonas");
+    tikrinti("pavarde == Jonaitis", st.pavarde() == "Jonaitis");
+    tikrinti("egz == 9", st.egz() == 9);
+    tikrinti("paz dydzis == 5", st.paz().size() == 5);
+
+    // Galutinis vidurkis: (6+7+8+9+10)/5 = 8.0; 8.0*0.4 + 9*0.6 = 3.2 + 5.4 = 8.6
+    tikrinti("galVid apytikslis", std::abs(st.galVid() - 8.6) < 0.01);
+    // Mediana: surikiuota {6,7,8,9,10} → mediana = 8; 8*0.4 + 9*0.6 = 3.2 + 5.4 = 8.6
+    tikrinti("galMed apytikslis", std::abs(st.galMed() - 8.6) < 0.01);
+}
 
 // ============================================================
 // main — paleidžia visus testus

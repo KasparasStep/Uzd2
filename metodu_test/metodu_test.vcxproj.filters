@@ -15,25 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Uzd2.cpp">
+    <ClCompile Include="..\metodu_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vektorius.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="funkcijos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="failu_greicio_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="struktura.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="funkcijos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
