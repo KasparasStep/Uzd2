@@ -17,3 +17,22 @@
 // Kompiliavimas:
 //   g++ -std=c++17 testas.cpp funkcijos.cpp -o testas
 // ============================================================
+
+#include "struktura.h"
+
+// ---- Pagalbiniai testų įrankiai ----
+
+static int praejo = 0;
+static int nepraejo = 0;
+
+// Patikrina sąlygą ir atspausdina PASS arba FAIL
+static void tikrinti(const string& pavadinimas, bool salyga) {
+    if (salyga) {
+        cout << "  [PASS] " << pavadinimas << "\n";
+        praejo++;
+    }
+    else {
+        cout << "  [FAIL] " << pavadinimas << "\n";
+        nepraejo++;
+    }
+}
