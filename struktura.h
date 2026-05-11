@@ -125,6 +125,26 @@ public:
         }
         return *this;
     }
+
+    // 6. Perkėlimo konstruktorius (move)
+    // "Pagrobia" kito objekto resursus — vektoriaus atminties blokas
+    // perduodamas be kopijavimo. Originalas paliekamas galiojančioje,
+    // bet neapibrėžtoje būsenoje (tuščios reikšmės).
+    // noexcept — garantuoja, kad konteineriai (pvz. vector) naudos
+    // šį konstruktorių vietoj kopijavimo, kai reikalingas realokavimas.
+    Studentas(Studentas&& kitas) noexcept
+        : vardas_(move(kitas.vardas_)),
+        pavarde_(move(kitas.pavarde_)),
+        paz_(move(kitas.paz_)),
+        egz_(kitas.egz_),
+        gal_vid_(kitas.gal_vid_),
+        gal_med_(kitas.gal_med_)
+    {
+        // Paliekame originalą nulinėje būsenoje
+        kitas.egz_ = 0;
+        kitas.gal_vid_ = 0.0;
+        kitas.gal_med_ = 0.0;
+    }
     // ---- Getteriai ----
 
     const string& vardas()  const { return vardas_; }
