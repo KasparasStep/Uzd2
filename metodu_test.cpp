@@ -70,3 +70,10 @@ int main() {
     cout << "========================================\n";
 
     testNumatytasisKonstruktorius();
+    cout << "\n========================================\n";
+    cout << "  Rezultatai: " << praejo << " PASS, "
+        << nepraejo << " FAIL\n";
+    cout << "========================================\n";
+
+    return (nepraejo == 0) ? 0 : 1;
+}
