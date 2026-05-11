@@ -164,6 +164,20 @@ public:
         }
         return *this;
     }
+
+    // ==========================================================
+    // Įvesties / išvesties operatoriai
+    // ==========================================================
+
+    // operator<< — išvestis į srautą (ekranas arba failas)
+    //
+    // Formatuoja studento duomenis į vieną eilutę:
+    //   Vardas          Pavardė         ND: 7 8 9 ...  Egz: 8
+    //   Vid: 7.60  Med: 8.00
+    //
+    // Naudojimas:
+    //   cout << studentas;
+    //   failas << studentas;
     // ---- Getteriai ----
 
     const string& vardas()  const { return vardas_; }
