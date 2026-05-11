@@ -88,6 +88,10 @@ public:
         apskaiciuoti(metodas);
     }
 
+    // 3. Destruktorius
+    // vector ir string patys išvalo atmintį, todėl explicit logikos nereikia.
+    // Parašomas aiškiai — kad būtų matoma, jog jis apsvarstytas.
+    ~Studentas() = default;
     // ---- Getteriai ----
 
     const string& vardas()  const { return vardas_; }
