@@ -54,3 +54,19 @@ static void testNumatytasisKonstruktorius() {
     tikrinti("galVid == 0.0", st.galVid() == 0.0);
     tikrinti("galMed == 0.0", st.galMed() == 0.0);
 }
+
+// ============================================================
+// main — paleidžia visus testus
+// ============================================================
+
+int main() {
+#ifdef _WIN32
+    SetConsoleOutputCP(65001);
+    SetConsoleCP(65001);
+#endif
+
+    cout << "========================================\n";
+    cout << "  Studentas klases vienetu testai v1.2 \n";
+    cout << "========================================\n";
+
+    testNumatytasisKonstruktorius();
