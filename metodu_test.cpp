@@ -36,3 +36,21 @@ static void tikrinti(const string& pavadinimas, bool salyga) {
         nepraejo++;
     }
 }
+// Atspausdina skyriaus antraštę
+static void skyrius(const string& pavadinimas) {
+    cout << "\n--- " << pavadinimas << " ---\n";
+}
+
+// ============================================================
+// 1. Numatytasis konstruktorius
+// ============================================================
+static void testNumatytasisKonstruktorius() {
+    skyrius("1. Numatytasis konstruktorius");
+    Studentas st;
+    tikrinti("vardas yra tuscias", st.vardas() == "");
+    tikrinti("pavarde yra tuscia", st.pavarde() == "");
+    tikrinti("paz yra tuscias", st.paz().empty());
+    tikrinti("egz == 0", st.egz() == 0);
+    tikrinti("galVid == 0.0", st.galVid() == 0.0);
+    tikrinti("galMed == 0.0", st.galMed() == 0.0);
+}
