@@ -196,6 +196,10 @@ int main() {
     testNumatytasisKonstruktorius();
 	testPilnasKonstruktorius();
 	testDestruktorius();
+    testKopijavimoKonstruktorius();
+    testKopijavimoKonstruktoriusPriskyrimas();
+    testPerkelimoKonstruktorius();
+    testPerkelimoPriskyrimas();
     cout << "\n========================================\n";
     cout << "  Rezultatai: " << praejo << " PASS, "
         << nepraejo << " FAIL\n";
