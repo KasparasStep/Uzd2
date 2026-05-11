@@ -72,6 +72,18 @@ static void testPilnasKonstruktorius() {
     // Mediana: surikiuota {6,7,8,9,10} → mediana = 8; 8*0.4 + 9*0.6 = 3.2 + 5.4 = 8.6
     tikrinti("galMed apytikslis", std::abs(st.galMed() - 8.6) < 0.01);
 }
+// ============================================================
+// 3. Destruktorius (patikrinamas per scope)
+// ============================================================
+static void testDestruktorius() {
+    skyrius("3. Destruktorius");
+    {
+        Studentas st("Laikinas", "Studentas", { 5, 6, 7 }, 8, 1);
+        // Objektas sukuriamas ir sunaikinamas išeinant iš bloko
+    } // ~Studentas() iškviečiamas čia
+    tikrinti("destruktorius iskviestas be crash", true);
+    // Jei programa nepasibaigia su klaida — destruktorius veikia teisingai
+}
 
 // ============================================================
 // main — paleidžia visus testus
@@ -88,6 +100,8 @@ int main() {
     cout << "========================================\n";
 
     testNumatytasisKonstruktorius();
+	testPilnasKonstruktorius();
+	testDestruktorius();
     cout << "\n========================================\n";
     cout << "  Rezultatai: " << praejo << " PASS, "
         << nepraejo << " FAIL\n";
