@@ -112,14 +112,12 @@ public:
     virtual void spausdinti(ostream& os) const = 0;
 };
 
-class Studentas {
+class Studentas : public Zmogus {
 private:
-    string   vardas_;
-    string   pavarde_;
-    vector<int> paz_;   // namų darbų pažymiai
-    int      egz_ = 0;
-    double   gal_vid_ = 0.0;
-    double   gal_med_ = 0.0;
+    vector<int> paz_;
+    int         egz_ = 0;
+    double      gal_vid_ = 0.0;
+    double      gal_med_ = 0.0;
 
 public:
     // ---- Konstruktoriai ----
