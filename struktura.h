@@ -266,6 +266,51 @@ public:
     // ==========================================================
     friend istream& operator>>(istream& is, Studentas& st);
 };
+// ============================================================
+// Įvesties/išvesties operatoriai (laisvos funkcijos, ne klasės nariai)
+// ============================================================
+
+// operator<< — priima Zmogų pagal nuorodą.
+// Kviečia virtualų spausdinti() — automatiškai parinks teisingą
+// versiją (Studentas::spausdinti) per virtualų dispatch.
+//
+// Naudojimas:
+//   Studentas st(...);
+//   cout << st;              // veikia
+//   Zmogus& ref = st;        // bazinė nuoroda
+//   cout << ref;             // veikia — kviečia Studentas::spausdinti
+inline ostream& operator<<(ostream& os, const Zmogus& z) {
+    z.spausdinti(os);
+    return os;
+}
+
+// operator>> — tik Studentui (Zmogus per save savęs prirašyti negali).
+// Formatas: Vardas Pavarde ND1 ND2 ... NDn Egzaminas
+inline istream& operator>>(istream& is, Studentas& st) {
+    string eilute;
+    if (!getline(is, eilute)) return is;
+    if (eilute.empty()) return is;
+
+    stringstream ss(eilute);
+    string v, p;
+    if (!(ss >> v >> p)) return is;
+
+    st.vardas_ = v;       // pasiekiama nes operator>> yra friend
+    st.pavarde_ = p;
+    st.paz_.clear();
+    st.egz_ = 0;
+    st.gal_vid_ = 0.0;
+    st.gal_med_ = 0.0;
+
+    int n;
+    while (ss >> n) st.paz_.push_back(n);
+
+    if (!st.paz_.empty()) {
+        st.egz_ = st.paz_.back();
+        st.paz_.pop_back();
+    }
+    return is;
+}
 
 // ============================================================
 // Laisvų funkcijų prototipai
