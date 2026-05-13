@@ -233,7 +233,9 @@ public:
             paz_.pop_back();
         }
     }
-    // ---- Skaičiavimo metodai ----
+    // ==========================================================
+     // Skaičiavimo metodai
+     // ==========================================================
 
     double skaiciuotiVidurki() const {
         if (paz_.empty()) return 0.0;
@@ -252,14 +254,17 @@ public:
         return tmp[n / 2];
     }
 
-    // Apskaičiuoja galutinį pažymį pagal pasirinktą metodą:
-    //   1 — tik vidurkis, 2 — tik mediana, 3 — abu
     void apskaiciuoti(int metodas) {
         if (metodas == 1 || metodas == 3)
             gal_vid_ = skaiciuotiVidurki() * 0.4 + egz_ * 0.6;
         if (metodas == 2 || metodas == 3)
             gal_med_ = skaiciuotiMediana() * 0.4 + egz_ * 0.6;
     }
+
+    // ==========================================================
+    // friend deklaracija — operator>> turi pasiekti private laukus
+    // ==========================================================
+    friend istream& operator>>(istream& is, Studentas& st);
 };
 
 // ============================================================
