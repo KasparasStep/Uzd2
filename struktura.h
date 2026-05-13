@@ -1,6 +1,11 @@
 // struktura.h
 #pragma once
-
+// struktura.h — v1.5
+//
+// Klasių hierarchija:
+//   Zmogus (abstrakti bazinė klasė)
+//      └── Studentas (paveldėjusi)
+//
 // NOMINMAX būtina prieš windows.h —
 // be jos windows.h apibrėžia min/max kaip makrosus ir sugadina
 // std::numeric_limits<T>::max() bei std::min/std::max kvietimus.
