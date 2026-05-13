@@ -87,6 +87,31 @@ public:
     Zmogus(string v, string p)
         : vardas_(move(v)), pavarde_(move(p)) {}
 
+   // ---- Rule of Five baziniai metodai ----
+   // = default — naudojami kompiliatoriaus generuoti variantai,
+   // nes laukai (string) patys tvarkosi su kopijavimu/perkėlimu.
+    Zmogus(const Zmogus&) = default;
+    Zmogus(Zmogus&&) noexcept = default;
+    Zmogus& operator=(const Zmogus&) = default;
+    Zmogus& operator=(Zmogus&&) noexcept = default;
+
+    // Virtualus destruktorius — BŪTINA paveldėjimo bazei
+    virtual ~Zmogus() = default;
+
+    // ---- Getteriai ----
+    const string& vardas()  const { return vardas_; }
+    const string& pavarde() const { return pavarde_; }
+
+    // ---- Setteriai ----
+    void setVardas(const string& v) { vardas_ = v; }
+    void setPavarde(const string& p) { pavarde_ = p; }
+
+    // ---- Gryna virtuali funkcija ----
+    // = 0 padaro Zmogų abstrakčia klase.
+    // Kiekviena paveldėjusi klasė PRIVALO ją įgyvendinti.
+    virtual void spausdinti(ostream& os) const = 0;
+};
+
 class Studentas {
 private:
     string   vardas_;
