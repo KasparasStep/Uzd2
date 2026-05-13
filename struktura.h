@@ -73,6 +73,13 @@ namespace fs = std::filesystem;
 // Visi laukai yra private — prieinama tik per metodus.
 // ============================================================
 
+class Zmogus {
+protected:
+    // protected — paveldėjusi klasė (Studentas) gali pasiekti tiesiogiai;
+    // iš išorės — tik per getter'ius/setter'ius.
+    string vardas_;
+    string pavarde_;
+
 class Studentas {
 private:
     string   vardas_;
