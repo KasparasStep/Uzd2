@@ -211,31 +211,28 @@ public:
     }
 
    
-    // ---- Getteriai ----
+    // ==========================================================
+    // Getteriai (papildomi prie paveldėtų iš Zmogus)
+    // ==========================================================
 
-    const string& vardas()  const { return vardas_; }
-    const string& pavarde() const { return pavarde_; }
-    const vector<int>& paz()     const { return paz_; }
-    int                egz()     const { return egz_; }
-    double             galVid()  const { return gal_vid_; }
-    double             galMed()  const { return gal_med_; }
+    const vector<int>& paz()    const { return paz_; }
+    int                egz()    const { return egz_; }
+    double             galVid() const { return gal_vid_; }
+    double             galMed() const { return gal_med_; }
 
-    // ---- Setteriai ----
+    // ==========================================================
+    // Setteriai (papildomi)
+    // ==========================================================
 
-    void setVardas(const string& v) { vardas_ = v; }
-    void setPavarde(const string& p) { pavarde_ = p; }
     void setEgz(int e) { egz_ = e; }
     void addPazymys(int p) { paz_.push_back(p); }
 
-    // Paskutinį pažymį iš sąrašo perkelia į egzamino lauką.
-    // Naudojama skaitant iš failo, kur egzaminas rašomas paskutinis.
     void nustatytiEgzIsGalo() {
         if (!paz_.empty()) {
             egz_ = paz_.back();
             paz_.pop_back();
         }
     }
-
     // ---- Skaičiavimo metodai ----
 
     double skaiciuotiVidurki() const {
