@@ -120,51 +120,42 @@ private:
     double      gal_med_ = 0.0;
 
 public:
-    // ---- Konstruktoriai ----
+    // ==========================================================
+    // Konstruktoriai
+    // ==========================================================
 
-    // 1. Numatytasis konstruktorius
-    // Sukuria tuščią studentą su nulinėmis reikšmėmis.
     Studentas() = default;
 
-    // 2. Pilnas konstruktorius
-    // Iš karto apskaičiuoja galutinį pažymį pagal metodą.
+    // Pilnas konstruktorius — perduodame v ir p į Zmogaus konstruktorių
     Studentas(string v, string p, vector<int> paz, int egz, int metodas)
-        : vardas_(move(v)), pavarde_(move(p)),
+        : Zmogus(move(v), move(p)),   // <-- iškviečiamas bazinis konstruktorius
         paz_(move(paz)), egz_(egz)
     {
         apskaiciuoti(metodas);
     }
 
-   // ==========================================================
-   // Rule of Five
-   // ==========================================================
+    // ==========================================================
+    // Rule of Five
+    // Kiekviename privalu IŠKVIESTI bazinį (Zmogus) variantą,
+    // kad vardas ir pavardė būtų teisingai nukopijuoti/perkelti.
+    // ==========================================================
 
-    // 3. Destruktorius
-    // vector ir string patys išvalo atmintį, todėl explicit logikos nereikia.
-    // Parašomas aiškiai — kad būtų matoma, jog jis apsvarstytas.
-    ~Studentas() = default;
+    // Destruktorius — override žymi, kad perdengiame bazinį virtualų
+    ~Studentas() override = default;
 
-    // 4. Kopijavimo konstruktorius
-    // Sukuria naują objektą kaip tikslią kito kopiją.
-    // Kiekvienas laukas nukopijuojamas atskirai — gaunamos dvi nepriklausomos
-    // paz_ vektorių kopijos (deep copy).
+    // Kopijavimo konstruktorius
     Studentas(const Studentas& kitas)
-        : vardas_(kitas.vardas_),
-        pavarde_(kitas.pavarde_),
+        : Zmogus(kitas),                  // <-- bazinis copy ctor
         paz_(kitas.paz_),
         egz_(kitas.egz_),
         gal_vid_(kitas.gal_vid_),
         gal_med_(kitas.gal_med_)
     {}
 
-    // 5. Kopijavimo priskyrimo operatorius
-    // Pakeičia esamo objekto turinį kito objekto kopija.
-    // Patikrina savipriskyrimą (a = a) — be šio patikrinimo
-    // galėtume išvalyti savo duomenis prieš nukopijuodami juos.
+    // Kopijavimo priskyrimas
     Studentas& operator=(const Studentas& kitas) {
         if (this != &kitas) {
-            vardas_ = kitas.vardas_;
-            pavarde_ = kitas.pavarde_;
+            Zmogus::operator=(kitas);     // <-- bazinis copy assignment
             paz_ = kitas.paz_;
             egz_ = kitas.egz_;
             gal_vid_ = kitas.gal_vid_;
@@ -173,34 +164,23 @@ public:
         return *this;
     }
 
-    // 6. Perkėlimo konstruktorius (move)
-    // "Pagrobia" kito objekto resursus — vektoriaus atminties blokas
-    // perduodamas be kopijavimo. Originalas paliekamas galiojančioje,
-    // bet neapibrėžtoje būsenoje (tuščios reikšmės).
-    // noexcept — garantuoja, kad konteineriai (pvz. vector) naudos
-    // šį konstruktorių vietoj kopijavimo, kai reikalingas realokavimas.
+    // Perkėlimo konstruktorius
     Studentas(Studentas&& kitas) noexcept
-        : vardas_(move(kitas.vardas_)),
-        pavarde_(move(kitas.pavarde_)),
+        : Zmogus(move(kitas)),            // <-- bazinis move ctor
         paz_(move(kitas.paz_)),
         egz_(kitas.egz_),
         gal_vid_(kitas.gal_vid_),
         gal_med_(kitas.gal_med_)
     {
-        // Paliekame originalą nulinėje būsenoje
         kitas.egz_ = 0;
         kitas.gal_vid_ = 0.0;
         kitas.gal_med_ = 0.0;
     }
 
-    // 7. Perkėlimo priskyrimo operatorius (move assignment)
-    // Perduoda resursus iš kito objekto į šį, be kopijavimo.
-    // Patikrinamas saviperkėlimas (a = move(a)) — be jo
-    // galėtume sunaikinti savo duomenis prieš juos perkeldami.
+    // Perkėlimo priskyrimas
     Studentas& operator=(Studentas&& kitas) noexcept {
         if (this != &kitas) {
-            vardas_ = move(kitas.vardas_);
-            pavarde_ = move(kitas.pavarde_);
+            Zmogus::operator=(move(kitas)); // <-- bazinis move assignment
             paz_ = move(kitas.paz_);
             egz_ = kitas.egz_;
             gal_vid_ = kitas.gal_vid_;
@@ -213,66 +193,23 @@ public:
     }
 
     // ==========================================================
-    // Įvesties / išvesties operatoriai
+    // Virtualios funkcijos perdengimas
     // ==========================================================
 
-    // operator<< — išvestis į srautą (ekranas arba failas)
-    //
-    // Formatuoja studento duomenis į vieną eilutę:
-    //   Vardas          Pavardė         ND: 7 8 9 ...  Egz: 8
-    //   Vid: 7.60  Med: 8.00
-    //
-    // Naudojimas:
-    //   cout << studentas;
-    //   failas << studentas;
-    friend ostream& operator<<(ostream& os, const Studentas& st) {
-        os << left << setw(15) << st.vardas_
-            << setw(15) << st.pavarde_;
+    // override — kompiliatorius patikrina, kad funkcija TIKRAI
+    // perdengia bazinę (jei užklysta klaida, neleis kompiliuoti).
+    void spausdinti(ostream& os) const override {
+        os << left << setw(15) << vardas_
+            << setw(15) << pavarde_;
         os << "ND:";
-        for (int p : st.paz_) os << " " << p;
-        os << "  Egz: " << st.egz_;
-        if (st.gal_vid_ > 0.0)
-            os << fixed << setprecision(2) << "  Vid: " << st.gal_vid_;
-        if (st.gal_med_ > 0.0)
-            os << fixed << setprecision(2) << "  Med: " << st.gal_med_;
-        return os;
+        for (int p : paz_) os << " " << p;
+        os << "  Egz: " << egz_;
+        if (gal_vid_ > 0.0)
+            os << fixed << setprecision(2) << "  Vid: " << gal_vid_;
+        if (gal_med_ > 0.0)
+            os << fixed << setprecision(2) << "  Med: " << gal_med_;
     }
 
-    // operator>> — įvestis iš srauto (klaviatūra arba failas)
-    //
-    // Tikisi tokio formato vienoje eilutėje:
-    //   Vardas Pavardė ND1 ND2 ... NDn Egzaminas
-    // Paskutinis skaičius traktuojamas kaip egzamino balas.
-    //
-    // Naudojimas:
-    //   cin >> studentas;          // įvedimas iš klaviatūros
-    //   failasStream >> studentas; // įvedimas iš failo
-    friend istream& operator>>(istream& is, Studentas& st) {
-        string eilute;
-        if (!getline(is, eilute)) return is;
-        if (eilute.empty()) return is;
-
-        stringstream ss(eilute);
-        string v, p;
-        if (!(ss >> v >> p)) return is;
-
-        st.vardas_ = v;
-        st.pavarde_ = p;
-        st.paz_.clear();
-        st.egz_ = 0;
-        st.gal_vid_ = 0.0;
-        st.gal_med_ = 0.0;
-
-        int n;
-        while (ss >> n) st.paz_.push_back(n);
-
-        // Paskutinis skaičius — egzaminas
-        if (!st.paz_.empty()) {
-            st.egz_ = st.paz_.back();
-            st.paz_.pop_back();
-        }
-        return is;
-    }
    
     // ---- Getteriai ----
 
