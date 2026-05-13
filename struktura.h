@@ -80,6 +80,13 @@ protected:
     string vardas_;
     string pavarde_;
 
+public:
+    // ---- Konstruktoriai ----
+    Zmogus() = default;
+
+    Zmogus(string v, string p)
+        : vardas_(move(v)), pavarde_(move(p)) {}
+
 class Studentas {
 private:
     string   vardas_;
