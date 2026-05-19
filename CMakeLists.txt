@@ -9,63 +9,59 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # ---- Optimizavimo lygis ----
-# Pakeiskite šią eilutę norėdami keisti lygį: -O1, -O2, arba -O3
-# MSVC (Visual Studio) naudoja /O1, /O2, /Ox — keičiama per
-# Project Properties → C/C++ → Optimization
+# Pakeiskite norėdami keisti: -O1, -O2, -O3
 if(MSVC)
     set(CMAKE_CXX_FLAGS_RELEASE "/O2")
 else()
     set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 endif()
 
-# Visi vykdomieji failai rašomi tiesiai į šaltinio katalogą,
-# kad Data/ aplankas būtų randamas pagal santykinį kelią.
+# Vykdomieji failai rašomi į šaltinio katalogą (kad Data/ būtų randamas)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
-
-# MSVC: debug/release subkatalogai ignoruojami
 foreach(config DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${config} ${CMAKE_SOURCE_DIR})
 endforeach()
 
-# Bendras šaltinio failas (pagalbinės funkcijos)
 set(SHARED_SRC funkcijos.cpp)
 
 # ---- Pagrindinis projektas ----
-add_executable(Uzd2
-    Uzd2.cpp
-    vektorius.cpp
-    testavimas.cpp
-    ${SHARED_SRC}
-)
+add_executable(Uzd2 Uzd2.cpp vektorius.cpp testavimas.cpp ${SHARED_SRC})
 
-# ---- Tyrimo projektai ----
-add_executable(stud_Vector
-    stud_Vector.cpp
-    ${SHARED_SRC}
-)
+# ---- Konteinerių tyrimas ----
+add_executable(stud_Vector stud_Vector.cpp ${SHARED_SRC})
+add_executable(stud_List   stud_List.cpp   ${SHARED_SRC})
+add_executable(stud_Deque  stud_Deque.cpp  ${SHARED_SRC})
 
-add_executable(stud_List
-    stud_List.cpp
-    ${SHARED_SRC}
-)
+# ---- Paprasti testai (v1.2/v1.5) ----
+add_executable(testas testas.cpp ${SHARED_SRC})
 
-add_executable(stud_Deque
-    stud_Deque.cpp
-    ${SHARED_SRC}
-)
+# ---- Catch2 unit testai (v2.0) ----
+# Tik jei catch.hpp egzistuoja projekto kataloge.
+# Atsisiųskite iš: https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp
+if(EXISTS "${CMAKE_SOURCE_DIR}/catch.hpp")
+    add_executable(unit_testai unit_testai.cpp ${SHARED_SRC})
+    message(STATUS "catch.hpp rastas — unit_testai bus sukompiliuoti")
+else()
+    message(STATUS "catch.hpp nerastas — unit_testai praleisti")
+    message(STATUS "  Atsisiųskite iš https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp")
+endif()
 
-# ---- Vienetų testai (v1.2) ----
-# Paleidimas: ./testas
-add_executable(testas
-    testas.cpp
-    ${SHARED_SRC}
-)
+# ---- Doxygen dokumentacija ----
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+    add_custom_target(docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Generuojama Doxygen dokumentacija"
+        VERBATIM)
+endif()
 
-# _WIN32 apibrėžiamas automatiškai Windows kompiliatoriaus.
-
-# g++ 8 reikalauja -lstdc++fs; g++ 9+ įtraukia automatiškai.
+# g++ 8 reikalauja -lstdc++fs
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")
     foreach(tgt Uzd2 stud_Vector stud_List stud_Deque testas)
         target_link_libraries(${tgt} stdc++fs)
     endforeach()
+    if(TARGET unit_testai)
+        target_link_libraries(unit_testai stdc++fs)
+    endif()
 endif()

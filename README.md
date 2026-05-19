@@ -1,199 +1,275 @@
-# Pirmoji užduotis — v1.0 pre-release
+# Studentų pažymių programa — v2.0
 
-C++17 programa studentų galutinių pažymių skaičiavimui, rūšiavimui ir skaidymui į grupes. Versija v1.0 prideda konteinerių greičio tyrimą
-(`std::vector`, `std::list`, `std::deque`).
-
----
-
-## Failų struktūra
-
-```
-...
-├── struktura.h       — bendras antraštės failas (struktūra, using, prototipai)
-├── funkcijos.cpp     — pagalbinės funkcijos (generatoriai, matematika, I/O)
-├── vektorius.cpp     — pagrindinio meniu logika (v0.4, std::vector)
-├── testavimas.cpp    — test1 (failų kūrimas), test2 (vector lyginimas)
-├── Uzd1.cpp          — pagrindinis įėjimas (projektas Uzd1)
-├── vector.cpp        — v1.0 tyrimas: std::vector  → vykdomasis: stud_Vector
-├── list.cpp          — v1.0 tyrimas: std::list    → vykdomasis: stud_List
-├── deque.cpp         — v1.0 tyrimas: std::deque   → vykdomasis: stud_Deque
-├── CMakeLists.txt    — build konfigūracija (Windows / Linux / macOS)
-├── Makefile          — build konfigūracija (Linux / macOS, be CMake)
-└── Data/             — sugeneruoti testavimo failai (sukuriamas automatiškai)
-    ├── studentai1k.txt
-    ├── studentai10k.txt
-    ├── studentai100k.txt
-    ├── studentai1M.txt
-    └── studentai10M.txt
-```
-
-### Bendras `Data/` katalogas
-
-Visos trys tyrimo programos (`vector`, `list`, `deque`) ir senoji (v0.4) programa skaito duomenų failus iš to paties `Data/` katalogo.
-Tai reiškia, kad failus reikia sugeneruoti tik vieną kartą — bet kuri programa gali tai padaryti, o likusios naudos tuos pačius failus.
-
-Katalogas sukuriamas automatiškai, kai pasirenkate failų generavimą. Jis atsiranda šalia vykdomojo failo.
-
-```
-Data/
-├── studentai1k.txt      (~136 KB)
-├── studentai10k.txt     (~1.4 MB)
-├── studentai100k.txt    (~14 MB)
-├── studentai1M.txt      (~136 MB)
-└── studentai10M.txt     (~1.4 GB)
-```
+C++17 programa studentų pažymiams skaičiuoti, rūšiuoti ir grupuoti.
+Naudojamos OOP konstrukcijos: paveldėjimas, polimorfizmas, Rule of Five.
 
 ---
 
-## Įdiegimas ir kompiliavimas
+## Įdiegimas
 
 ### Reikalavimai
 
-- C++17 palaikantis kompiliatorius (`g++ 9+` arba `clang++ 9+` arba MSVC 2019+)
-- CMake 3.14+ (neprivaloma — galima kompiliuoti rankiniu būdu)
+- C++17 kompiliatorius (`g++` ≥ 9, `clang++` ≥ 9, MSVC 2019+)
+- CMake ≥ 3.14 *(rekomenduojama)* arba `make`
+- *(neprivaloma)* Doxygen + LaTeX dokumentacijai generuoti
+- *(neprivaloma)* `catch.hpp` unit testams
 
-### Būdas 1 — Makefile (Linux / macOS)
-
-Nereikia jokių papildomų įrankių — tik `g++` ir `make`, kurie dažniausiai jau įdiegti.
-
-**1. Patikrink ar įrankiai yra:**
-
-```bash
-g++ --version
-make --version
-```
-
-Jei `g++` nėra — įdiek:
-
-```bash
-# Ubuntu / Debian
-sudo apt install build-essential
-
-# macOS
-xcode-select --install
-```
-
-**2. Eik į projekto katalogą:**
-
-```bash
-cd /kelias/iki/projekto
-```
-
-Tai katalogas, kuriame yra `Makefile` ir visi `.cpp` failai.
-
-**3. Kompiliuok:**
-
-```bash
-# Sukompiliuoja visus keturis projektus iš karto
-make
-
-# Arba tik vieną konkretų
-make Uzd1
-make stud_Vector
-make stud_List
-make stud_Deque
-```
-
-**4. Paleisk:**
-
-```bash
-./Uzd1
-./stud_Vector
-./stud_List
-./stud_Deque
-```
-
-**5. Ištrinti sukompiliuotus failus:**
-
-```bash
-make clean
-```
-
-Vykdomieji failai atsiranda tiesiai projekto kataloge šalia `.cpp` failų — `Data/` katalogas randamas teisingai.
-
----
-
-### Būdas 2 — CMake (Windows / Linux / macOS)
-
-**Linux / macOS:**
+### Kompiliavimas su CMake
 
 ```bash
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
 
-**Windows su MinGW:**
+### Kompiliavimas su Makefile (Unix)
 
 ```bash
-cmake -B build -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
-cmake --build build
+make             # sukompiliuoja viską
+make Uzd2        # tik pagrindinę programą
+make testas      # tik paprastus testus
+make unit_testai # Catch2 testus (reikia catch.hpp)
+make docs        # Doxygen dokumentaciją
+make clean       # ištrina sukompiliuotus failus
 ```
 
-**Windows su Visual Studio** — atsidaryk `CMakeLists.txt` tiesiai per Visual Studio (File → Open → CMake), pasirink konfigūraciją Release ir spausk Build All.
+### Kompiliavimas rankiniu būdu
 
-Vykdomieji failai rašomi tiesiai į projekto katalogą (ne į `build/`), kad `Data/` aplankas būtų randamas teisingai.
+```bash
+g++ -O2 -std=c++17 Uzd2.cpp vektorius.cpp testavimas.cpp funkcijos.cpp -o Uzd2
+```
 
 ---
-
-### Būdas 3 — rankiniu būdu (g++)
-
-```bash
-g++ -O2 -std=c++17 Uzd1.cpp vektorius.cpp testavimas.cpp funkcijos.cpp -o Uzd1
-g++ -O2 -std=c++17 vector.cpp funkcijos.cpp -o stud_Vector
-g++ -O2 -std=c++17 list.cpp   funkcijos.cpp -o stud_List
-g++ -O2 -std=c++17 deque.cpp  funkcijos.cpp -o stud_Deque
-```
-
 
 ## Naudojimas
 
 ### Pagrindinė programa
 
-Interaktyvus meniu. Leidžia įvesti studentus ranka, generuoti juos arba nuskaityti iš failo, rūšiuoti ir skaidyti į grupes.
+```bash
+./Uzd2
+```
+
+Interaktyvus meniu — leidžia įvesti studentus ranka, generuoti, skaityti iš failo, rūšiuoti ir skaidyti į grupes.
 
 ### Tyrimo programos
 
-Paleiskite bet kurią iš trijų programų. Pirmą kartą pasirinkite failų generavimą — jie bus sukurti `Data/` kataloge ir visų programų bendrai naudojami.
-
-```
-./stud_Vector   # sugeneruoja Data/ ir atlieka tyrimą
+```bash
+./stud_Vector   # sugeneruoja Data/ ir matuoja vector greitį
 ./stud_List     # naudoja tuos pačius Data/ failus
 ./stud_Deque    # naudoja tuos pačius Data/ failus
 ```
 
-Failų generuoti antrą kartą nereikia — tiesiog atsakykite `0` į klausimą apie generavimą.
+### Testai
+
+```bash
+./testas         # paprastas rankinis testas (v1.2/v1.5)
+./unit_testai    # pilnas Catch2 unit test rinkinys (v2.0)
+```
+
+### Dokumentacijos generavimas
+
+```bash
+doxygen Doxyfile
+
+# HTML — atidaromas naršyklėje
+open docs/html/index.html        # macOS
+xdg-open docs/html/index.html    # Linux
+start docs/html/index.html       # Windows
+
+# PDF — kompiliuojamas iš LaTeX
+cd docs/latex
+make             # arba: pdflatex refman.tex
+```
+
+Jei nėra `pdflatex` lokaliai — įkelkite `docs/latex/*` į [Overleaf](https://www.overleaf.com/) ir sukompiliuokite ten.
+
+---
+
+## Failų struktūra
+
+```
+.
+├── struktura.h         — klasės (Zmogus, Studentas), Doxygen komentarai
+├── funkcijos.cpp       — pagalbinės funkcijos
+├── vektorius.cpp       — meniu logika
+├── testavimas.cpp      — greičio tyrimas
+├── Uzd2.cpp            — pagrindinis įėjimas
+├── stud_Vector.cpp     — konteinerio tyrimas (vector)
+├── stud_List.cpp       — konteinerio tyrimas (list)
+├── stud_Deque.cpp      — konteinerio tyrimas (deque)
+├── testas.cpp          — paprastas rankinis testas
+├── unit_testai.cpp     — Catch2 unit testai
+├── CMakeLists.txt      — build konfigūracija
+├── Makefile            — alternatyvus build (Unix)
+├── Doxyfile            — Doxygen konfigūracija
+├── .gitignore
+└── README.md
+```
 
 ---
 
 ## Releasai
 
 ### v0.1 — pradinė versija
-
-Bazinė struktūra: `Studentas` su `std::vector<int>` pažymiams, rankinis įvedimas, galutinio pažymio skaičiavimas vidurkiu ir mediana.
+Struct `Studentas`, rankinis įvedimas, vidurkio/medianos skaičiavimas.
 
 ### v0.2
-
-Pridėtas skaitymas iš failo ir rezultatų išvedimas į failą.
+Skaitymas iš failo, išvedimas į failą.
 
 ### v0.3
-
-Pridėtas automatinis duomenų generavimas (vardai, pavardės, pažymiai). Pridėta klaidų apdorojimas `gautiSkaiciu` funkcijai.
+Automatinis duomenų generavimas, klaidų apdorojimas.
 
 ### v0.4
-
-Pridėtas studentų skaidymas į dvi grupes: `kieti` (galutinis ≥ 5.0) ir `tinginiai` (galutinis < 5.0).
-Pridėtas failų kūrimo ir duomenų apdorojimo greičio tyrimas (test1, test2). Naudojama `copy_if` į du naujus `std::vector` konteinerius.
-
-### v1.0 -prerelease
-
-Pridėtos trys atskiros tyrimo programos (`vector`, `list`, `deque`), matuojančios:
-
-- duomenų nuskaitymą iš failo;
-- studentų rūšiavimą mažėjančia galutinio pažymio tvarka;
+Skaidymas į kietus/tinginius, failo kūrimo ir apdorojimo tyrimai.
 
 ### v1.0
-- skaidymą į dvi grupes dviem strategijomis (S1 ir S3).
+Trys atskiros tyrimo programos (`vector`, `list`, `deque`) su dviem skaidymo strategijomis (S1, S3).
 
+### v1.1
+Perėjimas nuo `struct` prie `class`. Privatūs laukai, getter'iai, setter'iai.
+
+### v1.2 — Rule of Five + I/O operatoriai
+- Realizuota pilna penkių metodų taisyklė
+- Perdengti `operator<<` ir `operator>>`
+- Pridėtas testavimo failas `testas.cpp`
+
+### v1.5 — Paveldėjimas
+- Sukurta abstrakti bazinė klasė `Zmogus`
+- `Studentas` paveldi iš `Zmogus`
+- Demonstruojamas virtualus dispatch ir polimorfizmas
+
+### v2.0 — Dokumentacija + Unit testai
+- Doxygen dokumentacija (HTML + PDF)
+- Catch2 unit testai
+- Švari repozitorija (`.gitignore`)
+
+---
+
+## v1.2 — Rule of Five paaiškinimas
+
+Kai klasė valdo resursus (vector, string), reikia aprašyti penkis metodus:
+
+| # | Metodas | Funkcija |
+|---|---|---|
+| 1 | `~Studentas()` | Atlaisvina atmintį |
+| 2 | `Studentas(const Studentas&)` | Gili kopija |
+| 3 | `operator=(const Studentas&)` | Kopijavimo priskyrimas |
+| 4 | `Studentas(Studentas&&) noexcept` | Move — be kopijavimo |
+| 5 | `operator=(Studentas&&) noexcept` | Move priskyrimas |
+
+### I/O operatoriai
+
+| Operatorius | Paskirtis | Pavyzdys |
+|---|---|---|
+| `operator<<` | Išvedimas į ekraną/failą | `cout << st;` `failas << st;` |
+| `operator>>` | Skaitymas iš klaviatūros/failo | `cin >> st;` `failas >> st;` |
+
+Formatas `operator>>`: `Vardas Pavardė ND1 ND2 ... NDn Egzaminas` *(paskutinis skaičius = egzaminas)*
+
+### Duomenų įvedimo būdai
+
+| Būdas | Kaip | Vidinis mechanizmas |
+|---|---|---|
+| Rankinis | Meniu → 1 | `cin >>`, `gautiSkaiciu()` |
+| Automatinis | Meniu → 3 | `genVarda()`, `genPazymius()` |
+| Iš failo | Meniu → 4 | `operator>>` |
+
+### Duomenų išvedimo būdai
+
+| Būdas | Kaip | Vidinis mechanizmas |
+|---|---|---|
+| Į ekraną | Po rūšiavimo | `cout << st` per `spausdintiRezultatus()` |
+| Į failą | Po rūšiavimo | `ofstream << st` per `spausdintiRezultatus()` |
+
+---
+
+## v1.5 — Klasių hierarchija
+
+```
+Zmogus  (abstrakti)
+   │
+   └── Studentas
+```
+
+### Kodėl Zmogus abstrakti
+
+Klasėje yra gryna virtuali funkcija:
+```cpp
+virtual void spausdinti(ostream& os) const = 0;
+```
+`= 0` neleidžia sukurti `Zmogus z;` — kompiliatorius išmes klaidą.
+
+### Kritinis virtualus destruktorius
+
+```cpp
+virtual ~Zmogus() = default;  // BŪTINA paveldėjime
+```
+
+Be `virtual`, ištrinant per bazinę rodyklę (`delete zmogus_ptr`), iškviestumėme tik bazinį destruktorių — Studento `vector` ir kt. liktų neišvalyti.
+
+### Polimorfizmas
+
+```cpp
+vector<unique_ptr<Zmogus>> zmones;
+zmones.push_back(make_unique<Studentas>(...));
+
+for (const auto& z : zmones)
+    cout << *z;   // virtual dispatch -> Studentas::spausdinti
+```
+
+---
+
+## v2.0 — Unit testai
+
+Naudojama [Catch2](https://github.com/catchorg/Catch2) — populiarus C++ testavimo framework'as (single-header).
+
+### Setup
+
+```bash
+# Atsisiųskite catch.hpp į projekto katalogą:
+wget https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp
+```
+
+### Sintaksė
+
+```cpp
+TEST_CASE("aprasymas", "[tag1][tag2]") {
+    Studentas st;
+    REQUIRE(st.egz() == 0);   // testas FAIL jei nepavyksta
+    CHECK(st.vardas() == ""); // tęsia net jei nepavyksta
+    
+    SECTION("atskira testo dalis") {
+        // ...
+    }
+}
+```
+
+### Padengiamos sritys
+
+| TEST_CASE | Tag'as | Aprašas |
+|---|---|---|
+| Numatytasis konstruktorius | `[konstruktoriai]` | Tikrina tuščio objekto reikšmes |
+| Pilnas konstruktorius | `[konstruktoriai]` | Skaičiavimas iš pradinių duomenų |
+| Copy constructor | `[rule_of_five][copy]` | Gili kopija |
+| Copy assignment | `[rule_of_five][copy]` | Savipriskyrimas |
+| Move constructor | `[rule_of_five][move]` | Originalo ištuštinimas |
+| Move assignment | `[rule_of_five][move]` | Saviperkėlimas |
+| Destruktorius | `[rule_of_five]` | Automatinis atminties valymas |
+| Zmogus abstraktumas | `[abstrakti]` | `static_assert` patvirtina |
+| Virtualus dispatch | `[abstrakti][polimorfizmas]` | Per Zmogus& nuorodą |
+| operator<< | `[io]` | Visi laukai išvedami |
+| operator>> | `[io]` | Formato analizė |
+| Skaičiavimai | `[skaiciavimas]` | Vidurkis, mediana |
+| Kraštiniai atvejai | `[krastiniai_atvejai]` | Tuščias studentas |
+
+### Paleidimas
+
+```bash
+./unit_testai             # visi testai
+./unit_testai -s          # rodo ir praėjusius
+./unit_testai "[copy]"    # tik tam tikras tag'ų grupes
+```
+
+---
 
 ## Konteinerių tyrimo rezultatai
 
