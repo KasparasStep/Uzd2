@@ -1,4 +1,4 @@
-# Studentų pažymių programa — v2.0
+# Studentų pažymių programa - v2.0
 
 C++17 programa studentų pažymiams skaičiuoti, rūšiuoti ir grupuoti.
 Naudojamos OOP konstrukcijos: paveldėjimas, polimorfizmas, Rule of Five.
@@ -9,8 +9,8 @@ Naudojamos OOP konstrukcijos: paveldėjimas, polimorfizmas, Rule of Five.
 
 ### Reikalavimai
 
-- C++17 kompiliatorius (`g++` ≥ 9, `clang++` ≥ 9, MSVC 2019+)
-- CMake ≥ 3.14 *(rekomenduojama)* arba `make`
+- C++17 kompiliatorius (`g++` 9+, `clang++` 9+, MSVC 2019+)
+- CMake 3.14+ *(rekomenduojama)* arba `make`
 - *(neprivaloma)* Doxygen + LaTeX dokumentacijai generuoti
 - *(neprivaloma)* `catch.hpp` unit testams
 
@@ -48,7 +48,7 @@ g++ -O2 -std=c++17 Uzd2.cpp vektorius.cpp testavimas.cpp funkcijos.cpp -o Uzd2
 ./Uzd2
 ```
 
-Interaktyvus meniu — leidžia įvesti studentus ranka, generuoti, skaityti iš failo, rūšiuoti ir skaidyti į grupes.
+Interaktyvus meniu - leidžia įvesti studentus ranka, generuoti, skaityti iš failo, rūšiuoti ir skaidyti į grupes.
 
 ### Tyrimo programos
 
@@ -70,17 +70,17 @@ Interaktyvus meniu — leidžia įvesti studentus ranka, generuoti, skaityti iš
 ```bash
 doxygen Doxyfile
 
-# HTML — atidaromas naršyklėje
+# HTML - atidaromas naršyklėje
 open docs/html/index.html        # macOS
 xdg-open docs/html/index.html    # Linux
 start docs/html/index.html       # Windows
 
-# PDF — kompiliuojamas iš LaTeX
+# PDF - kompiliuojamas iš LaTeX
 cd docs/latex
 make             # arba: pdflatex refman.tex
 ```
 
-Jei nėra `pdflatex` lokaliai — įkelkite `docs/latex/*` į [Overleaf](https://www.overleaf.com/) ir sukompiliuokite ten.
+Jei nėra `pdflatex` lokaliai - įkelkite `docs/latex/*` į [Overleaf](https://www.overleaf.com/) ir sukompiliuokite ten.
 
 ---
 
@@ -88,28 +88,28 @@ Jei nėra `pdflatex` lokaliai — įkelkite `docs/latex/*` į [Overleaf](https:/
 
 ```
 .
-├── struktura.h         — klasės (Zmogus, Studentas), Doxygen komentarai
-├── funkcijos.cpp       — pagalbinės funkcijos
-├── vektorius.cpp       — meniu logika
-├── testavimas.cpp      — greičio tyrimas
-├── Uzd2.cpp            — pagrindinis įėjimas
-├── stud_Vector.cpp     — konteinerio tyrimas (vector)
-├── stud_List.cpp       — konteinerio tyrimas (list)
-├── stud_Deque.cpp      — konteinerio tyrimas (deque)
-├── testas.cpp          — paprastas rankinis testas
-├── unit_testai.cpp     — Catch2 unit testai
-├── CMakeLists.txt      — build konfigūracija
-├── Makefile            — alternatyvus build (Unix)
-├── Doxyfile            — Doxygen konfigūracija
-├── .gitignore
-└── README.md
++-- struktura.h         - klasės (Zmogus, Studentas), Doxygen komentarai
++-- funkcijos.cpp       - pagalbinės funkcijos
++-- vektorius.cpp       - meniu logika
++-- testavimas.cpp      - greičio tyrimas
++-- Uzd2.cpp            - pagrindinis įėjimas
++-- stud_Vector.cpp     - konteinerio tyrimas (vector)
++-- stud_List.cpp       - konteinerio tyrimas (list)
++-- stud_Deque.cpp      - konteinerio tyrimas (deque)
++-- testas.cpp          - paprastas rankinis testas
++-- unit_testai.cpp     - Catch2 unit testai
++-- CMakeLists.txt      - build konfigūracija
++-- Makefile            - alternatyvus build (Unix)
++-- Doxyfile            - Doxygen konfigūracija
++-- .gitignore
++-- README.md
 ```
 
 ---
 
 ## Releasai
 
-### v0.1 — pradinė versija
+### v0.1 - pradinė versija
 Struct `Studentas`, rankinis įvedimas, vidurkio/medianos skaičiavimas.
 
 ### v0.2
@@ -127,24 +127,24 @@ Trys atskiros tyrimo programos (`vector`, `list`, `deque`) su dviem skaidymo str
 ### v1.1
 Perėjimas nuo `struct` prie `class`. Privatūs laukai, getter'iai, setter'iai.
 
-### v1.2 — Rule of Five + I/O operatoriai
+### v1.2 - Rule of Five + I/O operatoriai
 - Realizuota pilna penkių metodų taisyklė
 - Perdengti `operator<<` ir `operator>>`
 - Pridėtas testavimo failas `testas.cpp`
 
-### v1.5 — Paveldėjimas
+### v1.5 - Paveldėjimas
 - Sukurta abstrakti bazinė klasė `Zmogus`
 - `Studentas` paveldi iš `Zmogus`
 - Demonstruojamas virtualus dispatch ir polimorfizmas
 
-### v2.0 — Dokumentacija + Unit testai
+### v2.0 - Dokumentacija + Unit testai
 - Doxygen dokumentacija (HTML + PDF)
 - Catch2 unit testai
 - Švari repozitorija (`.gitignore`)
 
 ---
 
-## v1.2 — Rule of Five paaiškinimas
+## v1.2 - Rule of Five paaiškinimas
 
 Kai klasė valdo resursus (vector, string), reikia aprašyti penkis metodus:
 
@@ -153,7 +153,7 @@ Kai klasė valdo resursus (vector, string), reikia aprašyti penkis metodus:
 | 1 | `~Studentas()` | Atlaisvina atmintį |
 | 2 | `Studentas(const Studentas&)` | Gili kopija |
 | 3 | `operator=(const Studentas&)` | Kopijavimo priskyrimas |
-| 4 | `Studentas(Studentas&&) noexcept` | Move — be kopijavimo |
+| 4 | `Studentas(Studentas&&) noexcept` | Move - be kopijavimo |
 | 5 | `operator=(Studentas&&) noexcept` | Move priskyrimas |
 
 ### I/O operatoriai
@@ -169,9 +169,9 @@ Formatas `operator>>`: `Vardas Pavardė ND1 ND2 ... NDn Egzaminas` *(paskutinis 
 
 | Būdas | Kaip | Vidinis mechanizmas |
 |---|---|---|
-| Rankinis | Meniu → 1 | `cin >>`, `gautiSkaiciu()` |
-| Automatinis | Meniu → 3 | `genVarda()`, `genPazymius()` |
-| Iš failo | Meniu → 4 | `operator>>` |
+| Rankinis | Meniu -> 1 | `cin >>`, `gautiSkaiciu()` |
+| Automatinis | Meniu -> 3 | `genVarda()`, `genPazymius()` |
+| Iš failo | Meniu -> 4 | `operator>>` |
 
 ### Duomenų išvedimo būdai
 
@@ -182,12 +182,12 @@ Formatas `operator>>`: `Vardas Pavardė ND1 ND2 ... NDn Egzaminas` *(paskutinis 
 
 ---
 
-## v1.5 — Klasių hierarchija
+## v1.5 - Klasių hierarchija
 
 ```
 Zmogus  (abstrakti)
-   │
-   └── Studentas
+   |
+   +-- Studentas
 ```
 
 ### Kodėl Zmogus abstrakti
@@ -196,7 +196,7 @@ Klasėje yra gryna virtuali funkcija:
 ```cpp
 virtual void spausdinti(ostream& os) const = 0;
 ```
-`= 0` neleidžia sukurti `Zmogus z;` — kompiliatorius išmes klaidą.
+`= 0` neleidžia sukurti `Zmogus z;` - kompiliatorius išmes klaidą.
 
 ### Kritinis virtualus destruktorius
 
@@ -204,7 +204,7 @@ virtual void spausdinti(ostream& os) const = 0;
 virtual ~Zmogus() = default;  // BŪTINA paveldėjime
 ```
 
-Be `virtual`, ištrinant per bazinę rodyklę (`delete zmogus_ptr`), iškviestumėme tik bazinį destruktorių — Studento `vector` ir kt. liktų neišvalyti.
+Be `virtual`, ištrinant per bazinę rodyklę (`delete zmogus_ptr`), iškviestumėme tik bazinį destruktorių - Studento `vector` ir kt. liktų neišvalyti.
 
 ### Polimorfizmas
 
@@ -218,9 +218,9 @@ for (const auto& z : zmones)
 
 ---
 
-## v2.0 — Unit testai
+## v2.0 - Unit testai
 
-Naudojama [Catch2](https://github.com/catchorg/Catch2) — populiarus C++ testavimo framework'as (single-header).
+Naudojama [Catch2](https://github.com/catchorg/Catch2) - populiarus C++ testavimo framework'as (single-header).
 
 ### Setup
 
