@@ -1,0 +1,721 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Studentu pazymiu programa: struktura.h Failo Nuoroda</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Studentu pazymiu programa<span id="projectnumber">&#160;v2.0</span>
+   </div>
+   <div id="projectbrief">C++17 programa studentu pazymiams skaiciuoti ir grupiuoti</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Sugeneruota Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Paieška" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('struktura_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">struktura.h Failo Nuoroda</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Klasių apibrėžimai: <a class="el" href="class_zmogus.html" title="Abstrakti bazinė klasė, aprašanti bendrus žmogaus atributus.">Zmogus</a> (abstrakti bazė) ir <a class="el" href="class_studentas.html" title="Paveldėjusi klasė iš Zmogus — atstovauja studentui su pažymiais ir egzaminu.">Studentas</a> (paveldėjusi).  
+<a href="#details">Daugiau...</a></p>
+<div class="textblock"><code>#include &lt;windows.h&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;random&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;list&gt;</code><br />
+<code>#include &lt;deque&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
+</div>
+<p><a href="struktura_8h_source.html">Eiti į šio failo programos kodą.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Klasės</h2></td></tr>
+<tr class="memitem:Zmogus" id="r_Zmogus"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_zmogus.html">Zmogus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstrakti bazinė klasė, aprašanti bendrus žmogaus atributus.  <a href="class_zmogus.html#details">Daugiau...</a><br /></td></tr>
+<tr class="memitem:Studentas" id="r_Studentas"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="class_studentas.html">Studentas</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paveldėjusi klasė iš <a class="el" href="class_zmogus.html" title="Abstrakti bazinė klasė, aprašanti bendrus žmogaus atributus.">Zmogus</a> — atstovauja studentui su pažymiais ir egzaminu.  <a href="class_studentas.html#details">Daugiau...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Apibrėžimai</h2></td></tr>
+<tr class="memitem:a9f918755b601cf4bffca775992e6fb90" id="r_a9f918755b601cf4bffca775992e6fb90"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9f918755b601cf4bffca775992e6fb90">NOMINMAX</a></td></tr>
+<tr class="memitem:ac7bef5d85e3dcd73eef56ad39ffc84a9" id="r_ac7bef5d85e3dcd73eef56ad39ffc84a9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac7bef5d85e3dcd73eef56ad39ffc84a9">WIN32_LEAN_AND_MEAN</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funkcijos</h2></td></tr>
+<tr class="memitem:a5c89ec4f26c3fbefcac2b60bdd5e9b51" id="r_a5c89ec4f26c3fbefcac2b60bdd5e9b51"><td class="memItemLeft">ostream &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a5c89ec4f26c3fbefcac2b60bdd5e9b51">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_zmogus.html">Zmogus</a> &amp;z)</td></tr>
+<tr class="memdesc:a5c89ec4f26c3fbefcac2b60bdd5e9b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Išvesties operatorius bet kuriam <a class="el" href="class_zmogus.html" title="Abstrakti bazinė klasė, aprašanti bendrus žmogaus atributus.">Zmogus</a> tipui.  <br /></td></tr>
+<tr class="memitem:a4ec247aa7686c55042d20203ad0ad06b" id="r_a4ec247aa7686c55042d20203ad0ad06b"><td class="memItemLeft">istream &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a4ec247aa7686c55042d20203ad0ad06b">operator&gt;&gt;</a> (istream &amp;is, <a class="el" href="class_studentas.html">Studentas</a> &amp;st)</td></tr>
+<tr class="memdesc:a4ec247aa7686c55042d20203ad0ad06b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Įvesties operatorius Studento objektui.  <br /></td></tr>
+<tr class="memitem:a04cde72f0226dfe735c373d0bb92f69a" id="r_a04cde72f0226dfe735c373d0bb92f69a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a04cde72f0226dfe735c373d0bb92f69a">gautiSkaiciu</a> (string info, int min, int max)</td></tr>
+<tr class="memdesc:a04cde72f0226dfe735c373d0bb92f69a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saugiai skaito skaičių iš įvesties; bando iš naujo kol bus įvesta tinkama reikšmė.  <br /></td></tr>
+<tr class="memitem:ad5b55bf4907752a00f3844e104defd3e" id="r_ad5b55bf4907752a00f3844e104defd3e"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#ad5b55bf4907752a00f3844e104defd3e">genVarda</a> ()</td></tr>
+<tr class="memdesc:ad5b55bf4907752a00f3844e104defd3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atsitiktinai parenka vardą iš fiksuoto sąrašo.  <br /></td></tr>
+<tr class="memitem:a496fe6520d7ea61cc4e22a6f7a8786c6" id="r_a496fe6520d7ea61cc4e22a6f7a8786c6"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a496fe6520d7ea61cc4e22a6f7a8786c6">genPavarde</a> (string vardas)</td></tr>
+<tr class="memdesc:a496fe6520d7ea61cc4e22a6f7a8786c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pagal vardo galūnę parenka tinkamą pavardę (vyrišką ar moterišką).  <br /></td></tr>
+<tr class="memitem:a26b40c326bea9bee92f05c73e8891755" id="r_a26b40c326bea9bee92f05c73e8891755"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a26b40c326bea9bee92f05c73e8891755">genPazymius</a> (vector&lt; int &gt; &amp;paz, int &amp;egz)</td></tr>
+<tr class="memdesc:a26b40c326bea9bee92f05c73e8891755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sugeneruoja 20 atsitiktinių pažymių ir egzamino balą.  <br /></td></tr>
+<tr class="memitem:a48b816971524a82f3057ad89734c5997" id="r_a48b816971524a82f3057ad89734c5997"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a48b816971524a82f3057ad89734c5997">genFaila</a> (const string &amp;failas, int kiek)</td></tr>
+<tr class="memdesc:a48b816971524a82f3057ad89734c5997"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sukuria duomenų failą su nurodytu studentų kiekiu.  <br /></td></tr>
+<tr class="memitem:ac373cda6937b13211145b1b0b0d5aa72" id="r_ac373cda6937b13211145b1b0b0d5aa72"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac373cda6937b13211145b1b0b0d5aa72">skaitytiVector</a> (const string &amp;failas, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;grupe, int metodas)</td></tr>
+<tr class="memitem:a9a0c4eb4bb83333d70ae416b7450be1a" id="r_a9a0c4eb4bb83333d70ae416b7450be1a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9a0c4eb4bb83333d70ae416b7450be1a">skaitytiList</a> (const string &amp;failas, list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;grupe, int metodas)</td></tr>
+<tr class="memitem:a5a1a9a6238333f3c8a2d8e0c4c8aaf4b" id="r_a5a1a9a6238333f3c8a2d8e0c4c8aaf4b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5a1a9a6238333f3c8a2d8e0c4c8aaf4b">skaitytiDeque</a> (const string &amp;failas, deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;grupe, int metodas)</td></tr>
+<tr class="memitem:a9e5239a61270d6f096f15934e0c6c0b3" id="r_a9e5239a61270d6f096f15934e0c6c0b3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9e5239a61270d6f096f15934e0c6c0b3">skirstytiVector</a> (const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;visi, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;kieti, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;tinginiai)</td></tr>
+<tr class="memitem:a1c628ce6da2a4ad9ecf868e15b452267" id="r_a1c628ce6da2a4ad9ecf868e15b452267"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1c628ce6da2a4ad9ecf868e15b452267">skirstytiList</a> (const list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;visi, list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;kieti, list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;tinginiai)</td></tr>
+<tr class="memitem:a9f03fbc49791c55ddcc386413ff62440" id="r_a9f03fbc49791c55ddcc386413ff62440"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9f03fbc49791c55ddcc386413ff62440">skirstytiDeque</a> (const deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;visi, deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;kieti, deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;tinginiai)</td></tr>
+<tr class="memitem:aa45819fa5d1435bb91de30999039a0ec" id="r_aa45819fa5d1435bb91de30999039a0ec"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa45819fa5d1435bb91de30999039a0ec">skaitytiIsFailo</a> (const string &amp;failas, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;grupe, int metodas)</td></tr>
+<tr class="memitem:a63666c4b77ff012f9eb314480574d009" id="r_a63666c4b77ff012f9eb314480574d009"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a63666c4b77ff012f9eb314480574d009">spausdintiRezultatus</a> (const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;grupe, int rodyti, const string &amp;failas)</td></tr>
+<tr class="memitem:a195c5eeb5b6daa16895539120e7d4de4" id="r_a195c5eeb5b6daa16895539120e7d4de4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a195c5eeb5b6daa16895539120e7d4de4">splitStudents</a> (const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;visi, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;kieti, vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;tinginiai, int metodas)</td></tr>
+<tr class="memitem:abacf3685fc7c6ec4a7ebd5709828c157" id="r_abacf3685fc7c6ec4a7ebd5709828c157"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abacf3685fc7c6ec4a7ebd5709828c157">vykdytiVector</a> ()</td></tr>
+<tr class="memitem:a1440a7779ac56f47a3f355ce4a8c7da0" id="r_a1440a7779ac56f47a3f355ce4a8c7da0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1440a7779ac56f47a3f355ce4a8c7da0">test1</a> ()</td></tr>
+<tr class="memitem:abaf301b9bdeb77808efa1606acebef66" id="r_abaf301b9bdeb77808efa1606acebef66"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abaf301b9bdeb77808efa1606acebef66">test2</a> (const string &amp;failas, int metodas)</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Smulkus aprašymas</h2>
+<div class="textblock"><p>Klasių apibrėžimai: <a class="el" href="class_zmogus.html" title="Abstrakti bazinė klasė, aprašanti bendrus žmogaus atributus.">Zmogus</a> (abstrakti bazė) ir <a class="el" href="class_studentas.html" title="Paveldėjusi klasė iš Zmogus — atstovauja studentui su pažymiais ir egzaminu.">Studentas</a> (paveldėjusi). </p>
+<dl class="section version"><dt>Versija</dt><dd>2.0</dd></dl>
+<p>Šiame faile aprašyta visa klasių hierarchija ir laisvų funkcijų prototipai. </p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Apibrėžimų Dokumentacija</h2>
+<a id="a9f918755b601cf4bffca775992e6fb90" name="a9f918755b601cf4bffca775992e6fb90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f918755b601cf4bffca775992e6fb90">&#9670;&#160;</a></span>NOMINMAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NOMINMAX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7bef5d85e3dcd73eef56ad39ffc84a9" name="ac7bef5d85e3dcd73eef56ad39ffc84a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7bef5d85e3dcd73eef56ad39ffc84a9">&#9670;&#160;</a></span>WIN32_LEAN_AND_MEAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WIN32_LEAN_AND_MEAN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funkcijos Dokumentacija</h2>
+<a id="a04cde72f0226dfe735c373d0bb92f69a" name="a04cde72f0226dfe735c373d0bb92f69a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04cde72f0226dfe735c373d0bb92f69a">&#9670;&#160;</a></span>gautiSkaiciu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gautiSkaiciu </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>info</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saugiai skaito skaičių iš įvesties; bando iš naujo kol bus įvesta tinkama reikšmė. </p>
+
+</div>
+</div>
+<a id="a48b816971524a82f3057ad89734c5997" name="a48b816971524a82f3057ad89734c5997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48b816971524a82f3057ad89734c5997">&#9670;&#160;</a></span>genFaila()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void genFaila </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>failas</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>kiek</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sukuria duomenų failą su nurodytu studentų kiekiu. </p>
+
+</div>
+</div>
+<a id="a496fe6520d7ea61cc4e22a6f7a8786c6" name="a496fe6520d7ea61cc4e22a6f7a8786c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a496fe6520d7ea61cc4e22a6f7a8786c6">&#9670;&#160;</a></span>genPavarde()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string genPavarde </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>vardas</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pagal vardo galūnę parenka tinkamą pavardę (vyrišką ar moterišką). </p>
+
+</div>
+</div>
+<a id="a26b40c326bea9bee92f05c73e8891755" name="a26b40c326bea9bee92f05c73e8891755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26b40c326bea9bee92f05c73e8891755">&#9670;&#160;</a></span>genPazymius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void genPazymius </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>paz</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;</td>          <td class="paramname"><span class="paramname"><em>egz</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sugeneruoja 20 atsitiktinių pažymių ir egzamino balą. </p>
+
+</div>
+</div>
+<a id="ad5b55bf4907752a00f3844e104defd3e" name="ad5b55bf4907752a00f3844e104defd3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b55bf4907752a00f3844e104defd3e">&#9670;&#160;</a></span>genVarda()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string genVarda </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Atsitiktinai parenka vardą iš fiksuoto sąrašo. </p>
+
+</div>
+</div>
+<a id="a5c89ec4f26c3fbefcac2b60bdd5e9b51" name="a5c89ec4f26c3fbefcac2b60bdd5e9b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c89ec4f26c3fbefcac2b60bdd5e9b51">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_zmogus.html">Zmogus</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Išvesties operatorius bet kuriam <a class="el" href="class_zmogus.html" title="Abstrakti bazinė klasė, aprašanti bendrus žmogaus atributus.">Zmogus</a> tipui. </p>
+<dl class="params"><dt>Parametrai</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Išvesties srautas </td></tr>
+    <tr><td class="paramname">z</td><td>Žmogaus nuoroda (gali būti <a class="el" href="class_studentas.html" title="Paveldėjusi klasė iš Zmogus — atstovauja studentui su pažymiais ir egzaminu.">Studentas</a>) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Gražina</dt><dd>Nuoroda į srautą</dd></dl>
+<p>Per virtualų dispatch automatiškai parinks teisingą spausdinti() versiją. </p>
+
+</div>
+</div>
+<a id="a4ec247aa7686c55042d20203ad0ad06b" name="a4ec247aa7686c55042d20203ad0ad06b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ec247aa7686c55042d20203ad0ad06b">&#9670;&#160;</a></span>operator&gt;&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">istream &amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_studentas.html">Studentas</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>st</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Įvesties operatorius Studento objektui. </p>
+<dl class="params"><dt>Parametrai</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">is</td><td>Įvesties srautas </td></tr>
+    <tr><td class="paramname">st</td><td><a class="el" href="class_studentas.html" title="Paveldėjusi klasė iš Zmogus — atstovauja studentui su pažymiais ir egzaminu.">Studentas</a>, į kurį skaitoma </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Gražina</dt><dd>Nuoroda į srautą</dd></dl>
+<p>Tikisi vienos eilutės: Vardas Pavardė ND1 ND2 ... NDn Egzaminas Paskutinis skaičius laikomas egzamino balu. </p>
+
+</div>
+</div>
+<a id="a5a1a9a6238333f3c8a2d8e0c4c8aaf4b" name="a5a1a9a6238333f3c8a2d8e0c4c8aaf4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a1a9a6238333f3c8a2d8e0c4c8aaf4b">&#9670;&#160;</a></span>skaitytiDeque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void skaitytiDeque </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>failas</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>grupe</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>metodas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa45819fa5d1435bb91de30999039a0ec" name="aa45819fa5d1435bb91de30999039a0ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa45819fa5d1435bb91de30999039a0ec">&#9670;&#160;</a></span>skaitytiIsFailo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void skaitytiIsFailo </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>failas</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>grupe</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>metodas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a0c4eb4bb83333d70ae416b7450be1a" name="a9a0c4eb4bb83333d70ae416b7450be1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a0c4eb4bb83333d70ae416b7450be1a">&#9670;&#160;</a></span>skaitytiList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void skaitytiList </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>failas</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>grupe</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>metodas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac373cda6937b13211145b1b0b0d5aa72" name="ac373cda6937b13211145b1b0b0d5aa72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac373cda6937b13211145b1b0b0d5aa72">&#9670;&#160;</a></span>skaitytiVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void skaitytiVector </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>failas</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>grupe</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>metodas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f03fbc49791c55ddcc386413ff62440" name="a9f03fbc49791c55ddcc386413ff62440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f03fbc49791c55ddcc386413ff62440">&#9670;&#160;</a></span>skirstytiDeque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void skirstytiDeque </td>
+          <td>(</td>
+          <td class="paramtype">const deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>visi</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>kieti</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">deque&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tinginiai</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c628ce6da2a4ad9ecf868e15b452267" name="a1c628ce6da2a4ad9ecf868e15b452267"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c628ce6da2a4ad9ecf868e15b452267">&#9670;&#160;</a></span>skirstytiList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void skirstytiList </td>
+          <td>(</td>
+          <td class="paramtype">const list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>visi</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>kieti</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">list&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tinginiai</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e5239a61270d6f096f15934e0c6c0b3" name="a9e5239a61270d6f096f15934e0c6c0b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e5239a61270d6f096f15934e0c6c0b3">&#9670;&#160;</a></span>skirstytiVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void skirstytiVector </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>visi</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>kieti</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tinginiai</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63666c4b77ff012f9eb314480574d009" name="a63666c4b77ff012f9eb314480574d009"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63666c4b77ff012f9eb314480574d009">&#9670;&#160;</a></span>spausdintiRezultatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void spausdintiRezultatus </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>grupe</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rodyti</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>failas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a195c5eeb5b6daa16895539120e7d4de4" name="a195c5eeb5b6daa16895539120e7d4de4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195c5eeb5b6daa16895539120e7d4de4">&#9670;&#160;</a></span>splitStudents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void splitStudents </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>visi</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>kieti</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_studentas.html">Studentas</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tinginiai</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>metodas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1440a7779ac56f47a3f355ce4a8c7da0" name="a1440a7779ac56f47a3f355ce4a8c7da0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1440a7779ac56f47a3f355ce4a8c7da0">&#9670;&#160;</a></span>test1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test1 </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abaf301b9bdeb77808efa1606acebef66" name="abaf301b9bdeb77808efa1606acebef66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaf301b9bdeb77808efa1606acebef66">&#9670;&#160;</a></span>test2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void test2 </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>failas</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>metodas</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abacf3685fc7c6ec4a7ebd5709828c157" name="abacf3685fc7c6ec4a7ebd5709828c157"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abacf3685fc7c6ec4a7ebd5709828c157">&#9670;&#160;</a></span>vykdytiVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vykdytiVector </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="struktura_8h.html">struktura.h</a></li>
+    <li class="footer">Sugeneruota <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

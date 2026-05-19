@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Studentu pazymiu programa: struktura.h išeities tekstas</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Studentu pazymiu programa<span id="projectnumber">&#160;v2.0</span>
+   </div>
+   <div id="projectbrief">C++17 programa studentu pazymiams skaiciuoti ir grupiuoti</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Sugeneruota Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Paieška" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('struktura_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">struktura.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="struktura_8h.html">Eiti į šio failo dokumentaciją.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struktura_8h.html#a9f918755b601cf4bffca775992e6fb90">   11</a></span><span class="preprocessor">#define NOMINMAX</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="struktura_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9">   12</a></span><span class="preprocessor">#define WIN32_LEAN_AND_MEAN</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;deque&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">using </span>std::cin;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">using </span>std::cout;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">using </span>std::string;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">using </span>std::vector;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">using </span>std::left;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">using </span>std::right;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">using </span>std::setw;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">using </span>std::endl;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">using </span>std::sort;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">using </span>std::fixed;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">using </span>std::setprecision;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">using </span>std::ifstream;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">using </span>std::ofstream;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">using </span>std::getline;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">using </span>std::cerr;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">using </span>std::stringstream;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">using </span>std::move;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">using </span>std::ostream;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">using </span>std::istream;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">using </span>std::chrono::high_resolution_clock;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">using </span>std::chrono::duration_cast;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">using </span>std::chrono::duration;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">using </span>std::chrono::milliseconds;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">using </span>std::numeric_limits;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">using </span>std::mt19937;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">using </span>std::chrono::steady_clock;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">using </span>std::invalid_argument;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">using </span>std::out_of_range;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">using </span>std::exception;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">using </span>std::runtime_error;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">using </span>std::streamsize;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">using </span>std::to_string;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">using </span>std::pair;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">using </span>std::list;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">using </span>std::deque;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">using </span>std::stable_partition;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">using </span>std::copy_if;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">using </span>std::back_inserter;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">using </span>std::make_move_iterator;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">namespace </span>fs = std::filesystem;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span></div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="};">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_zmogus.html">   80</a></span><span class="keyword">class </span><a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a> {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">   82</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">vardas_</a>;   </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">   83</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">pavarde_</a>;  </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">   87</a></span>    <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="class_zmogus.html#a4df5ea418d34b2de7fe45dee7cc567df">   94</a></span>    <a class="code hl_function" href="class_zmogus.html#a4df5ea418d34b2de7fe45dee7cc567df">Zmogus</a>(<span class="keywordtype">string</span> v, <span class="keywordtype">string</span> p)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        : <a class="code hl_variable" href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">vardas_</a>(move(v)), <a class="code hl_variable" href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">pavarde_</a>(move(p)) {}</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="class_zmogus.html#a8711190a21750f2610caf64256f3265a">   99</a></span>    <a class="code hl_function" href="class_zmogus.html#a8711190a21750f2610caf64256f3265a">Zmogus</a>(<span class="keyword">const</span> <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="class_zmogus.html#a40e65dea8650770a0f3a5696917786bf">  100</a></span>    <a class="code hl_function" href="class_zmogus.html#a40e65dea8650770a0f3a5696917786bf">Zmogus</a>(<a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>&amp;&amp;) noexcept = default;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="class_zmogus.html#ad536d2094bc65dd238b5c538a56c9bfc">  101</a></span>    <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>&amp; operator=(const <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>&amp;) = default;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="class_zmogus.html#a216f46488076bec9d495ceec5bfc97fd">  102</a></span>    <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>&amp; operator=(<a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>&amp;&amp;) noexcept = default;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="class_zmogus.html#a6183937c7da8254430a6c99cfa89fe69">  109</a></span>    virtual ~<a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>() = default;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="class_zmogus.html#a4ca6fc7a913a7d0724206f84ee3ec472">  113</a></span>    const <span class="keywordtype">string</span>&amp; <a class="code hl_function" href="class_zmogus.html#a4ca6fc7a913a7d0724206f84ee3ec472">vardas</a>()<span class="keyword">  const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">vardas_</a>; }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="class_zmogus.html#aca6632d2ef3f59a3d0da9c124e512c9b">  115</a></span>    <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code hl_function" href="class_zmogus.html#aca6632d2ef3f59a3d0da9c124e512c9b">pavarde</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">pavarde_</a>; }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="class_zmogus.html#a2158d2752cd52e970ac4c809446e9d8b">  118</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_zmogus.html#a2158d2752cd52e970ac4c809446e9d8b">setVardas</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; v) { <a class="code hl_variable" href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">vardas_</a> = v; }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="class_zmogus.html#ac34eb9eb78f1c75080df7230ca61f2d2">  120</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_zmogus.html#ac34eb9eb78f1c75080df7230ca61f2d2">setPavarde</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; p) { <a class="code hl_variable" href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">pavarde_</a> = p; }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="class_zmogus.html#a062fd5ec68ee6ac636f1916b9ce9da8a">  128</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_zmogus.html#a062fd5ec68ee6ac636f1916b9ce9da8a">spausdinti</a>(ostream&amp; os) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>};</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span></div>
+<div class="foldopen" id="foldopen00138" data-start="{" data-end="};">
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="class_studentas.html">  138</a></span><span class="keyword">class </span><a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a> {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">  140</a></span>    vector&lt;int&gt; <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>;     </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">  141</a></span>    <span class="keywordtype">int</span>         <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> = 0;     </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">  142</a></span>    <span class="keywordtype">double</span>      <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a> = 0.0;   </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">  143</a></span>    <span class="keywordtype">double</span>      <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a> = 0.0;   </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">  147</a></span>    <a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span></div>
+<div class="foldopen" id="foldopen00157" data-start="{" data-end="}">
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="class_studentas.html#a22f8607d9f1902b6484973cbec073545">  157</a></span>    <a class="code hl_function" href="class_studentas.html#a22f8607d9f1902b6484973cbec073545">Studentas</a>(<span class="keywordtype">string</span> v, <span class="keywordtype">string</span> p, vector&lt;int&gt; <a class="code hl_function" href="class_studentas.html#ab1329cf7ec560fa7557e2c2cfe6517bd">paz</a>, <span class="keywordtype">int</span> <a class="code hl_function" href="class_studentas.html#a5fde327b128bf9763233e09485d5cdaf">egz</a>, <span class="keywordtype">int</span> metodas)</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        : <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>(move(v), move(p)),</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>(move(<a class="code hl_function" href="class_studentas.html#ab1329cf7ec560fa7557e2c2cfe6517bd">paz</a>)), <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a>(<a class="code hl_function" href="class_studentas.html#a5fde327b128bf9763233e09485d5cdaf">egz</a>)</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <a class="code hl_function" href="class_studentas.html#a17e615a22acc4adaa419d1e512d9b54e">apskaiciuoti</a>(metodas);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
+</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="class_studentas.html#a82357a745f867e6a92e820a8cc9110f9">  168</a></span>    <a class="code hl_function" href="class_studentas.html#a82357a745f867e6a92e820a8cc9110f9">~Studentas</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span></div>
+<div class="foldopen" id="foldopen00176" data-start="{" data-end="}">
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="class_studentas.html#a9c99fb8afa58ff7806759aa22e3c1a6f">  176</a></span>    <a class="code hl_function" href="class_studentas.html#a9c99fb8afa58ff7806759aa22e3c1a6f">Studentas</a>(<span class="keyword">const</span> <a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>&amp; kitas)</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        : <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>(kitas),</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>(kitas.<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>), <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a>(kitas.<a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a>),</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a>(kitas.<a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a>), <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a>(kitas.<a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a>)</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    {}</div>
+</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span></div>
+<div class="foldopen" id="foldopen00189" data-start="{" data-end="}">
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="class_studentas.html#a8bd0a78e7c4ba39c5459c8e0b298bc47">  189</a></span>    <a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>&amp; <a class="code hl_function" href="class_studentas.html#a8bd0a78e7c4ba39c5459c8e0b298bc47">operator=</a>(<span class="keyword">const</span> <a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>&amp; kitas) {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;kitas) {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <a class="code hl_function" href="class_zmogus.html#ad536d2094bc65dd238b5c538a56c9bfc">Zmogus::operator=</a>(kitas);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a> = kitas.<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> = kitas.<a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a>;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a> = kitas.<a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a>;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a> = kitas.<a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a>;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    }</div>
+</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span></div>
+<div class="foldopen" id="foldopen00207" data-start="{" data-end="}">
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="class_studentas.html#a35f81eeea8421d4c5a4d1a2e4cfd9f59">  207</a></span>    <a class="code hl_function" href="class_studentas.html#a35f81eeea8421d4c5a4d1a2e4cfd9f59">Studentas</a>(<a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>&amp;&amp; kitas) noexcept</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        : <a class="code hl_function" href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus</a>(move(kitas)),</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>(move(kitas.paz_)),</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a>(kitas.egz_), <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a>(kitas.gal_vid_), <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a>(kitas.gal_med_)</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        kitas.egz_ = 0;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        kitas.gal_vid_ = 0.0;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        kitas.gal_med_ = 0.0;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
+</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span></div>
+<div class="foldopen" id="foldopen00218" data-start="{" data-end="}">
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="class_studentas.html#a3f542851deb85ac5cf58c6b62ab3b7c7">  218</a></span>    <a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>&amp; <a class="code hl_function" href="class_studentas.html#a3f542851deb85ac5cf58c6b62ab3b7c7">operator=</a>(<a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>&amp;&amp; kitas) <span class="keyword">noexcept</span> {</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;kitas) {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            <a class="code hl_function" href="class_zmogus.html#ad536d2094bc65dd238b5c538a56c9bfc">Zmogus::operator=</a>(move(kitas));</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a> = move(kitas.paz_);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> = kitas.egz_;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>            <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a> = kitas.gal_vid_;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a> = kitas.gal_med_;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            kitas.egz_ = 0;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            kitas.gal_vid_ = 0.0;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            kitas.gal_med_ = 0.0;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        }</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    }</div>
+</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span></div>
+<div class="foldopen" id="foldopen00240" data-start="{" data-end="}">
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="class_studentas.html#a1e8d7fd7d5e8c2f51b4399a8252cfad1">  240</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_studentas.html#a1e8d7fd7d5e8c2f51b4399a8252cfad1">spausdinti</a>(ostream&amp; os)<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        os &lt;&lt; left &lt;&lt; setw(15) &lt;&lt; <a class="code hl_variable" href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">vardas_</a></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            &lt;&lt; setw(15) &lt;&lt; <a class="code hl_variable" href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">pavarde_</a>;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        os &lt;&lt; <span class="stringliteral">&quot;ND:&quot;</span>;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> p : <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>) os &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; p;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        os &lt;&lt; <span class="stringliteral">&quot;  Egz: &quot;</span> &lt;&lt; <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a>;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a> &gt; 0.0)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            os &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; <span class="stringliteral">&quot;  Vid: &quot;</span> &lt;&lt; <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a>;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a> &gt; 0.0)</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            os &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; <span class="stringliteral">&quot;  Med: &quot;</span> &lt;&lt; <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a>;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    }</div>
+</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="class_studentas.html#ab1329cf7ec560fa7557e2c2cfe6517bd">  253</a></span>    <span class="keyword">const</span> vector&lt;int&gt;&amp; <a class="code hl_function" href="class_studentas.html#ab1329cf7ec560fa7557e2c2cfe6517bd">paz</a>()<span class="keyword">    const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>; }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno"><a class="line" href="class_studentas.html#a5fde327b128bf9763233e09485d5cdaf">  255</a></span>    <span class="keywordtype">int</span>                <a class="code hl_function" href="class_studentas.html#a5fde327b128bf9763233e09485d5cdaf">egz</a>()<span class="keyword">    const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a>; }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="class_studentas.html#ae6e74fb02ad322889045ba1fcb54c1d8">  257</a></span>    <span class="keywordtype">double</span>             <a class="code hl_function" href="class_studentas.html#ae6e74fb02ad322889045ba1fcb54c1d8">galVid</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a>; }</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="class_studentas.html#ad015ef779f21066b847a4839fa5e84f9">  259</a></span>    <span class="keywordtype">double</span>             <a class="code hl_function" href="class_studentas.html#ad015ef779f21066b847a4839fa5e84f9">galMed</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a>; }</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="class_studentas.html#af7a2740c86cee79b07ea47b3eb819280">  262</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_studentas.html#af7a2740c86cee79b07ea47b3eb819280">setEgz</a>(<span class="keywordtype">int</span> e) { <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> = e; }</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno"><a class="line" href="class_studentas.html#af7d66b90b71aa433ecf2c179044271aa">  264</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_studentas.html#af7d66b90b71aa433ecf2c179044271aa">addPazymys</a>(<span class="keywordtype">int</span> p) { <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.push_back(p); }</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span></div>
+<div class="foldopen" id="foldopen00272" data-start="{" data-end="}">
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno"><a class="line" href="class_studentas.html#a879c960946a84b497c35c3245cffb8f0">  272</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_studentas.html#a879c960946a84b497c35c3245cffb8f0">nustatytiEgzIsGalo</a>() {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.empty()) {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> = <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.back();</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.pop_back();</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        }</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    }</div>
+</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span></div>
+<div class="foldopen" id="foldopen00283" data-start="{" data-end="}">
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno"><a class="line" href="class_studentas.html#a211c51313b78593a30d8a5b49a015410">  283</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_studentas.html#a211c51313b78593a30d8a5b49a015410">skaiciuotiVidurki</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.empty()) <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <span class="keywordtype">double</span> suma = 0.0;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> p : <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>) suma += p;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="keywordflow">return</span> suma / <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.size());</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    }</div>
+</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span></div>
+<div class="foldopen" id="foldopen00294" data-start="{" data-end="}">
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno"><a class="line" href="class_studentas.html#a8cd056361bc0172f697016c8cde7296c">  294</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_studentas.html#a8cd056361bc0172f697016c8cde7296c">skaiciuotiMediana</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.empty()) <span class="keywordflow">return</span> 0.0;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        vector&lt;int&gt; tmp = <a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        sort(tmp.begin(), tmp.end());</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        <span class="keywordtype">size_t</span> n = tmp.size();</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordflow">if</span> (n % 2 == 0) <span class="keywordflow">return</span> (tmp[n / 2 - 1] + tmp[n / 2]) / 2.0;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="keywordflow">return</span> tmp[n / 2];</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    }</div>
+</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span></div>
+<div class="foldopen" id="foldopen00309" data-start="{" data-end="}">
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="class_studentas.html#a17e615a22acc4adaa419d1e512d9b54e">  309</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_studentas.html#a17e615a22acc4adaa419d1e512d9b54e">apskaiciuoti</a>(<span class="keywordtype">int</span> metodas) {</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        <span class="keywordflow">if</span> (metodas == 1 || metodas == 3)</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>            <a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a> = <a class="code hl_function" href="class_studentas.html#a211c51313b78593a30d8a5b49a015410">skaiciuotiVidurki</a>() * 0.4 + <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> * 0.6;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        <span class="keywordflow">if</span> (metodas == 2 || metodas == 3)</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            <a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a> = <a class="code hl_function" href="class_studentas.html#a8cd056361bc0172f697016c8cde7296c">skaiciuotiMediana</a>() * 0.4 + <a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> * 0.6;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    }</div>
+</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keyword">friend</span> istream&amp; <a class="code hl_friend" href="class_studentas.html#a4ec247aa7686c55042d20203ad0ad06b">operator&gt;&gt;</a>(istream&amp; is, <a class="code hl_class" href="class_studentas.html">Studentas</a>&amp; st);</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>};</div>
+</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span></div>
+<div class="foldopen" id="foldopen00327" data-start="{" data-end="}">
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno"><a class="line" href="struktura_8h.html#a5c89ec4f26c3fbefcac2b60bdd5e9b51">  327</a></span><span class="keyword">inline</span> ostream&amp; <a class="code hl_function" href="struktura_8h.html#a5c89ec4f26c3fbefcac2b60bdd5e9b51">operator&lt;&lt;</a>(ostream&amp; os, <span class="keyword">const</span> <a class="code hl_class" href="class_zmogus.html">Zmogus</a>&amp; z) {</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    z.<a class="code hl_function" href="class_zmogus.html#a062fd5ec68ee6ac636f1916b9ce9da8a">spausdinti</a>(os);</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>}</div>
+</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span></div>
+<div class="foldopen" id="foldopen00341" data-start="{" data-end="}">
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno"><a class="line" href="class_studentas.html#a4ec247aa7686c55042d20203ad0ad06b">  341</a></span><span class="keyword">inline</span> istream&amp; <a class="code hl_function" href="struktura_8h.html#a4ec247aa7686c55042d20203ad0ad06b">operator&gt;&gt;</a>(istream&amp; is, <a class="code hl_function" href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas</a>&amp; st) {</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <span class="keywordtype">string</span> eilute;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="keywordflow">if</span> (!getline(is, eilute)) <span class="keywordflow">return</span> is;</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordflow">if</span> (eilute.empty()) <span class="keywordflow">return</span> is;</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    stringstream ss(eilute);</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <span class="keywordtype">string</span> v, p;</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    <span class="keywordflow">if</span> (!(ss &gt;&gt; v &gt;&gt; p)) <span class="keywordflow">return</span> is;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    st.<a class="code hl_variable" href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">vardas_</a> = v;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    st.<a class="code hl_variable" href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">pavarde_</a> = p;</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    st.<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.clear();</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    st.<a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> = 0;</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    st.<a class="code hl_variable" href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">gal_vid_</a> = 0.0;</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    st.<a class="code hl_variable" href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">gal_med_</a> = 0.0;</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    <span class="keywordtype">int</span> n;</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <span class="keywordflow">while</span> (ss &gt;&gt; n) st.<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.push_back(n);</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    <span class="keywordflow">if</span> (!st.<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.empty()) {</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        st.<a class="code hl_variable" href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">egz_</a> = st.<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.back();</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        st.<a class="code hl_variable" href="class_studentas.html#a39a34587900f9e85af909d054bad0466">paz_</a>.pop_back();</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    }</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keywordflow">return</span> is;</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>}</div>
+</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="comment">// Laisvos funkcijos</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="comment">// ============================================================</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="keywordtype">int</span>    <a class="code hl_function" href="struktura_8h.html#a04cde72f0226dfe735c373d0bb92f69a">gautiSkaiciu</a>(<span class="keywordtype">string</span> info, <span class="keywordtype">int</span> min, <span class="keywordtype">int</span> max);</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="keywordtype">string</span> <a class="code hl_function" href="struktura_8h.html#ad5b55bf4907752a00f3844e104defd3e">genVarda</a>();</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span><span class="keywordtype">string</span> <a class="code hl_function" href="struktura_8h.html#a496fe6520d7ea61cc4e22a6f7a8786c6">genPavarde</a>(<span class="keywordtype">string</span> vardas);</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span><span class="keywordtype">void</span>   <a class="code hl_function" href="struktura_8h.html#a26b40c326bea9bee92f05c73e8891755">genPazymius</a>(vector&lt;int&gt;&amp; paz, <span class="keywordtype">int</span>&amp; egz);</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span></div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a48b816971524a82f3057ad89734c5997">genFaila</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; failas, <span class="keywordtype">int</span> kiek);</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#ac373cda6937b13211145b1b0b0d5aa72">skaitytiVector</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; failas, vector&lt;Studentas&gt;&amp; grupe, <span class="keywordtype">int</span> metodas);</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a9a0c4eb4bb83333d70ae416b7450be1a">skaitytiList</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; failas, list  &lt;Studentas&gt;&amp; grupe, <span class="keywordtype">int</span> metodas);</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a5a1a9a6238333f3c8a2d8e0c4c8aaf4b">skaitytiDeque</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; failas, deque &lt;Studentas&gt;&amp; grupe, <span class="keywordtype">int</span> metodas);</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a9e5239a61270d6f096f15934e0c6c0b3">skirstytiVector</a>(<span class="keyword">const</span> vector&lt;Studentas&gt;&amp; visi, vector&lt;Studentas&gt;&amp; kieti, vector&lt;Studentas&gt;&amp; tinginiai);</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a1c628ce6da2a4ad9ecf868e15b452267">skirstytiList</a>(<span class="keyword">const</span> list  &lt;Studentas&gt;&amp; visi, list  &lt;Studentas&gt;&amp; kieti, list  &lt;Studentas&gt;&amp; tinginiai);</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a9f03fbc49791c55ddcc386413ff62440">skirstytiDeque</a>(<span class="keyword">const</span> deque &lt;Studentas&gt;&amp; visi, deque &lt;Studentas&gt;&amp; kieti, deque &lt;Studentas&gt;&amp; tinginiai);</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#aa45819fa5d1435bb91de30999039a0ec">skaitytiIsFailo</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; failas, vector&lt;Studentas&gt;&amp; grupe, <span class="keywordtype">int</span> metodas);</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a63666c4b77ff012f9eb314480574d009">spausdintiRezultatus</a>(<span class="keyword">const</span> vector&lt;Studentas&gt;&amp; grupe, <span class="keywordtype">int</span> rodyti, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; failas);</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a195c5eeb5b6daa16895539120e7d4de4">splitStudents</a>(<span class="keyword">const</span> vector&lt;Studentas&gt;&amp; visi, vector&lt;Studentas&gt;&amp; kieti,</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    vector&lt;Studentas&gt;&amp; tinginiai, <span class="keywordtype">int</span> metodas);</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#abacf3685fc7c6ec4a7ebd5709828c157">vykdytiVector</a>();</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span> </div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno"><a class="line" href="struktura_8h.html#a1440a7779ac56f47a3f355ce4a8c7da0">  399</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#a1440a7779ac56f47a3f355ce4a8c7da0">test1</a>();</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno"><a class="line" href="struktura_8h.html#abaf301b9bdeb77808efa1606acebef66">  400</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="struktura_8h.html#abaf301b9bdeb77808efa1606acebef66">test2</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; failas, <span class="keywordtype">int</span> metodas);</div>
+<div class="ttc" id="aclass_studentas_html"><div class="ttname"><a href="class_studentas.html">Studentas</a></div><div class="ttdoc">Paveldėjusi klasė iš Zmogus — atstovauja studentui su pažymiais ir egzaminu.</div><div class="ttdef"><b>Definition</b> struktura.h:138</div></div>
+<div class="ttc" id="aclass_studentas_html_a17e615a22acc4adaa419d1e512d9b54e"><div class="ttname"><a href="class_studentas.html#a17e615a22acc4adaa419d1e512d9b54e">Studentas::apskaiciuoti</a></div><div class="ttdeci">void apskaiciuoti(int metodas)</div><div class="ttdoc">Apskaičiuoja galutinį pažymį pagal pasirinktą metodą.</div><div class="ttdef"><b>Definition</b> struktura.h:309</div></div>
+<div class="ttc" id="aclass_studentas_html_a1d99507fca56727060b9b76a7a52f346"><div class="ttname"><a href="class_studentas.html#a1d99507fca56727060b9b76a7a52f346">Studentas::egz_</a></div><div class="ttdeci">int egz_</div><div class="ttdoc">Egzamino balas.</div><div class="ttdef"><b>Definition</b> struktura.h:141</div></div>
+<div class="ttc" id="aclass_studentas_html_a1e8d7fd7d5e8c2f51b4399a8252cfad1"><div class="ttname"><a href="class_studentas.html#a1e8d7fd7d5e8c2f51b4399a8252cfad1">Studentas::spausdinti</a></div><div class="ttdeci">void spausdinti(ostream &amp;os) const override</div><div class="ttdoc">Perdengia bazinę spausdinti() funkciją.</div><div class="ttdef"><b>Definition</b> struktura.h:240</div></div>
+<div class="ttc" id="aclass_studentas_html_a211c51313b78593a30d8a5b49a015410"><div class="ttname"><a href="class_studentas.html#a211c51313b78593a30d8a5b49a015410">Studentas::skaiciuotiVidurki</a></div><div class="ttdeci">double skaiciuotiVidurki() const</div><div class="ttdoc">Apskaičiuoja namų darbų vidurkį.</div><div class="ttdef"><b>Definition</b> struktura.h:283</div></div>
+<div class="ttc" id="aclass_studentas_html_a22f8607d9f1902b6484973cbec073545"><div class="ttname"><a href="class_studentas.html#a22f8607d9f1902b6484973cbec073545">Studentas::Studentas</a></div><div class="ttdeci">Studentas(string v, string p, vector&lt; int &gt; paz, int egz, int metodas)</div><div class="ttdoc">Pilnas konstruktorius su iš karto atliekamu skaičiavimu.</div><div class="ttdef"><b>Definition</b> struktura.h:157</div></div>
+<div class="ttc" id="aclass_studentas_html_a35f81eeea8421d4c5a4d1a2e4cfd9f59"><div class="ttname"><a href="class_studentas.html#a35f81eeea8421d4c5a4d1a2e4cfd9f59">Studentas::Studentas</a></div><div class="ttdeci">Studentas(Studentas &amp;&amp;kitas) noexcept</div><div class="ttdoc">Perkėlimo konstruktorius (move).</div><div class="ttdef"><b>Definition</b> struktura.h:207</div></div>
+<div class="ttc" id="aclass_studentas_html_a39a34587900f9e85af909d054bad0466"><div class="ttname"><a href="class_studentas.html#a39a34587900f9e85af909d054bad0466">Studentas::paz_</a></div><div class="ttdeci">vector&lt; int &gt; paz_</div><div class="ttdoc">Namų darbų pažymiai.</div><div class="ttdef"><b>Definition</b> struktura.h:140</div></div>
+<div class="ttc" id="aclass_studentas_html_a3f542851deb85ac5cf58c6b62ab3b7c7"><div class="ttname"><a href="class_studentas.html#a3f542851deb85ac5cf58c6b62ab3b7c7">Studentas::operator=</a></div><div class="ttdeci">Studentas &amp; operator=(Studentas &amp;&amp;kitas) noexcept</div><div class="ttdoc">Perkėlimo priskyrimo operatorius.</div><div class="ttdef"><b>Definition</b> struktura.h:218</div></div>
+<div class="ttc" id="aclass_studentas_html_a4ec247aa7686c55042d20203ad0ad06b"><div class="ttname"><a href="class_studentas.html#a4ec247aa7686c55042d20203ad0ad06b">Studentas::operator&gt;&gt;</a></div><div class="ttdeci">friend istream &amp; operator&gt;&gt;(istream &amp;is, Studentas &amp;st)</div><div class="ttdoc">Įvesties operatorius Studento objektui.</div><div class="ttdef"><b>Definition</b> struktura.h:341</div></div>
+<div class="ttc" id="aclass_studentas_html_a5fde327b128bf9763233e09485d5cdaf"><div class="ttname"><a href="class_studentas.html#a5fde327b128bf9763233e09485d5cdaf">Studentas::egz</a></div><div class="ttdeci">int egz() const</div><div class="ttdoc">Grąžina egzamino balą.</div><div class="ttdef"><b>Definition</b> struktura.h:255</div></div>
+<div class="ttc" id="aclass_studentas_html_a5fea16104bc45f09342a1485592a3707"><div class="ttname"><a href="class_studentas.html#a5fea16104bc45f09342a1485592a3707">Studentas::gal_med_</a></div><div class="ttdeci">double gal_med_</div><div class="ttdoc">Galutinis pažymys (medianos metodu).</div><div class="ttdef"><b>Definition</b> struktura.h:143</div></div>
+<div class="ttc" id="aclass_studentas_html_a82357a745f867e6a92e820a8cc9110f9"><div class="ttname"><a href="class_studentas.html#a82357a745f867e6a92e820a8cc9110f9">Studentas::~Studentas</a></div><div class="ttdeci">~Studentas() override=default</div><div class="ttdoc">Destruktorius.</div></div>
+<div class="ttc" id="aclass_studentas_html_a8654575dc4377adc46f0b405c0695d17"><div class="ttname"><a href="class_studentas.html#a8654575dc4377adc46f0b405c0695d17">Studentas::gal_vid_</a></div><div class="ttdeci">double gal_vid_</div><div class="ttdoc">Galutinis pažymys (vidurkio metodu).</div><div class="ttdef"><b>Definition</b> struktura.h:142</div></div>
+<div class="ttc" id="aclass_studentas_html_a875cdf945b2e62c5220e5d326c7349d6"><div class="ttname"><a href="class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6">Studentas::Studentas</a></div><div class="ttdeci">Studentas()=default</div><div class="ttdoc">Numatytasis konstruktorius — sukuria tuščią studentą.</div></div>
+<div class="ttc" id="aclass_studentas_html_a879c960946a84b497c35c3245cffb8f0"><div class="ttname"><a href="class_studentas.html#a879c960946a84b497c35c3245cffb8f0">Studentas::nustatytiEgzIsGalo</a></div><div class="ttdeci">void nustatytiEgzIsGalo()</div><div class="ttdoc">Paskutinį pažymį iš sąrašo perkelia į egzamino lauką.</div><div class="ttdef"><b>Definition</b> struktura.h:272</div></div>
+<div class="ttc" id="aclass_studentas_html_a8bd0a78e7c4ba39c5459c8e0b298bc47"><div class="ttname"><a href="class_studentas.html#a8bd0a78e7c4ba39c5459c8e0b298bc47">Studentas::operator=</a></div><div class="ttdeci">Studentas &amp; operator=(const Studentas &amp;kitas)</div><div class="ttdoc">Kopijavimo priskyrimo operatorius.</div><div class="ttdef"><b>Definition</b> struktura.h:189</div></div>
+<div class="ttc" id="aclass_studentas_html_a8cd056361bc0172f697016c8cde7296c"><div class="ttname"><a href="class_studentas.html#a8cd056361bc0172f697016c8cde7296c">Studentas::skaiciuotiMediana</a></div><div class="ttdeci">double skaiciuotiMediana() const</div><div class="ttdoc">Apskaičiuoja namų darbų medianą.</div><div class="ttdef"><b>Definition</b> struktura.h:294</div></div>
+<div class="ttc" id="aclass_studentas_html_a9c99fb8afa58ff7806759aa22e3c1a6f"><div class="ttname"><a href="class_studentas.html#a9c99fb8afa58ff7806759aa22e3c1a6f">Studentas::Studentas</a></div><div class="ttdeci">Studentas(const Studentas &amp;kitas)</div><div class="ttdoc">Kopijavimo konstruktorius.</div><div class="ttdef"><b>Definition</b> struktura.h:176</div></div>
+<div class="ttc" id="aclass_studentas_html_ab1329cf7ec560fa7557e2c2cfe6517bd"><div class="ttname"><a href="class_studentas.html#ab1329cf7ec560fa7557e2c2cfe6517bd">Studentas::paz</a></div><div class="ttdeci">const vector&lt; int &gt; &amp; paz() const</div><div class="ttdoc">Grąžina namų darbų pažymių vektorių (const nuoroda).</div><div class="ttdef"><b>Definition</b> struktura.h:253</div></div>
+<div class="ttc" id="aclass_studentas_html_ad015ef779f21066b847a4839fa5e84f9"><div class="ttname"><a href="class_studentas.html#ad015ef779f21066b847a4839fa5e84f9">Studentas::galMed</a></div><div class="ttdeci">double galMed() const</div><div class="ttdoc">Grąžina galutinį pažymį (medianos metodu).</div><div class="ttdef"><b>Definition</b> struktura.h:259</div></div>
+<div class="ttc" id="aclass_studentas_html_ae6e74fb02ad322889045ba1fcb54c1d8"><div class="ttname"><a href="class_studentas.html#ae6e74fb02ad322889045ba1fcb54c1d8">Studentas::galVid</a></div><div class="ttdeci">double galVid() const</div><div class="ttdoc">Grąžina galutinį pažymį (vidurkio metodu).</div><div class="ttdef"><b>Definition</b> struktura.h:257</div></div>
+<div class="ttc" id="aclass_studentas_html_af7a2740c86cee79b07ea47b3eb819280"><div class="ttname"><a href="class_studentas.html#af7a2740c86cee79b07ea47b3eb819280">Studentas::setEgz</a></div><div class="ttdeci">void setEgz(int e)</div><div class="ttdoc">Nustato egzamino balą.</div><div class="ttdef"><b>Definition</b> struktura.h:262</div></div>
+<div class="ttc" id="aclass_studentas_html_af7d66b90b71aa433ecf2c179044271aa"><div class="ttname"><a href="class_studentas.html#af7d66b90b71aa433ecf2c179044271aa">Studentas::addPazymys</a></div><div class="ttdeci">void addPazymys(int p)</div><div class="ttdoc">Prideda vieną pažymį prie ND sąrašo.</div><div class="ttdef"><b>Definition</b> struktura.h:264</div></div>
+<div class="ttc" id="aclass_zmogus_html"><div class="ttname"><a href="class_zmogus.html">Zmogus</a></div><div class="ttdoc">Abstrakti bazinė klasė, aprašanti bendrus žmogaus atributus.</div><div class="ttdef"><b>Definition</b> struktura.h:80</div></div>
+<div class="ttc" id="aclass_zmogus_html_a062fd5ec68ee6ac636f1916b9ce9da8a"><div class="ttname"><a href="class_zmogus.html#a062fd5ec68ee6ac636f1916b9ce9da8a">Zmogus::spausdinti</a></div><div class="ttdeci">virtual void spausdinti(ostream &amp;os) const =0</div><div class="ttdoc">Gryna virtuali funkcija — daro klasę abstrakčia.</div></div>
+<div class="ttc" id="aclass_zmogus_html_a09b290c9be6039ce3a94e1557def9b3a"><div class="ttname"><a href="class_zmogus.html#a09b290c9be6039ce3a94e1557def9b3a">Zmogus::vardas_</a></div><div class="ttdeci">string vardas_</div><div class="ttdoc">Žmogaus vardas.</div><div class="ttdef"><b>Definition</b> struktura.h:82</div></div>
+<div class="ttc" id="aclass_zmogus_html_a2158d2752cd52e970ac4c809446e9d8b"><div class="ttname"><a href="class_zmogus.html#a2158d2752cd52e970ac4c809446e9d8b">Zmogus::setVardas</a></div><div class="ttdeci">void setVardas(const string &amp;v)</div><div class="ttdoc">Nustato vardą.</div><div class="ttdef"><b>Definition</b> struktura.h:118</div></div>
+<div class="ttc" id="aclass_zmogus_html_a40e65dea8650770a0f3a5696917786bf"><div class="ttname"><a href="class_zmogus.html#a40e65dea8650770a0f3a5696917786bf">Zmogus::Zmogus</a></div><div class="ttdeci">Zmogus(Zmogus &amp;&amp;) noexcept=default</div></div>
+<div class="ttc" id="aclass_zmogus_html_a4ca6fc7a913a7d0724206f84ee3ec472"><div class="ttname"><a href="class_zmogus.html#a4ca6fc7a913a7d0724206f84ee3ec472">Zmogus::vardas</a></div><div class="ttdeci">const string &amp; vardas() const</div><div class="ttdoc">Grąžina vardą.</div><div class="ttdef"><b>Definition</b> struktura.h:113</div></div>
+<div class="ttc" id="aclass_zmogus_html_a4df5ea418d34b2de7fe45dee7cc567df"><div class="ttname"><a href="class_zmogus.html#a4df5ea418d34b2de7fe45dee7cc567df">Zmogus::Zmogus</a></div><div class="ttdeci">Zmogus(string v, string p)</div><div class="ttdoc">Pilnas konstruktorius.</div><div class="ttdef"><b>Definition</b> struktura.h:94</div></div>
+<div class="ttc" id="aclass_zmogus_html_a8711190a21750f2610caf64256f3265a"><div class="ttname"><a href="class_zmogus.html#a8711190a21750f2610caf64256f3265a">Zmogus::Zmogus</a></div><div class="ttdeci">Zmogus(const Zmogus &amp;)=default</div></div>
+<div class="ttc" id="aclass_zmogus_html_a905fef3b8ad421a6d023c7ebc295f48e"><div class="ttname"><a href="class_zmogus.html#a905fef3b8ad421a6d023c7ebc295f48e">Zmogus::Zmogus</a></div><div class="ttdeci">Zmogus()=default</div><div class="ttdoc">Numatytasis konstruktorius — sukuria tuščią objektą.</div></div>
+<div class="ttc" id="aclass_zmogus_html_a95b83ef4d9bbe9b88d78c17563bafa5a"><div class="ttname"><a href="class_zmogus.html#a95b83ef4d9bbe9b88d78c17563bafa5a">Zmogus::pavarde_</a></div><div class="ttdeci">string pavarde_</div><div class="ttdoc">Žmogaus pavardė</div><div class="ttdef"><b>Definition</b> struktura.h:83</div></div>
+<div class="ttc" id="aclass_zmogus_html_ac34eb9eb78f1c75080df7230ca61f2d2"><div class="ttname"><a href="class_zmogus.html#ac34eb9eb78f1c75080df7230ca61f2d2">Zmogus::setPavarde</a></div><div class="ttdeci">void setPavarde(const string &amp;p)</div><div class="ttdoc">Nustato pavardę.</div><div class="ttdef"><b>Definition</b> struktura.h:120</div></div>
+<div class="ttc" id="aclass_zmogus_html_aca6632d2ef3f59a3d0da9c124e512c9b"><div class="ttname"><a href="class_zmogus.html#aca6632d2ef3f59a3d0da9c124e512c9b">Zmogus::pavarde</a></div><div class="ttdeci">const string &amp; pavarde() const</div><div class="ttdoc">Grąžina pavardę.</div><div class="ttdef"><b>Definition</b> struktura.h:115</div></div>
+<div class="ttc" id="aclass_zmogus_html_ad536d2094bc65dd238b5c538a56c9bfc"><div class="ttname"><a href="class_zmogus.html#ad536d2094bc65dd238b5c538a56c9bfc">Zmogus::operator=</a></div><div class="ttdeci">Zmogus &amp; operator=(const Zmogus &amp;)=default</div></div>
+<div class="ttc" id="astruktura_8h_html_a04cde72f0226dfe735c373d0bb92f69a"><div class="ttname"><a href="struktura_8h.html#a04cde72f0226dfe735c373d0bb92f69a">gautiSkaiciu</a></div><div class="ttdeci">int gautiSkaiciu(string info, int min, int max)</div><div class="ttdoc">Saugiai skaito skaičių iš įvesties; bando iš naujo kol bus įvesta tinkama reikšmė.</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:86</div></div>
+<div class="ttc" id="astruktura_8h_html_a1440a7779ac56f47a3f355ce4a8c7da0"><div class="ttname"><a href="struktura_8h.html#a1440a7779ac56f47a3f355ce4a8c7da0">test1</a></div><div class="ttdeci">void test1()</div></div>
+<div class="ttc" id="astruktura_8h_html_a195c5eeb5b6daa16895539120e7d4de4"><div class="ttname"><a href="struktura_8h.html#a195c5eeb5b6daa16895539120e7d4de4">splitStudents</a></div><div class="ttdeci">void splitStudents(const vector&lt; Studentas &gt; &amp;visi, vector&lt; Studentas &gt; &amp;kieti, vector&lt; Studentas &gt; &amp;tinginiai, int metodas)</div><div class="ttdef"><b>Definition</b> vektorius.cpp:71</div></div>
+<div class="ttc" id="astruktura_8h_html_a1c628ce6da2a4ad9ecf868e15b452267"><div class="ttname"><a href="struktura_8h.html#a1c628ce6da2a4ad9ecf868e15b452267">skirstytiList</a></div><div class="ttdeci">void skirstytiList(const list&lt; Studentas &gt; &amp;visi, list&lt; Studentas &gt; &amp;kieti, list&lt; Studentas &gt; &amp;tinginiai)</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:197</div></div>
+<div class="ttc" id="astruktura_8h_html_a26b40c326bea9bee92f05c73e8891755"><div class="ttname"><a href="struktura_8h.html#a26b40c326bea9bee92f05c73e8891755">genPazymius</a></div><div class="ttdeci">void genPazymius(vector&lt; int &gt; &amp;paz, int &amp;egz)</div><div class="ttdoc">Sugeneruoja 20 atsitiktinių pažymių ir egzamino balą.</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:48</div></div>
+<div class="ttc" id="astruktura_8h_html_a48b816971524a82f3057ad89734c5997"><div class="ttname"><a href="struktura_8h.html#a48b816971524a82f3057ad89734c5997">genFaila</a></div><div class="ttdeci">void genFaila(const string &amp;failas, int kiek)</div><div class="ttdoc">Sukuria duomenų failą su nurodytu studentų kiekiu.</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:64</div></div>
+<div class="ttc" id="astruktura_8h_html_a496fe6520d7ea61cc4e22a6f7a8786c6"><div class="ttname"><a href="struktura_8h.html#a496fe6520d7ea61cc4e22a6f7a8786c6">genPavarde</a></div><div class="ttdeci">string genPavarde(string vardas)</div><div class="ttdoc">Pagal vardo galūnę parenka tinkamą pavardę (vyrišką ar moterišką).</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:29</div></div>
+<div class="ttc" id="astruktura_8h_html_a4ec247aa7686c55042d20203ad0ad06b"><div class="ttname"><a href="struktura_8h.html#a4ec247aa7686c55042d20203ad0ad06b">operator&gt;&gt;</a></div><div class="ttdeci">istream &amp; operator&gt;&gt;(istream &amp;is, Studentas &amp;st)</div><div class="ttdoc">Įvesties operatorius Studento objektui.</div><div class="ttdef"><b>Definition</b> struktura.h:341</div></div>
+<div class="ttc" id="astruktura_8h_html_a5a1a9a6238333f3c8a2d8e0c4c8aaf4b"><div class="ttname"><a href="struktura_8h.html#a5a1a9a6238333f3c8a2d8e0c4c8aaf4b">skaitytiDeque</a></div><div class="ttdeci">void skaitytiDeque(const string &amp;failas, deque&lt; Studentas &gt; &amp;grupe, int metodas)</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:163</div></div>
+<div class="ttc" id="astruktura_8h_html_a5c89ec4f26c3fbefcac2b60bdd5e9b51"><div class="ttname"><a href="struktura_8h.html#a5c89ec4f26c3fbefcac2b60bdd5e9b51">operator&lt;&lt;</a></div><div class="ttdeci">ostream &amp; operator&lt;&lt;(ostream &amp;os, const Zmogus &amp;z)</div><div class="ttdoc">Išvesties operatorius bet kuriam Zmogus tipui.</div><div class="ttdef"><b>Definition</b> struktura.h:327</div></div>
+<div class="ttc" id="astruktura_8h_html_a63666c4b77ff012f9eb314480574d009"><div class="ttname"><a href="struktura_8h.html#a63666c4b77ff012f9eb314480574d009">spausdintiRezultatus</a></div><div class="ttdeci">void spausdintiRezultatus(const vector&lt; Studentas &gt; &amp;grupe, int rodyti, const string &amp;failas)</div><div class="ttdef"><b>Definition</b> vektorius.cpp:41</div></div>
+<div class="ttc" id="astruktura_8h_html_a9a0c4eb4bb83333d70ae416b7450be1a"><div class="ttname"><a href="struktura_8h.html#a9a0c4eb4bb83333d70ae416b7450be1a">skaitytiList</a></div><div class="ttdeci">void skaitytiList(const string &amp;failas, list&lt; Studentas &gt; &amp;grupe, int metodas)</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:142</div></div>
+<div class="ttc" id="astruktura_8h_html_a9e5239a61270d6f096f15934e0c6c0b3"><div class="ttname"><a href="struktura_8h.html#a9e5239a61270d6f096f15934e0c6c0b3">skirstytiVector</a></div><div class="ttdeci">void skirstytiVector(const vector&lt; Studentas &gt; &amp;visi, vector&lt; Studentas &gt; &amp;kieti, vector&lt; Studentas &gt; &amp;tinginiai)</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:189</div></div>
+<div class="ttc" id="astruktura_8h_html_a9f03fbc49791c55ddcc386413ff62440"><div class="ttname"><a href="struktura_8h.html#a9f03fbc49791c55ddcc386413ff62440">skirstytiDeque</a></div><div class="ttdeci">void skirstytiDeque(const deque&lt; Studentas &gt; &amp;visi, deque&lt; Studentas &gt; &amp;kieti, deque&lt; Studentas &gt; &amp;tinginiai)</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:205</div></div>
+<div class="ttc" id="astruktura_8h_html_aa45819fa5d1435bb91de30999039a0ec"><div class="ttname"><a href="struktura_8h.html#aa45819fa5d1435bb91de30999039a0ec">skaitytiIsFailo</a></div><div class="ttdeci">void skaitytiIsFailo(const string &amp;failas, vector&lt; Studentas &gt; &amp;grupe, int metodas)</div><div class="ttdef"><b>Definition</b> vektorius.cpp:9</div></div>
+<div class="ttc" id="astruktura_8h_html_abacf3685fc7c6ec4a7ebd5709828c157"><div class="ttname"><a href="struktura_8h.html#abacf3685fc7c6ec4a7ebd5709828c157">vykdytiVector</a></div><div class="ttdeci">void vykdytiVector()</div><div class="ttdef"><b>Definition</b> vektorius.cpp:87</div></div>
+<div class="ttc" id="astruktura_8h_html_abaf301b9bdeb77808efa1606acebef66"><div class="ttname"><a href="struktura_8h.html#abaf301b9bdeb77808efa1606acebef66">test2</a></div><div class="ttdeci">void test2(const string &amp;failas, int metodas)</div></div>
+<div class="ttc" id="astruktura_8h_html_ac373cda6937b13211145b1b0b0d5aa72"><div class="ttname"><a href="struktura_8h.html#ac373cda6937b13211145b1b0b0d5aa72">skaitytiVector</a></div><div class="ttdeci">void skaitytiVector(const string &amp;failas, vector&lt; Studentas &gt; &amp;grupe, int metodas)</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:119</div></div>
+<div class="ttc" id="astruktura_8h_html_ad5b55bf4907752a00f3844e104defd3e"><div class="ttname"><a href="struktura_8h.html#ad5b55bf4907752a00f3844e104defd3e">genVarda</a></div><div class="ttdeci">string genVarda()</div><div class="ttdoc">Atsitiktinai parenka vardą iš fiksuoto sąrašo.</div><div class="ttdef"><b>Definition</b> funkcijos.cpp:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="struktura_8h.html">struktura.h</a></li>
+    <li class="footer">Sugeneruota <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

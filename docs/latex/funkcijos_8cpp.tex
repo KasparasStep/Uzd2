@@ -1,0 +1,152 @@
+\doxysection{funkcijos.\+cpp Failo Nuoroda}
+\hypertarget{funkcijos_8cpp}{}\label{funkcijos_8cpp}\index{funkcijos.cpp@{funkcijos.cpp}}
+{\ttfamily \+\#include $<$windows.\+h$>$}\newline
+{\ttfamily \+\#include "{}struktura.\+h"{}}\newline
+\doxysubsubsection*{Apibrėžimai}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{funkcijos_8cpp_a9f918755b601cf4bffca775992e6fb90}{NOMINMAX}}
+\item 
+\+\#define \doxymbox{\hyperlink{funkcijos_8cpp_ac7bef5d85e3dcd73eef56ad39ffc84a9}{WIN32\+\_\+\+LEAN\+\_\+\+AND\+\_\+\+MEAN}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funkcijos}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+mt19937 \doxymbox{\hyperlink{funkcijos_8cpp_a6c0cf9e961b3dbe5ca8035b9e51b891e}{mt}} (std::\+chrono::\+steady\+\_\+clock::\+now().time\+\_\+since\+\_\+epoch().count())
+\item 
+string \doxymbox{\hyperlink{funkcijos_8cpp_ad5b55bf4907752a00f3844e104defd3e}{gen\+Varda}} ()
+\begin{DoxyCompactList}\small\item\em Atsitiktinai parenka vardą iš fiksuoto sąrašo. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{funkcijos_8cpp_a496fe6520d7ea61cc4e22a6f7a8786c6}{gen\+Pavarde}} (string vardas)
+\begin{DoxyCompactList}\small\item\em Pagal vardo galūnę parenka tinkamą pavardę (vyrišką ar moterišką). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_a26b40c326bea9bee92f05c73e8891755}{gen\+Pazymius}} (vector$<$ int $>$ \&paz, int \&egz)
+\begin{DoxyCompactList}\small\item\em Sugeneruoja 20 atsitiktinių pažymių ir egzamino balą. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_a48b816971524a82f3057ad89734c5997}{gen\+Faila}} (const string \&failas, int kiek)
+\begin{DoxyCompactList}\small\item\em Sukuria duomenų failą su nurodytu studentų kiekiu. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{funkcijos_8cpp_a04cde72f0226dfe735c373d0bb92f69a}{gauti\+Skaiciu}} (string info, int min, int max)
+\begin{DoxyCompactList}\small\item\em Saugiai skaito skaičių iš įvesties; bando iš naujo kol bus įvesta tinkama reikšmė. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_ac373cda6937b13211145b1b0b0d5aa72}{skaityti\+Vector}} (const string \&failas, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, int metodas)
+\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_a9a0c4eb4bb83333d70ae416b7450be1a}{skaityti\+List}} (const string \&failas, list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, int metodas)
+\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_a5a1a9a6238333f3c8a2d8e0c4c8aaf4b}{skaityti\+Deque}} (const string \&failas, deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&grupe, int metodas)
+\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_a9e5239a61270d6f096f15934e0c6c0b3}{skirstyti\+Vector}} (const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&visi, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&kieti, vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&tinginiai)
+\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_a1c628ce6da2a4ad9ecf868e15b452267}{skirstyti\+List}} (const list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&visi, list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&kieti, list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&tinginiai)
+\item 
+void \doxymbox{\hyperlink{funkcijos_8cpp_a9f03fbc49791c55ddcc386413ff62440}{skirstyti\+Deque}} (const deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&visi, deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&kieti, deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&tinginiai)
+\end{DoxyCompactItemize}
+
+
+\label{funkcijos_8cpp_doc-define-members}
+\Hypertarget{funkcijos_8cpp_doc-define-members}
+\doxysubsection{Apibrėžimų Dokumentacija}
+\Hypertarget{funkcijos_8cpp_a9f918755b601cf4bffca775992e6fb90}\index{funkcijos.cpp@{funkcijos.cpp}!NOMINMAX@{NOMINMAX}}
+\index{NOMINMAX@{NOMINMAX}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{NOMINMAX}{NOMINMAX}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a9f918755b601cf4bffca775992e6fb90} 
+\+\#define NOMINMAX}
+
+\Hypertarget{funkcijos_8cpp_ac7bef5d85e3dcd73eef56ad39ffc84a9}\index{funkcijos.cpp@{funkcijos.cpp}!WIN32\_LEAN\_AND\_MEAN@{WIN32\_LEAN\_AND\_MEAN}}
+\index{WIN32\_LEAN\_AND\_MEAN@{WIN32\_LEAN\_AND\_MEAN}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{WIN32\_LEAN\_AND\_MEAN}{WIN32\_LEAN\_AND\_MEAN}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_ac7bef5d85e3dcd73eef56ad39ffc84a9} 
+\+\#define WIN32\+\_\+\+LEAN\+\_\+\+AND\+\_\+\+MEAN}
+
+
+
+\label{funkcijos_8cpp_doc-func-members}
+\Hypertarget{funkcijos_8cpp_doc-func-members}
+\doxysubsection{Funkcijos Dokumentacija}
+\Hypertarget{funkcijos_8cpp_a04cde72f0226dfe735c373d0bb92f69a}\index{funkcijos.cpp@{funkcijos.cpp}!gautiSkaiciu@{gautiSkaiciu}}
+\index{gautiSkaiciu@{gautiSkaiciu}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{gautiSkaiciu()}{gautiSkaiciu()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a04cde72f0226dfe735c373d0bb92f69a} 
+int gauti\+Skaiciu (\begin{DoxyParamCaption}\item[{string}]{info}{, }\item[{int}]{min}{, }\item[{int}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Saugiai skaito skaičių iš įvesties; bando iš naujo kol bus įvesta tinkama reikšmė. 
+
+\Hypertarget{funkcijos_8cpp_a48b816971524a82f3057ad89734c5997}\index{funkcijos.cpp@{funkcijos.cpp}!genFaila@{genFaila}}
+\index{genFaila@{genFaila}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{genFaila()}{genFaila()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a48b816971524a82f3057ad89734c5997} 
+void gen\+Faila (\begin{DoxyParamCaption}\item[{const string \&}]{failas}{, }\item[{int}]{kiek}{}\end{DoxyParamCaption})}
+
+
+
+Sukuria duomenų failą su nurodytu studentų kiekiu. 
+
+\Hypertarget{funkcijos_8cpp_a496fe6520d7ea61cc4e22a6f7a8786c6}\index{funkcijos.cpp@{funkcijos.cpp}!genPavarde@{genPavarde}}
+\index{genPavarde@{genPavarde}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{genPavarde()}{genPavarde()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a496fe6520d7ea61cc4e22a6f7a8786c6} 
+string gen\+Pavarde (\begin{DoxyParamCaption}\item[{string}]{vardas}{}\end{DoxyParamCaption})}
+
+
+
+Pagal vardo galūnę parenka tinkamą pavardę (vyrišką ar moterišką). 
+
+\Hypertarget{funkcijos_8cpp_a26b40c326bea9bee92f05c73e8891755}\index{funkcijos.cpp@{funkcijos.cpp}!genPazymius@{genPazymius}}
+\index{genPazymius@{genPazymius}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{genPazymius()}{genPazymius()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a26b40c326bea9bee92f05c73e8891755} 
+void gen\+Pazymius (\begin{DoxyParamCaption}\item[{vector$<$ int $>$ \&}]{paz}{, }\item[{int \&}]{egz}{}\end{DoxyParamCaption})}
+
+
+
+Sugeneruoja 20 atsitiktinių pažymių ir egzamino balą. 
+
+\Hypertarget{funkcijos_8cpp_ad5b55bf4907752a00f3844e104defd3e}\index{funkcijos.cpp@{funkcijos.cpp}!genVarda@{genVarda}}
+\index{genVarda@{genVarda}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{genVarda()}{genVarda()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_ad5b55bf4907752a00f3844e104defd3e} 
+string gen\+Varda (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Atsitiktinai parenka vardą iš fiksuoto sąrašo. 
+
+\Hypertarget{funkcijos_8cpp_a6c0cf9e961b3dbe5ca8035b9e51b891e}\index{funkcijos.cpp@{funkcijos.cpp}!mt@{mt}}
+\index{mt@{mt}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{mt()}{mt()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a6c0cf9e961b3dbe5ca8035b9e51b891e} 
+std::\+mt19937 mt (\begin{DoxyParamCaption}\item[{std::\+chrono::\+steady\+\_\+clock::\+now().time\+\_\+since\+\_\+epoch().count()}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{funkcijos_8cpp_a5a1a9a6238333f3c8a2d8e0c4c8aaf4b}\index{funkcijos.cpp@{funkcijos.cpp}!skaitytiDeque@{skaitytiDeque}}
+\index{skaitytiDeque@{skaitytiDeque}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skaitytiDeque()}{skaitytiDeque()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a5a1a9a6238333f3c8a2d8e0c4c8aaf4b} 
+void skaityti\+Deque (\begin{DoxyParamCaption}\item[{const string \&}]{failas}{, }\item[{deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{int}]{metodas}{}\end{DoxyParamCaption})}
+
+\Hypertarget{funkcijos_8cpp_a9a0c4eb4bb83333d70ae416b7450be1a}\index{funkcijos.cpp@{funkcijos.cpp}!skaitytiList@{skaitytiList}}
+\index{skaitytiList@{skaitytiList}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skaitytiList()}{skaitytiList()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a9a0c4eb4bb83333d70ae416b7450be1a} 
+void skaityti\+List (\begin{DoxyParamCaption}\item[{const string \&}]{failas}{, }\item[{list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{int}]{metodas}{}\end{DoxyParamCaption})}
+
+\Hypertarget{funkcijos_8cpp_ac373cda6937b13211145b1b0b0d5aa72}\index{funkcijos.cpp@{funkcijos.cpp}!skaitytiVector@{skaitytiVector}}
+\index{skaitytiVector@{skaitytiVector}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skaitytiVector()}{skaitytiVector()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_ac373cda6937b13211145b1b0b0d5aa72} 
+void skaityti\+Vector (\begin{DoxyParamCaption}\item[{const string \&}]{failas}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{grupe}{, }\item[{int}]{metodas}{}\end{DoxyParamCaption})}
+
+\Hypertarget{funkcijos_8cpp_a9f03fbc49791c55ddcc386413ff62440}\index{funkcijos.cpp@{funkcijos.cpp}!skirstytiDeque@{skirstytiDeque}}
+\index{skirstytiDeque@{skirstytiDeque}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skirstytiDeque()}{skirstytiDeque()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a9f03fbc49791c55ddcc386413ff62440} 
+void skirstyti\+Deque (\begin{DoxyParamCaption}\item[{const deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{visi}{, }\item[{deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{kieti}{, }\item[{deque$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{tinginiai}{}\end{DoxyParamCaption})}
+
+\Hypertarget{funkcijos_8cpp_a1c628ce6da2a4ad9ecf868e15b452267}\index{funkcijos.cpp@{funkcijos.cpp}!skirstytiList@{skirstytiList}}
+\index{skirstytiList@{skirstytiList}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skirstytiList()}{skirstytiList()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a1c628ce6da2a4ad9ecf868e15b452267} 
+void skirstyti\+List (\begin{DoxyParamCaption}\item[{const list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{visi}{, }\item[{list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{kieti}{, }\item[{list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{tinginiai}{}\end{DoxyParamCaption})}
+
+\Hypertarget{funkcijos_8cpp_a9e5239a61270d6f096f15934e0c6c0b3}\index{funkcijos.cpp@{funkcijos.cpp}!skirstytiVector@{skirstytiVector}}
+\index{skirstytiVector@{skirstytiVector}!funkcijos.cpp@{funkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skirstytiVector()}{skirstytiVector()}}
+{\footnotesize\ttfamily \label{funkcijos_8cpp_a9e5239a61270d6f096f15934e0c6c0b3} 
+void skirstyti\+Vector (\begin{DoxyParamCaption}\item[{const vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{visi}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{kieti}{, }\item[{vector$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{tinginiai}{}\end{DoxyParamCaption})}
+
