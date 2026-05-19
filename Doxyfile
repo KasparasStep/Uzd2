@@ -1,0 +1,59 @@
+# Doxyfile — minimalus, bet pilnas konfigūracinis failas dokumentacijai generuoti
+
+# ---- Projekto info ----
+PROJECT_NAME           = "Studentu pazymiu programa"
+PROJECT_NUMBER         = "v2.0"
+PROJECT_BRIEF          = "C++17 programa studentu pazymiams skaiciuoti ir grupiuoti"
+
+# ---- Įvestis / išvestis ----
+OUTPUT_DIRECTORY       = docs
+INPUT                  = struktura.h \
+                         Uzd2.cpp \
+                         vektorius.cpp \
+                         funkcijos.cpp \
+                         testavimas.cpp \
+                         stud_Vector.cpp \
+                         stud_List.cpp \
+                         stud_Deque.cpp \
+                         testas.cpp \
+                         unit_testai.cpp \
+                         README.md
+
+USE_MDFILE_AS_MAINPAGE = README.md
+RECURSIVE              = NO
+
+# ---- Ką dokumentuoti ----
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_METHODS  = YES
+
+# ---- Kalba ir kodavimas ----
+OUTPUT_LANGUAGE        = Lithuanian
+INPUT_ENCODING         = UTF-8
+DOXYFILE_ENCODING      = UTF-8
+
+# ---- HTML ----
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_TREEVIEW      = YES
+
+# ---- LaTeX (PDF) ----
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+USE_PDFLATEX           = YES
+PDF_HYPERLINKS         = YES
+COMPACT_LATEX          = NO
+PAPER_TYPE             = a4
+
+# ---- Diagramos (klasių hierarchija) ----
+HAVE_DOT               = NO
+CLASS_DIAGRAMS         = YES
+COLLABORATION_GRAPH    = NO
+UML_LOOK               = NO
+
+# ---- Kiti nustatymai ----
+JAVADOC_AUTOBRIEF      = YES
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = NO

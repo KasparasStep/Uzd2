@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Studentu pazymiu programa: Pirmoji užduotis — v1.0 pre-release</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Studentu pazymiu programa<span id="projectnumber">&#160;v2.0</span>
+   </div>
+   <div id="projectbrief">C++17 programa studentu pazymiams skaiciuoti ir grupiuoti</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Sugeneruota Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Paieška" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('index.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Pirmoji užduotis — v1.0 pre-release </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<p>C++17 programa studentų galutinių pažymių skaičiavimui, rūšiavimui ir skaidymui į grupes. Versija v1.0 prideda konteinerių greičio tyrimą (<span class="tt">std::vector</span>, <span class="tt">std::list</span>, <span class="tt">std::deque</span>).</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Failų struktūra</h1>
+<div class="fragment"><div class="line">...</div>
+<div class="line">├── struktura.h       — bendras antraštės failas (struktūra, using, prototipai)</div>
+<div class="line">├── funkcijos.cpp     — pagalbinės funkcijos (generatoriai, matematika, I/O)</div>
+<div class="line">├── vektorius.cpp     — pagrindinio meniu logika (v0.4, std::vector)</div>
+<div class="line">├── testavimas.cpp    — test1 (failų kūrimas), test2 (vector lyginimas)</div>
+<div class="line">├── Uzd1.cpp          — pagrindinis įėjimas (projektas Uzd1)</div>
+<div class="line">├── vector.cpp        — v1.0 tyrimas: std::vector  → vykdomasis: stud_Vector</div>
+<div class="line">├── list.cpp          — v1.0 tyrimas: std::list    → vykdomasis: stud_List</div>
+<div class="line">├── deque.cpp         — v1.0 tyrimas: std::deque   → vykdomasis: stud_Deque</div>
+<div class="line">├── CMakeLists.txt    — build konfigūracija (Windows / Linux / macOS)</div>
+<div class="line">├── Makefile          — build konfigūracija (Linux / macOS, be CMake)</div>
+<div class="line">└── Data/             — sugeneruoti testavimo failai (sukuriamas automatiškai)</div>
+<div class="line">    ├── studentai1k.txt</div>
+<div class="line">    ├── studentai10k.txt</div>
+<div class="line">    ├── studentai100k.txt</div>
+<div class="line">    ├── studentai1M.txt</div>
+<div class="line">    └── studentai10M.txt</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Bendras <span class="tt">Data/</span> katalogas</h2>
+<p>Visos trys tyrimo programos (<span class="tt">vector</span>, <span class="tt">list</span>, <span class="tt">deque</span>) ir senoji (v0.4) programa skaito duomenų failus iš to paties <span class="tt">Data/</span> katalogo. Tai reiškia, kad failus reikia sugeneruoti tik vieną kartą — bet kuri programa gali tai padaryti, o likusios naudos tuos pačius failus.</p>
+<p>Katalogas sukuriamas automatiškai, kai pasirenkate failų generavimą. Jis atsiranda šalia vykdomojo failo.</p>
+<div class="fragment"><div class="line">Data/</div>
+<div class="line">├── studentai1k.txt      (~136 KB)</div>
+<div class="line">├── studentai10k.txt     (~1.4 MB)</div>
+<div class="line">├── studentai100k.txt    (~14 MB)</div>
+<div class="line">├── studentai1M.txt      (~136 MB)</div>
+<div class="line">└── studentai10M.txt     (~1.4 GB)</div>
+</div><!-- fragment --><hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Įdiegimas ir kompiliavimas</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Reikalavimai</h2>
+<ul>
+<li>C++17 palaikantis kompiliatorius (<span class="tt">g++ 9+</span> arba <span class="tt">clang++ 9+</span> arba MSVC 2019+)</li>
+<li>CMake 3.14+ (neprivaloma — galima kompiliuoti rankiniu būdu)</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Būdas 1 — Makefile (Linux / macOS)</h2>
+<p>Nereikia jokių papildomų įrankių — tik <span class="tt">g++</span> ir <span class="tt">make</span>, kurie dažniausiai jau įdiegti.</p>
+<p><b>1. Patikrink ar įrankiai yra:</b></p>
+<div class="fragment"><div class="line">g++ --version</div>
+<div class="line">make --version</div>
+</div><!-- fragment --><p>Jei <span class="tt">g++</span> nėra — įdiek:</p>
+<div class="fragment"><div class="line"># Ubuntu / Debian</div>
+<div class="line">sudo apt install build-essential</div>
+<div class="line"> </div>
+<div class="line"># macOS</div>
+<div class="line">xcode-select --install</div>
+</div><!-- fragment --><p><b>2. Eik į projekto katalogą:</b></p>
+<div class="fragment"><div class="line">cd /kelias/iki/projekto</div>
+</div><!-- fragment --><p>Tai katalogas, kuriame yra <span class="tt">Makefile</span> ir visi <span class="tt">.cpp</span> failai.</p>
+<p><b>3. Kompiliuok:</b></p>
+<div class="fragment"><div class="line"># Sukompiliuoja visus keturis projektus iš karto</div>
+<div class="line">make</div>
+<div class="line"> </div>
+<div class="line"># Arba tik vieną konkretų</div>
+<div class="line">make Uzd1</div>
+<div class="line">make stud_Vector</div>
+<div class="line">make stud_List</div>
+<div class="line">make stud_Deque</div>
+</div><!-- fragment --><p><b>4. Paleisk:</b></p>
+<div class="fragment"><div class="line">./Uzd1</div>
+<div class="line">./stud_Vector</div>
+<div class="line">./stud_List</div>
+<div class="line">./stud_Deque</div>
+</div><!-- fragment --><p><b>5. Ištrinti sukompiliuotus failus:</b></p>
+<div class="fragment"><div class="line">make clean</div>
+</div><!-- fragment --><p>Vykdomieji failai atsiranda tiesiai projekto kataloge šalia <span class="tt">.cpp</span> failų — <span class="tt">Data/</span> katalogas randamas teisingai.</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+Būdas 2 — CMake (Windows / Linux / macOS)</h2>
+<p><b>Linux / macOS:</b></p>
+<div class="fragment"><div class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release</div>
+<div class="line">cmake --build build</div>
+</div><!-- fragment --><p><b>Windows su MinGW:</b></p>
+<div class="fragment"><div class="line">cmake -B build -G &quot;MinGW Makefiles&quot; -DCMAKE_BUILD_TYPE=Release</div>
+<div class="line">cmake --build build</div>
+</div><!-- fragment --><p><b>Windows su Visual Studio</b> — atsidaryk <span class="tt">CMakeLists.txt</span> tiesiai per Visual Studio (File → Open → CMake), pasirink konfigūraciją Release ir spausk Build All.</p>
+<p>Vykdomieji failai rašomi tiesiai į projekto katalogą (ne į <span class="tt">build/</span>), kad <span class="tt">Data/</span> aplankas būtų randamas teisingai.</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+Būdas 3 — rankiniu būdu (g++)</h2>
+<div class="fragment"><div class="line">g++ -O2 -std=c++17 Uzd1.cpp vektorius.cpp testavimas.cpp funkcijos.cpp -o Uzd1</div>
+<div class="line">g++ -O2 -std=c++17 vector.cpp funkcijos.cpp -o stud_Vector</div>
+<div class="line">g++ -O2 -std=c++17 list.cpp   funkcijos.cpp -o stud_List</div>
+<div class="line">g++ -O2 -std=c++17 deque.cpp  funkcijos.cpp -o stud_Deque</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+Naudojimas</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+Pagrindinė programa</h2>
+<p>Interaktyvus meniu. Leidžia įvesti studentus ranka, generuoti juos arba nuskaityti iš failo, rūšiuoti ir skaidyti į grupes.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+Tyrimo programos</h2>
+<p>Paleiskite bet kurią iš trijų programų. Pirmą kartą pasirinkite failų generavimą — jie bus sukurti <span class="tt">Data/</span> kataloge ir visų programų bendrai naudojami.</p>
+<div class="fragment"><div class="line">./stud_Vector   # sugeneruoja Data/ ir atlieka tyrimą</div>
+<div class="line">./stud_List     # naudoja tuos pačius Data/ failus</div>
+<div class="line">./stud_Deque    # naudoja tuos pačius Data/ failus</div>
+</div><!-- fragment --><p>Failų generuoti antrą kartą nereikia — tiesiog atsakykite <span class="tt">0</span> į klausimą apie generavimą.</p>
+<hr  />
+<h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+Releasai</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+v0.1 — pradinė versija</h2>
+<p>Bazinė struktūra: <span class="tt"><a class="el" href="class_studentas.html">Studentas</a></span> su <span class="tt">std::vector&lt;int&gt;</span> pažymiams, rankinis įvedimas, galutinio pažymio skaičiavimas vidurkiu ir mediana.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+v0.2</h2>
+<p>Pridėtas skaitymas iš failo ir rezultatų išvedimas į failą.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+v0.3</h2>
+<p>Pridėtas automatinis duomenų generavimas (vardai, pavardės, pažymiai). Pridėta klaidų apdorojimas <span class="tt"><a class="el" href="struktura_8h.html#a04cde72f0226dfe735c373d0bb92f69a">gautiSkaiciu</a></span> funkcijai.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+v0.4</h2>
+<p>Pridėtas studentų skaidymas į dvi grupes: <span class="tt">kieti</span> (galutinis ≥ 5.0) ir <span class="tt">tinginiai</span> (galutinis &lt; 5.0). Pridėtas failų kūrimo ir duomenų apdorojimo greičio tyrimas (test1, test2). Naudojama <span class="tt">copy_if</span> į du naujus <span class="tt">std::vector</span> konteinerius.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+v1.0 -prerelease</h2>
+<p>Pridėtos trys atskiros tyrimo programos (<span class="tt">vector</span>, <span class="tt">list</span>, <span class="tt">deque</span>), matuojančios:</p>
+<ul>
+<li>duomenų nuskaitymą iš failo;</li>
+<li>studentų rūšiavimą mažėjančia galutinio pažymio tvarka;</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+v1.0</h2>
+<ul>
+<li>skaidymą į dvi grupes dviem strategijomis (S1 ir S3).</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+Konteinerių tyrimo rezultatai</h1>
+<p>Testavimo sistema: <em>(ASUS VIVOBOOK S 14)</em></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Parametras  </th><th class="markdownTableHeadNone">Reikšmė  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">CPU  </td><td class="markdownTableBodyNone">AMD Ryzen AI 9  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">RAM  </td><td class="markdownTableBodyNone">24 GB  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Saugykla  </td><td class="markdownTableBodyNone">1 TB SSD (NVMe)  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">OS  </td><td class="markdownTableBodyNone">Windows 11  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Kompiliatorius  </td><td class="markdownTableBodyNone">g++  </td></tr>
+</table>
+<p>Žemiau pateikti rezultatai, gauti testavimo metu (su release):</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+Nuskaitymas (s)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th><th class="markdownTableHeadNone">list  </th><th class="markdownTableHeadNone">deque  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0050  </td><td class="markdownTableBodyNone">0.0042  </td><td class="markdownTableBodyNone">0.0050  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0411  </td><td class="markdownTableBodyNone">0.0407  </td><td class="markdownTableBodyNone">0.0406  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.3905  </td><td class="markdownTableBodyNone">0.3891  </td><td class="markdownTableBodyNone">0.3811  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">3.7790  </td><td class="markdownTableBodyNone">3.7911  </td><td class="markdownTableBodyNone">3.7534  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">38.2739  </td><td class="markdownTableBodyNone">50.6590  </td><td class="markdownTableBodyNone">49.0184  </td></tr>
+</table>
+<p>Nuskaitymas visur panašus — skirtumai mažesni nei failo I/O triukšmas.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+Rūšiavimas (s)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th><th class="markdownTableHeadNone">list  </th><th class="markdownTableHeadNone">deque  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0001  </td><td class="markdownTableBodyNone">0.0000  </td><td class="markdownTableBodyNone">0.0001  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0009  </td><td class="markdownTableBodyNone">0.0007  </td><td class="markdownTableBodyNone">0.0011  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0073  </td><td class="markdownTableBodyNone">0.0193  </td><td class="markdownTableBodyNone">0.0128  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0855  </td><td class="markdownTableBodyNone">0.5396  </td><td class="markdownTableBodyNone">0.2673  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.7860  </td><td class="markdownTableBodyNone">12.2730  </td><td class="markdownTableBodyNone">4.2492  </td></tr>
+</table>
+<p><span class="tt">std::vector</span> rūšiuojamas greičiausiai dėl gretimos atminties (CPU talpykla). <span class="tt">list</span> yra ~2.5× lėtesnis 100k atveju. <span class="tt">deque</span> artimas vektoriui.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+Skaidymo strategijos</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+S1 — du nauji konteineriai (<span class="tt">copy_if</span>)</h2>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+Skaidymas (s)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th><th class="markdownTableHeadNone">list  </th><th class="markdownTableHeadNone">deque  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0002  </td><td class="markdownTableBodyNone">0.0001  </td><td class="markdownTableBodyNone">0.0001  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0016  </td><td class="markdownTableBodyNone">0.0021  </td><td class="markdownTableBodyNone">0.0014  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0215  </td><td class="markdownTableBodyNone">0.0330  </td><td class="markdownTableBodyNone">0.0236  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.2446  </td><td class="markdownTableBodyNone">0.3862  </td><td class="markdownTableBodyNone">0.2574  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">3.1586  </td><td class="markdownTableBodyNone">5.2494  </td><td class="markdownTableBodyNone">3.2320  </td></tr>
+</table>
+<p>Originalas nekeičiamas. Kiekvienas studentas saugomas <b>dviejose</b> vietose atmintyje. Du pilni praėjimai per duomenis.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+S3 — <span class="tt">stable_partition</span> + <span class="tt">move</span>/<span class="tt">splice</span></h2>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+Skaidymas (s)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th><th class="markdownTableHeadNone">list  </th><th class="markdownTableHeadNone">deque  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0000  </td><td class="markdownTableBodyNone">0.0000  </td><td class="markdownTableBodyNone">0.0000  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0001  </td><td class="markdownTableBodyNone">0.0001  </td><td class="markdownTableBodyNone">0.0003  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0011  </td><td class="markdownTableBodyNone">0.0056  </td><td class="markdownTableBodyNone">0.0045  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0130  </td><td class="markdownTableBodyNone">0.0736  </td><td class="markdownTableBodyNone">0.0636  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.1820  </td><td class="markdownTableBodyNone">0.8060  </td><td class="markdownTableBodyNone">0.7349  </td></tr>
+</table>
+<p>Duomenys tvarkomi <b>vietoje</b> — nereikia papildomos atminties iteracijoms. Vargšiukai perkeliami (<span class="tt">move</span>) be kopijavimo. <span class="tt">list</span> versijoje vietoj <span class="tt">move</span> naudojamas <span class="tt">splice()</span> — tik rodyklių pakeitimas.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+v1.1</h2>
+<p>Struct pakeista į Class Su visual studio</p>
+<p>Skaidymas naudojant vector (be optimizacijos):</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0000  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0001  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0011  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0125  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.2181  </td></tr>
+</table>
+<p>(su /O1) </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0000  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0001  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0010  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0124  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.3042  </td></tr>
+</table>
+<p>(su /O2) </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0000  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0001  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0009  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0133  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.1656  </td></tr>
+</table>
+<p>Su cmake:</p>
+<p>(su /O1) </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0000  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0001  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0021  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0273  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.3471  </td></tr>
+</table>
+<p>(su /O2) </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0000  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0003  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0025  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0282  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.3588  </td></tr>
+</table>
+<p>(su /O3) </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Failas  </th><th class="markdownTableHeadNone">vector  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 000 įrašų  </td><td class="markdownTableBodyNone">0.0000  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10 000 įrašų  </td><td class="markdownTableBodyNone">0.0003  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 000 įrašų  </td><td class="markdownTableBodyNone">0.0023  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 000 000 įrašų  </td><td class="markdownTableBodyNone">0.0272  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10 000 000 įrašų  </td><td class="markdownTableBodyNone">0.4811  </td></tr>
+</table>
+<p>Nors naudojant cmake dalinimas užtrunka ilgiau (apie 2x), tačiau failų nuskaitymas vyskta kelis kart greičiau. Tokio dydžio duomenimis programa bendrai veikia greičiau. O naudojant Visual Studio ar CMake vis tiek bus greičiau nei naudojant struct be optimizacijos. </p>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Sugeneruota <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

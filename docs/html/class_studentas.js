@@ -1,0 +1,26 @@
+var class_studentas =
+[
+    [ "Studentas", "class_studentas.html#a875cdf945b2e62c5220e5d326c7349d6", null ],
+    [ "Studentas", "class_studentas.html#a22f8607d9f1902b6484973cbec073545", null ],
+    [ "~Studentas", "class_studentas.html#a82357a745f867e6a92e820a8cc9110f9", null ],
+    [ "Studentas", "class_studentas.html#a9c99fb8afa58ff7806759aa22e3c1a6f", null ],
+    [ "Studentas", "class_studentas.html#a35f81eeea8421d4c5a4d1a2e4cfd9f59", null ],
+    [ "addPazymys", "class_studentas.html#af7d66b90b71aa433ecf2c179044271aa", null ],
+    [ "apskaiciuoti", "class_studentas.html#a17e615a22acc4adaa419d1e512d9b54e", null ],
+    [ "egz", "class_studentas.html#a5fde327b128bf9763233e09485d5cdaf", null ],
+    [ "galMed", "class_studentas.html#ad015ef779f21066b847a4839fa5e84f9", null ],
+    [ "galVid", "class_studentas.html#ae6e74fb02ad322889045ba1fcb54c1d8", null ],
+    [ "nustatytiEgzIsGalo", "class_studentas.html#a879c960946a84b497c35c3245cffb8f0", null ],
+    [ "operator=", "class_studentas.html#a8bd0a78e7c4ba39c5459c8e0b298bc47", null ],
+    [ "operator=", "class_studentas.html#a3f542851deb85ac5cf58c6b62ab3b7c7", null ],
+    [ "paz", "class_studentas.html#ab1329cf7ec560fa7557e2c2cfe6517bd", null ],
+    [ "setEgz", "class_studentas.html#af7a2740c86cee79b07ea47b3eb819280", null ],
+    [ "skaiciuotiMediana", "class_studentas.html#a8cd056361bc0172f697016c8cde7296c", null ],
+    [ "skaiciuotiVidurki", "class_studentas.html#a211c51313b78593a30d8a5b49a015410", null ],
+    [ "spausdinti", "class_studentas.html#a1e8d7fd7d5e8c2f51b4399a8252cfad1", null ],
+    [ "operator>>", "class_studentas.html#a4ec247aa7686c55042d20203ad0ad06b", null ],
+    [ "egz_", "class_studentas.html#a1d99507fca56727060b9b76a7a52f346", null ],
+    [ "gal_med_", "class_studentas.html#a5fea16104bc45f09342a1485592a3707", null ],
+    [ "gal_vid_", "class_studentas.html#a8654575dc4377adc46f0b405c0695d17", null ],
+    [ "paz_", "class_studentas.html#a39a34587900f9e85af909d054bad0466", null ]
+];
