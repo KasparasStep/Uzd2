@@ -9,7 +9,6 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # ---- Optimizavimo lygis ----
-# Pakeiskite noredami keisti: -O1, -O2, -O3
 if(MSVC)
     set(CMAKE_CXX_FLAGS_RELEASE "/O2")
 else()
@@ -28,25 +27,30 @@ set(SHARED_SRC funkcijos.cpp)
 add_executable(Uzd2
     Uzd2.cpp
     vektorius.cpp
-    testavimas.cpp
+    failu_greicio_test.cpp
     ${SHARED_SRC}
 )
 
 # ---- Konteineriu tyrimas ----
-add_executable(stud_Vector stud_Vector.cpp ${SHARED_SRC})
-add_executable(stud_List   stud_List.cpp   ${SHARED_SRC})
-add_executable(stud_Deque  stud_Deque.cpp  ${SHARED_SRC})
+add_executable(stud_Vector  Vector/Vector.cpp  ${SHARED_SRC})
+add_executable(stud_List    List/List.cpp      ${SHARED_SRC})
+add_executable(stud_Deque   Deque/Deque.cpp    ${SHARED_SRC})
 
-# ---- Paprastas metodų testas (v1.2/v1.5) ----
-add_executable(metodu_test metodu_test.cpp ${SHARED_SRC})
+# Subkatalogai turi rasti struktura.h pagrindiniame kataloge
+target_include_directories(stud_Vector PRIVATE ${CMAKE_SOURCE_DIR})
+target_include_directories(stud_List   PRIVATE ${CMAKE_SOURCE_DIR})
+target_include_directories(stud_Deque  PRIVATE ${CMAKE_SOURCE_DIR})
+
+# ---- Metodu testas (v1.2/v1.5) ----
+add_executable(metodu_test  metodu_test.cpp  ${SHARED_SRC})
 
 # ---- Catch2 unit testai (v2.0) ----
-if(EXISTS "${CMAKE_SOURCE_DIR}/catch.hpp")
-    add_executable(unit_testai unit_testai.cpp ${SHARED_SRC})
-    message(STATUS "catch.hpp rastas - unit_testai bus sukompiliuoti")
+if(EXISTS "${CMAKE_SOURCE_DIR}/unit_test/unit_test.cpp")
+    add_executable(unit_testai  unit_test/unit_test.cpp  ${SHARED_SRC})
+    target_include_directories(unit_testai PRIVATE ${CMAKE_SOURCE_DIR})
+    message(STATUS "unit_test/unit_test.cpp rastas - unit_testai bus sukompiliuoti")
 else()
-    message(STATUS "catch.hpp nerastas - unit_testai praleisti")
-    message(STATUS "  Atsisiuskite is https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp")
+    message(STATUS "unit_test/unit_test.cpp nerastas - unit_testai praleisti")
 endif()
 
 # ---- Doxygen dokumentacija ----

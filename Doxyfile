@@ -9,12 +9,13 @@ INPUT                  = struktura.h \
                          Uzd2.cpp \
                          vektorius.cpp \
                          funkcijos.cpp \
-                         testavimas.cpp \
-                         stud_Vector.cpp \
-                         stud_List.cpp \
-                         stud_Deque.cpp \
+                         funkcijos.h \
+                         failu_greicio_test.cpp \
+                         Vector/Vector.cpp \
+                         List/List.cpp \
+                         Deque/Deque.cpp \
                          metodu_test.cpp \
-                         unit_testai.cpp \
+                         unit_test/unit_test.cpp \
                          README.md
 
 USE_MDFILE_AS_MAINPAGE = README.md
