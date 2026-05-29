@@ -361,3 +361,32 @@ public:
             data_[--size_].~T();
         return data_ + idx;
     }
+
+    /// Pakeičia dydį iki count (nauji elementai — numatytoji reikšmė).
+    void resize(size_type count) {
+        if (count < size_) {
+            while (size_ > count) pop_back();
+        }
+        else if (count > size_) {
+            if (count > capacity_) reserve(count);
+            while (size_ < count) { new (data_ + size_) T(); ++size_; }
+        }
+    }
+    /// Pakeičia dydį iki count (nauji elementai — value).
+    void resize(size_type count, const T& value) {
+        if (count < size_) {
+            while (size_ > count) pop_back();
+        }
+        else if (count > size_) {
+            if (count > capacity_) reserve(count);
+            while (size_ < count) { new (data_ + size_) T(value); ++size_; }
+        }
+    }
+
+    /// Sukeičia turinį su kitu vektoriumi (O(1)).
+    void swap(Vector& other) noexcept {
+        std::swap(data_, other.data_);
+        std::swap(size_, other.size_);
+        std::swap(capacity_, other.capacity_);
+    }
+};
