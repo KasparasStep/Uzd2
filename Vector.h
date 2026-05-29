@@ -390,3 +390,35 @@ public:
         std::swap(capacity_, other.capacity_);
     }
 };
+
+// ======================================================
+// Ne-narės funkcijos: palyginimo operatoriai
+// ======================================================
+
+template <typename T>
+bool operator==(const Vector<T>& a, const Vector<T>& b) {
+    if (a.size() != b.size()) return false;
+    for (typename Vector<T>::size_type i = 0; i < a.size(); ++i)
+        if (!(a[i] == b[i])) return false;
+    return true;
+}
+
+template <typename T>
+bool operator!=(const Vector<T>& a, const Vector<T>& b) { return !(a == b); }
+
+template <typename T>
+bool operator<(const Vector<T>& a, const Vector<T>& b) {
+    typename Vector<T>::size_type n = (a.size() < b.size()) ? a.size() : b.size();
+    for (typename Vector<T>::size_type i = 0; i < n; ++i) {
+        if (a[i] < b[i]) return true;
+        if (b[i] < a[i]) return false;
+    }
+    return a.size() < b.size();
+}
+
+template <typename T>
+bool operator>(const Vector<T>& a, const Vector<T>& b) { return b < a; }
+template <typename T>
+bool operator<=(const Vector<T>& a, const Vector<T>& b) { return !(b < a); }
+template <typename T>
+bool operator>=(const Vector<T>& a, const Vector<T>& b) { return !(a < b); }
