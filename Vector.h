@@ -422,3 +422,7 @@ template <typename T>
 bool operator<=(const Vector<T>& a, const Vector<T>& b) { return !(b < a); }
 template <typename T>
 bool operator>=(const Vector<T>& a, const Vector<T>& b) { return !(a < b); }
+
+/// Laisva swap funkcija (kad veiktų su std::swap, ADL).
+template <typename T>
+void swap(Vector<T>& a, Vector<T>& b) noexcept { a.swap(b); }
