@@ -2,12 +2,8 @@
 
 static const string DATA_DIR = "Data/";
 
-// ============================================================
-// test1 — failų kūrimo greičio tyrimas
-// ============================================================
-
 void test1() {
-    cout << "\n=== TYRIMAS 1: Failų kūrimas ===\n";
+    cout << "\n=== TYRIMAS 1: Failu kurimas ===\n";
     fs::create_directories(DATA_DIR);
     const vector<pair<string, int>> failai = {
         {DATA_DIR + "studentai1k.txt",    1'000},
@@ -17,7 +13,7 @@ void test1() {
         {DATA_DIR + "studentai10M.txt",   10'000'000}
     };
     for (const auto& [vardas, kiek] : failai) {
-        cout << "Generuojama " << vardas << " (" << kiek << " įrašų)... ";
+        cout << "Generuojama " << vardas << " (" << kiek << " irasu)... ";
         auto t1 = high_resolution_clock::now();
         genFaila(vardas, kiek);
         auto t2 = high_resolution_clock::now();
@@ -26,39 +22,45 @@ void test1() {
     }
 }
 
-// ============================================================
-// Pagalbinė: splitStudents_S3 — 3 strategija su stable_partition
-// Naudoja galVid()/galMed() getter'ius — ne tiesioginius laukus.
-// ============================================================
+// S2 — naivi su erase (MyVector::erase viduryje O(n), visa strategija O(n^2))
+static void splitStudents_S2(MyVector<Studentas>& grupe,
+    MyVector<Studentas>& tinginiai, int metodas) {
+    auto it = grupe.begin();
+    while (it != grupe.end()) {
+        double g = (metodas == 2) ? it->galMed() : it->galVid();
+        if (g < 5.0) {
+            tinginiai.push_back(move(*it));
+            it = grupe.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+}
 
-static void splitStudents_S3(vector<Studentas>& grupe,
-    vector<Studentas>& vargsiukai, int metodas) {
+// S3 — efektyvi su stable_partition + move
+static void splitStudents_S3(MyVector<Studentas>& grupe,
+    MyVector<Studentas>& tinginiai, int metodas) {
     auto yraKietas = [&](const Studentas& st) {
-        // galMed()/galVid() yra public getter'iai —
-        // gal_med_ ir gal_vid_ private, todėl tiesioginė prieiga draudžiama
         double g = (metodas == 2) ? st.galMed() : st.galVid();
         return g >= 5.0;
         };
     auto riba = stable_partition(grupe.begin(), grupe.end(), yraKietas);
-    vargsiukai.assign(make_move_iterator(riba),
-        make_move_iterator(grupe.end()));
+    tinginiai.assign(make_move_iterator(riba), make_move_iterator(grupe.end()));
     grupe.erase(riba, grupe.end());
 }
 
-// ============================================================
-// test2 — duomenų apdorojimo greičio tyrimas (std::vector)
-// ============================================================
-
 void test2(const string& /* nenaudojamas */, int metodas) {
-    cout << "\n=== TYRIMAS 2: Duomenų apdorojimas (std::vector) ===\n";
+    cout << "\n=== TYRIMAS 2: Duomenu apdorojimas (MyVector) ===\n";
     cout << fixed << setprecision(4);
     cout << left
         << setw(22) << "Failas"
-        << setw(14) << "Nuskaitymas"
-        << setw(14) << "Rūšiavimas"
-        << setw(16) << "S1 (copy_if)"
-        << setw(16) << "S3 (partition)"
-        << "\n" << string(82, '-') << "\n";
+        << setw(13) << "Nuskaitym."
+        << setw(13) << "Rusiavim."
+        << setw(14) << "S1 (naivi)"
+        << setw(14) << "S2 (erase)"
+        << setw(14) << "S3 (partit.)"
+        << "\n" << string(90, '-') << "\n";
 
     const vector<string> failai = {
         DATA_DIR + "studentai1k.txt",
@@ -71,19 +73,17 @@ void test2(const string& /* nenaudojamas */, int metodas) {
     for (const auto& failas : failai) {
         ifstream tikrinimas(failas);
         if (!tikrinimas) {
-            cout << setw(22) << failas << "NERASTAS — paleiskite Tyrimą 1.\n";
+            cout << setw(22) << failas << "NERASTAS — paleiskite Tyrima 1.\n";
             continue;
         }
         tikrinimas.close();
 
-        // Nuskaitymas
-        vector<Studentas> originalas;
+        MyVector<Studentas> originalas;
         auto t1 = high_resolution_clock::now();
         skaitytiIsFailo(failas, originalas, metodas);
         auto t2 = high_resolution_clock::now();
 
-        // Rūšiavimas — galVid()/galMed() vietoj st.gal_vid/st.gal_med
-        vector<Studentas> rusiotas = originalas;
+        MyVector<Studentas> rusiotas = originalas;
         sort(rusiotas.begin(), rusiotas.end(), [&](const Studentas& a, const Studentas& b) {
             double ga = (metodas == 2) ? a.galMed() : a.galVid();
             double gb = (metodas == 2) ? b.galMed() : b.galVid();
@@ -91,25 +91,30 @@ void test2(const string& /* nenaudojamas */, int metodas) {
             });
         auto t3 = high_resolution_clock::now();
 
-        // S1 — du nauji konteineriai
-        vector<Studentas> kieti_s1, vargsiukai_s1;
+        MyVector<Studentas> kieti_s1, tinginiai_s1;
         auto t4 = high_resolution_clock::now();
-        splitStudents(rusiotas, kieti_s1, vargsiukai_s1, metodas);
+        splitStudents(rusiotas, kieti_s1, tinginiai_s1, metodas);
         auto t5 = high_resolution_clock::now();
 
-        // S3 — stable_partition + move
-        vector<Studentas> s3 = rusiotas;
-        vector<Studentas> vargsiukai_s3;
+        MyVector<Studentas> s2 = rusiotas;
+        MyVector<Studentas> tinginiai_s2;
         auto t6 = high_resolution_clock::now();
-        splitStudents_S3(s3, vargsiukai_s3, metodas);
+        splitStudents_S2(s2, tinginiai_s2, metodas);
         auto t7 = high_resolution_clock::now();
 
+        MyVector<Studentas> s3 = rusiotas;
+        MyVector<Studentas> tinginiai_s3;
+        auto t8 = high_resolution_clock::now();
+        splitStudents_S3(s3, tinginiai_s3, metodas);
+        auto t9 = high_resolution_clock::now();
+
         cout << setw(22) << failas
-            << setw(14) << duration<double>(t2 - t1).count()
-            << setw(14) << duration<double>(t3 - t2).count()
-            << setw(16) << duration<double>(t5 - t4).count()
-            << setw(16) << duration<double>(t7 - t6).count()
-            << "  (" << kieti_s1.size() << " kieti, "
-            << vargsiukai_s1.size() << " vargsiukai)\n";
+            << setw(13) << duration<double>(t2 - t1).count()
+            << setw(13) << duration<double>(t3 - t2).count()
+            << setw(14) << duration<double>(t5 - t4).count()
+            << setw(14) << duration<double>(t7 - t6).count()
+            << setw(14) << duration<double>(t9 - t8).count()
+            << "  (kieti: " << kieti_s1.size()
+            << ", tinginiai: " << tinginiai_s1.size() << ")\n";
     }
 }
