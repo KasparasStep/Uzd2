@@ -1,4 +1,4 @@
-//funkcijos.cpp
+//funkcijos.cpp — v3.0
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -6,7 +6,9 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 
+#ifdef _WIN32
 #include <windows.h>
+#endif
 #include "struktura.h"
 
 namespace fs = std::filesystem;
@@ -21,30 +23,27 @@ string genVarda() {
         "Jonas",    "Petras",   "Simas",    "Povilas",  "Mykolas",
         "Tomas",    "Dovydas",  "Matas",    "Lukas",    "Rokas",
         "Evelina",  "Gabija",   "Ieva",     "Greta",    "Sandra",
-        "Eglė",     "Viktorija","Kamilė",   "Viltė",    "Vėjūnė"
+        "Egle",     "Viktorija","Kamile",   "Vilte",    "Vejune"
     };
     return vardai[mt() % 20];
 }
 
 string genPavarde(string vardas) {
     string Vpavardes[] = {
-        "Kazlauskas",   "Jankauskas",  "Petrauskas",   "Stankevičius",
-        "Vasiliauskas", "Butkus",      "Žukauskas",    "Paulauskas",
+        "Kazlauskas",   "Jankauskas",  "Petrauskas",   "Stankevicius",
+        "Vasiliauskas", "Butkus",      "Zukauskas",    "Paulauskas",
         "Urbonas",      "Kavaliauskas"
     };
     string Mpavardes[] = {
-        "Kazlauskaitė",  "Jankauskaitė",  "Petrauskaitė",   "Stankevičiūtė",
-        "Vasiliauskaitė","Butkutė",       "Žukauskaitė",    "Paulauskaitė",
-        "Urbonaitė",     "Kavaliauskaite"
+        "Kazlauskaite",  "Jankauskaite",  "Petrauskaite",   "Stankeviciute",
+        "Vasiliauskaite","Butkute",       "Zukauskaite",    "Paulauskaite",
+        "Urbonaite",     "Kavaliauskaite"
     };
     if (!vardas.empty() && vardas.back() == 's')
         return Vpavardes[mt() % 10];
     return Mpavardes[mt() % 10];
 }
 
-// Generuoja 20 atsitiktinių namų darbų pažymių ir egzamino balą.
-// Rezultatai grąžinami per nuorodas, nes funkcija nenaudoja Studentas objekto —
-// ji yra universali pagalbinė priemonė.
 void genPazymius(vector<int>& paz, int& egz) {
     paz.clear();
     for (int i = 0; i < 20; i++) paz.push_back(mt() % 10 + 1);
@@ -55,18 +54,12 @@ void genPazymius(vector<int>& paz, int& egz) {
 // Failo generavimas
 // ============================================================
 
-/*
-genFaila veikia greičiau nei rezultatų spausdinimo funkcija, nes:
-  - nereiia skaičiuoti galutinių pažymių (tiesiog rašomi skaičiai),
-  - nėra formatavimo operacijų kaip setprecision,
-  - rašymas į failą yra greitesnis nei išvestis į konsolę dideliems kiekiams.
-*/
 void genFaila(const string& failas, int kiek) {
     fs::create_directories("Data");
     ofstream out(failas);
     if (!out) throw runtime_error("Nepavyko atidaryti failo: " + failas);
 
-    out << left << setw(15) << "Vardas" << setw(15) << "Pavardė";
+    out << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
     for (int i = 1; i <= 20; i++) out << setw(5) << ("ND" + to_string(i));
     out << setw(5) << "Egz." << "\n";
 
@@ -91,32 +84,31 @@ int gautiSkaiciu(string info, int min, int max) {
             if (!(cin >> sk)) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw invalid_argument("Įvestas ne skaičius!");
+                throw invalid_argument("Ivestas ne skaicius!");
             }
             if (cin.peek() != '\n' && cin.peek() != ' ' &&
                 cin.peek() != '\t' && cin.peek() != EOF) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw invalid_argument("Skaičius negali turėti papildomų simbolių!");
+                throw invalid_argument("Skaicius negali tureti papildomu simboliu!");
             }
             if (sk < min || sk > max)
-                throw out_of_range("Tokio pasirinkimo nėra!");
+                throw out_of_range("Tokio pasirinkimo nera!");
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             return sk;
         }
         catch (const exception& e) {
-            cout << "Klaida: " << e.what() << " Bandykite dar kartą.\n";
+            cout << "Klaida: " << e.what() << " Bandykite dar karta.\n";
         }
     }
 }
 
 // ============================================================
-// Skaitymo funkcijos (naudojamos tyrimo programose: stud_Vector,
-// stud_List, stud_Deque). Naudoja Studentas klasės setter'ius ir
-// nustatytiEgzIsGalo() metodą vietoj tiesioginio laukų pasiekimo.
+// Skaitymo funkcijos — Vector versija dabar MyVector<Studentas>
+// (list/deque lieka su std konteineriais)
 // ============================================================
 
-void skaitytiVector(const string& failas, vector<Studentas>& grupe, int metodas) {
+void skaitytiVector(const string& failas, MyVector<Studentas>& grupe, int metodas) {
     ifstream in(failas);
     if (!in) throw runtime_error("Failas nerastas: " + failas);
     string eilute;
@@ -131,8 +123,6 @@ void skaitytiVector(const string& failas, vector<Studentas>& grupe, int metodas)
         st.setPavarde(p);
         int paz;
         while (ss >> paz) st.addPazymys(paz);
-        // Paskutinis skaičius eilutėje yra egzaminas —
-        // nustatytiEgzIsGalo() jį išskiria iš pažymių sąrašo.
         st.nustatytiEgzIsGalo();
         st.apskaiciuoti(metodas);
         grupe.push_back(move(st));
@@ -182,12 +172,11 @@ void skaitytiDeque(const string& failas, deque<Studentas>& grupe, int metodas) {
 }
 
 // ============================================================
-// Skirstymo funkcijos (1 strategija: du nauji konteineriai)
-// Naudoja galVid() getterį vietoj tiesioginio gal_vid lauko.
+// Skirstymo funkcijos (naivi S1: du nauji konteineriai)
 // ============================================================
 
-void skirstytiVector(const vector<Studentas>& visi,
-    vector<Studentas>& kieti, vector<Studentas>& tinginiai) {
+void skirstytiVector(const MyVector<Studentas>& visi,
+    MyVector<Studentas>& kieti, MyVector<Studentas>& tinginiai) {
     for (const auto& s : visi) {
         if (s.galVid() < 5.0) tinginiai.push_back(s);
         else                   kieti.push_back(s);
