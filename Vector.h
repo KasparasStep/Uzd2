@@ -203,3 +203,14 @@ public:
         if (pos >= size_) throw std::out_of_range("Vector::at: indeksas uz ribu");
         return data_[pos];
     }
+    /// Prieiga be ribų tikrinimo.
+    reference       operator[](size_type pos) { return data_[pos]; }
+    const_reference operator[](size_type pos) const { return data_[pos]; }
+
+    reference       front() { return data_[0]; }
+    const_reference front() const { return data_[0]; }
+    reference       back() { return data_[size_ - 1]; }
+    const_reference back()  const { return data_[size_ - 1]; }
+
+    pointer       data()       noexcept { return data_; }
+    const_pointer data() const noexcept { return data_; }
