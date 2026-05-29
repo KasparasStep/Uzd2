@@ -340,3 +340,24 @@ public:
         ++size_;
         return data_ + idx;
     }
+
+    /// Pašalina elementą pozicijoje pos. Grąžina iteratorių į kitą elementą.
+    iterator erase(const_iterator pos) {
+        size_type idx = static_cast<size_type>(pos - data_);
+        for (size_type i = idx; i + 1 < size_; ++i)
+            data_[i] = std::move(data_[i + 1]);
+        --size_;
+        data_[size_].~T();
+        return data_ + idx;
+    }
+
+    /// Pašalina intervalą [first, last).
+    iterator erase(const_iterator first, const_iterator last) {
+        size_type idx = static_cast<size_type>(first - data_);
+        size_type count = static_cast<size_type>(last - first);
+        for (size_type i = idx; i + count < size_; ++i)
+            data_[i] = std::move(data_[i + count]);
+        for (size_type i = 0; i < count; ++i)
+            data_[--size_].~T();
+        return data_ + idx;
+    }
