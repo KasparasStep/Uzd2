@@ -114,3 +114,60 @@ public:
         for (const T& val : init) new (data_ + i++) T(val);
         size_ = init.size();
     }
+    // ======================================================
+   // Rule of Five
+   // ======================================================
+
+   /// Kopijavimo konstruktorius — gili kopija.
+    Vector(const Vector& other) {
+        data_ = allocate(other.size_);
+        capacity_ = other.size_;
+        for (size_type i = 0; i < other.size_; ++i)
+            new (data_ + i) T(other.data_[i]);
+        size_ = other.size_;
+    }
+
+    /// Perkėlimo konstruktorius — pagrobia resursus, originalą palieka tuščią.
+    Vector(Vector&& other) noexcept
+        : data_(other.data_), size_(other.size_), capacity_(other.capacity_) {
+        other.data_ = nullptr;
+        other.size_ = 0;
+        other.capacity_ = 0;
+    }
+
+    /// Destruktorius — sunaikina elementus ir atlaisvina atmintį.
+    ~Vector() {
+        destroy_elements();
+        deallocate(data_);
+    }
+
+    /// Kopijavimo priskyrimas (copy-and-swap idioma).
+    Vector& operator=(const Vector& other) {
+        if (this != &other) {
+            Vector tmp(other);
+            swap(tmp);
+        }
+        return *this;
+    }
+
+    /// Perkėlimo priskyrimas.
+    Vector& operator=(Vector&& other) noexcept {
+        if (this != &other) {
+            destroy_elements();
+            deallocate(data_);
+            data_ = other.data_;
+            size_ = other.size_;
+            capacity_ = other.capacity_;
+            other.data_ = nullptr;
+            other.size_ = 0;
+            other.capacity_ = 0;
+        }
+        return *this;
+    }
+
+    /// Priskyrimas iš initializer_list.
+    Vector& operator=(std::initializer_list<T> init) {
+        Vector tmp(init);
+        swap(tmp);
+        return *this;
+    }
