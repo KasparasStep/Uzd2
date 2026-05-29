@@ -279,3 +279,19 @@ public:
         new (data_ + size_) T(std::move(value));
         ++size_;
     }
+
+    /// Sukonstruoja elementą gale vietoje (be tarpinės kopijos).
+    template <typename... Args>
+    reference emplace_back(Args&&... args) {
+        if (size_ == capacity_)
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        new (data_ + size_) T(std::forward<Args>(args)...);
+        ++size_;
+        return back();
+    }
+
+    /// Pašalina paskutinį elementą.
+    void pop_back() {
+        --size_;
+        data_[size_].~T();
+    }
