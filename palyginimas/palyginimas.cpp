@@ -2,7 +2,16 @@
 // palyginimas.cpp — std::vector vs MyVector spartos palyginimas
 // su studentų duomenimis (visos pipeline operacijos)
 // ============================================================
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+
 #include "struktura.h"
+// Tiesioginis itraukimas — apsauga jei struktura.h dar neatnaujinta
+#include "MyVector.h"
 
 // Šabloninė funkcija: tas pats kodas paleidžiamas su skirtingais konteineriais.
 // Container = std::vector<Studentas> arba MyVector<Studentas>.
