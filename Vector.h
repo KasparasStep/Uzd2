@@ -189,3 +189,17 @@ public:
         Vector tmp(init);
         swap(tmp);
     }
+
+    // ======================================================
+    // Elementų prieiga
+    // ======================================================
+
+    /// Prieiga su ribų tikrinimu — meta std::out_of_range.
+    reference at(size_type pos) {
+        if (pos >= size_) throw std::out_of_range("Vector::at: indeksas uz ribu");
+        return data_[pos];
+    }
+    const_reference at(size_type pos) const {
+        if (pos >= size_) throw std::out_of_range("Vector::at: indeksas uz ribu");
+        return data_[pos];
+    }
