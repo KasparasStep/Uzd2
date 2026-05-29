@@ -171,3 +171,21 @@ public:
         swap(tmp);
         return *this;
     }
+    // ======================================================
+   // assign
+   // ======================================================
+
+    void assign(size_type count, const T& value) {
+        Vector tmp(count, value);
+        swap(tmp);
+    }
+    template <typename InputIt,
+        typename = std::enable_if_t<!std::is_integral<InputIt>::value>>
+        void assign(InputIt first, InputIt last) {
+        Vector tmp(first, last);
+        swap(tmp);
+    }
+    void assign(std::initializer_list<T> init) {
+        Vector tmp(init);
+        swap(tmp);
+    }
