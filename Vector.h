@@ -234,3 +234,24 @@ public:
     reverse_iterator       rend()        noexcept { return reverse_iterator(begin()); }
     const_reverse_iterator rend()  const noexcept { return const_reverse_iterator(begin()); }
     const_reverse_iterator crend() const noexcept { return const_reverse_iterator(begin()); }
+
+    // ======================================================
+   // Talpa
+   // ======================================================
+
+    bool      empty()    const noexcept { return size_ == 0; }
+    size_type size()     const noexcept { return size_; }
+    size_type capacity() const noexcept { return capacity_; }
+    size_type max_size() const noexcept {
+        return std::numeric_limits<size_type>::max() / sizeof(T);
+    }
+
+    /// Užtikrina bent new_cap talpą (jei mažiau — nieko nedaro).
+    void reserve(size_type new_cap) {
+        if (new_cap > capacity_) reallocate(new_cap);
+    }
+
+    /// Sumažina talpą iki size().
+    void shrink_to_fit() {
+        if (capacity_ > size_) reallocate(size_);
+    }
