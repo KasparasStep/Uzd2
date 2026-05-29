@@ -1,0 +1,27 @@
+// cpp.hint — Visual Studio IntelliSense patarimai Catch2 makrosams
+//
+// Padedame VS suprasti Catch2 makrosus, kurie dazniausiai sukelia
+// "identifier undefined" ir "argument list missing" klaidas.
+// Sio failo buvimas projekto saknyje automatiskai aptinkamas VS.
+//
+// FAILO VIETA: projekto sakninis katalogas (ten kur CMakeLists.txt)
+
+#define CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_FAST_COMPILE
+#define TEST_CASE(name, ...)    void CATCH_INTERNAL_TEST()
+#define SECTION(name)           if(true)
+#define REQUIRE(expr)           ((void)(expr))
+#define CHECK(expr)             ((void)(expr))
+#define REQUIRE_FALSE(expr)     ((void)(expr))
+#define CHECK_FALSE(expr)       ((void)(expr))
+#define REQUIRE_THROWS_AS(expr, exceptionType)  try { (void)(expr); } catch(exceptionType&) {}
+#define CHECK_THROWS_AS(expr, exceptionType)    try { (void)(expr); } catch(exceptionType&) {}
+#define REQUIRE_NOTHROW(expr)   ((void)(expr))
+#define REQUIRE_THROWS(expr)    ((void)(expr))
+#define GIVEN(desc)             if(true)
+#define WHEN(desc)              if(true)
+#define THEN(desc)              if(true)
+#define AND_WHEN(desc)          if(true)
+#define AND_THEN(desc)          if(true)
+#define Approx(x)               (x)
+#define CATCH_REGISTER_LISTENER(...)

@@ -22,8 +22,25 @@
  *   9. Krastiniai atvejai
  */
 
+ // CATCH_CONFIG_FAST_COMPILE mazina kompiliavimo laika ir pagerina
+ // VS IntelliSense suderinamuma su Catch2 makrosais.
+ // Sita define TURI buti PRIES catch.hpp include.
+#ifndef CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_FAST_COMPILE
+#endif
+
 #include "catch.hpp"
+
+// Tiesioginis MyVector.h itraukimas (apsauga jei struktura.h
+// dar neatnaujinta ir neturi #include "MyVector.h")
 #include "struktura.h"
+#ifdef _WIN32
+#  ifndef NOMINMAX
+#    define NOMINMAX
+#  endif
+#endif
+#include "MyVector.h"
+
 #include <string>
 #include <algorithm>
 #include <numeric>

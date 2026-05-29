@@ -3,7 +3,7 @@
 //   1) push_back užpildymo laikas (10k .. 100M)
 //   2) atminties perskirstymų skaičius (capacity augimas)
 // ============================================================
-#include "Myvector.h"
+#include "myvector.h"
 #include <vector>
 #include <iostream>
 #include <iomanip>

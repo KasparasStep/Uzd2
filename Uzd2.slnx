@@ -8,6 +8,7 @@
     <File Path="../../../Downloads/studentai100000.txt" />
     <File Path="../../../Downloads/studentai1000000.txt" />
   </Folder>
+  <Project Path="benchmark/benchmark.vcxproj" Id="63f706be-b111-4a30-bdd8-84543c921a51" />
   <Project Path="Deque/Deque.vcxproj" Id="2ab459b6-1fb9-4781-a484-6cd05b347ead" />
   <Project Path="List/List.vcxproj" Id="dd483c90-63d1-4d31-84f0-0df533b63566" />
   <Project Path="metodu_test/metodu_test.vcxproj" Id="afc8f0f0-fbda-4b65-afc0-6d6413de0d1c" />

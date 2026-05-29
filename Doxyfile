@@ -1,21 +1,24 @@
-# Doxyfile v2.0
+# Doxyfile v3.0
 
 PROJECT_NAME           = "Studentu pazymiu programa"
-PROJECT_NUMBER         = "v2.0"
-PROJECT_BRIEF          = "C++17 programa studentu pazymiams skaiciuoti ir grupiuoti"
+PROJECT_NUMBER         = "v3.0"
+PROJECT_BRIEF          = "C++17 programa su nuosavu MyVector konteineriu"
 
 OUTPUT_DIRECTORY       = docs
 INPUT                  = struktura.h \
+                         MyVector.h \
                          Uzd2.cpp \
                          vektorius.cpp \
                          funkcijos.cpp \
                          funkcijos.h \
                          failu_greicio_test.cpp \
+                         palyginimas.cpp \
                          Vector/Vector.cpp \
                          List/List.cpp \
                          Deque/Deque.cpp \
                          metodu_test.cpp \
                          unit_test/unit_test.cpp \
+                         unit_test/unit_test_myvector.cpp \
                          README.md
 
 USE_MDFILE_AS_MAINPAGE = README.md
