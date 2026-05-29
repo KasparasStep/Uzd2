@@ -255,3 +255,27 @@ public:
     void shrink_to_fit() {
         if (capacity_ > size_) reallocate(size_);
     }
+    // ======================================================
+   // Modifikatoriai
+   // ======================================================
+
+   /// Pašalina visus elementus (talpa nekinta).
+    void clear() noexcept {
+        destroy_elements();
+        size_ = 0;
+    }
+
+    /// Prideda elementą gale (kopija).
+    void push_back(const T& value) {
+        if (size_ == capacity_)
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        new (data_ + size_) T(value);
+        ++size_;
+    }
+    /// Prideda elementą gale (perkėlimas).
+    void push_back(T&& value) {
+        if (size_ == capacity_)
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        new (data_ + size_) T(std::move(value));
+        ++size_;
+    }
