@@ -1,4 +1,4 @@
-//Uzd2.cpp
+//Uzd2.cpp - v3.0
 #include "struktura.h"
 #ifdef _WIN32
 #include <windows.h>
