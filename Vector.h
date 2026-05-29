@@ -295,3 +295,29 @@ public:
         --size_;
         data_[size_].~T();
     }
+
+    /// Įterpia value prieš pos. Grąžina iteratorių į įterptą elementą.
+    iterator insert(const_iterator pos, const T& value) {
+        size_type idx = static_cast<size_type>(pos - data_);
+        if (size_ == capacity_)
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        // pastumiame elementus nuo galo
+        new (data_ + size_) T(std::move(data_[size_ - 1]));
+        for (size_type i = size_ - 1; i > idx; --i)
+            data_[i] = std::move(data_[i - 1]);
+        data_[idx] = value;
+        ++size_;
+        return data_ + idx;
+    }
+    iterator insert(const_iterator pos, T&& value) {
+        size_type idx = static_cast<size_type>(pos - data_);
+        if (size_ == capacity_)
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        if (size_ > 0)
+            new (data_ + size_) T(std::move(data_[size_ - 1]));
+        for (size_type i = size_; i > idx; --i)
+            if (i < size_) data_[i] = std::move(data_[i - 1]);
+        data_[idx] = std::move(value);
+        ++size_;
+        return data_ + idx;
+    }
