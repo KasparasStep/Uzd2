@@ -321,3 +321,22 @@ public:
         ++size_;
         return data_ + idx;
     }
+
+    /// Sukonstruoja elementą vietoje prieš pos.
+    template <typename... Args>
+    iterator emplace(const_iterator pos, Args&&... args) {
+        size_type idx = static_cast<size_type>(pos - data_);
+        if (size_ == capacity_)
+            reserve(capacity_ == 0 ? 1 : capacity_ * 2);
+        if (idx < size_) {
+            new (data_ + size_) T(std::move(data_[size_ - 1]));
+            for (size_type i = size_ - 1; i > idx; --i)
+                data_[i] = std::move(data_[i - 1]);
+            data_[idx] = T(std::forward<Args>(args)...);
+        }
+        else {
+            new (data_ + idx) T(std::forward<Args>(args)...);
+        }
+        ++size_;
+        return data_ + idx;
+    }
