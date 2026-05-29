@@ -68,3 +68,49 @@ private:
         data_ = new_data;
         capacity_ = new_cap;
     }
+public:
+    // ======================================================
+    // Konstruktoriai
+    // ======================================================
+
+    /// Numatytasis — tuščias vektorius.
+    Vector() noexcept = default;
+
+    /// Sukuria count elementų, inicializuotų numatytąja reikšme.
+    explicit Vector(size_type count) {
+        data_ = allocate(count);
+        capacity_ = count;
+        for (size_type i = 0; i < count; ++i) new (data_ + i) T();
+        size_ = count;
+    }
+
+    /// Sukuria count kopijų reikšmės value.
+    Vector(size_type count, const T& value) {
+        data_ = allocate(count);
+        capacity_ = count;
+        for (size_type i = 0; i < count; ++i) new (data_ + i) T(value);
+        size_ = count;
+    }
+
+    /// Sukuria iš iteratorių intervalo [first, last).
+    /// SFINAE: išjungiama, kai InputIt yra sveikasis skaičius (kad nesusimaišytų
+    /// su Vector(count, value) konstruktoriumi).
+    template <typename InputIt,
+        typename = std::enable_if_t<!std::is_integral<InputIt>::value>>
+        Vector(InputIt first, InputIt last) {
+        size_type n = static_cast<size_type>(std::distance(first, last));
+        data_ = allocate(n);
+        capacity_ = n;
+        size_type i = 0;
+        for (; first != last; ++first, ++i) new (data_ + i) T(*first);
+        size_ = n;
+    }
+
+    /// Sukuria iš initializer_list: Vector<int> v{1,2,3};
+    Vector(std::initializer_list<T> init) {
+        data_ = allocate(init.size());
+        capacity_ = init.size();
+        size_type i = 0;
+        for (const T& val : init) new (data_ + i++) T(val);
+        size_ = init.size();
+    }
