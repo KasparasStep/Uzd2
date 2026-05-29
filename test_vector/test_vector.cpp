@@ -1,4 +1,5 @@
 // Greitas testas: ar Vector elgiasi taip pat kaip std::vector
+
 #include "Vector.h"
 #include <vector>
 #include <iostream>
