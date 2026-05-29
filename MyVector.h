@@ -1,7 +1,7 @@
 #pragma once
 /**
- * @file Vector.h
- * @brief Nuosavas dinaminis masyvas Vector<T> — std::vector atitikmuo.
+ * @file MyVector.h
+ * @brief Nuosavas dinaminis masyvas MyVector<T> — std::vector atitikmuo.
  *
  * Realizuoja >80% std::vector sąsajos: konstruktorius, Rule of Five,
  * elementų prieigą, iteratorius, talpos valdymą ir modifikatorius.
@@ -17,14 +17,13 @@
 #include <type_traits>        // std::enable_if, std::is_integral
 #include <limits>             // std::numeric_limits
 
-/**
- * @class Vector
- * @brief Dinaminis masyvas su automatišku talpos augimu (kaip std::vector).
- * @tparam T saugomų elementų tipas.
- */
-
+ /**
+  * @class MyVector
+  * @brief Dinaminis masyvas su automatišku talpos augimu (kaip std::vector).
+  * @tparam T saugomų elementų tipas.
+  */
 template <typename T>
-class Vector {
+class MyVector {
 public:
     // ===== Tipų aliasai (kaip std::vector) =====
     using value_type = T;
@@ -68,16 +67,17 @@ private:
         data_ = new_data;
         capacity_ = new_cap;
     }
+
 public:
     // ======================================================
     // Konstruktoriai
     // ======================================================
 
     /// Numatytasis — tuščias vektorius.
-    Vector() noexcept = default;
+    MyVector() noexcept = default;
 
     /// Sukuria count elementų, inicializuotų numatytąja reikšme.
-    explicit Vector(size_type count) {
+    explicit MyVector(size_type count) {
         data_ = allocate(count);
         capacity_ = count;
         for (size_type i = 0; i < count; ++i) new (data_ + i) T();
@@ -85,7 +85,7 @@ public:
     }
 
     /// Sukuria count kopijų reikšmės value.
-    Vector(size_type count, const T& value) {
+    MyVector(size_type count, const T& value) {
         data_ = allocate(count);
         capacity_ = count;
         for (size_type i = 0; i < count; ++i) new (data_ + i) T(value);
@@ -94,10 +94,10 @@ public:
 
     /// Sukuria iš iteratorių intervalo [first, last).
     /// SFINAE: išjungiama, kai InputIt yra sveikasis skaičius (kad nesusimaišytų
-    /// su Vector(count, value) konstruktoriumi).
+    /// su MyVector(count, value) konstruktoriumi).
     template <typename InputIt,
         typename = std::enable_if_t<!std::is_integral<InputIt>::value>>
-        Vector(InputIt first, InputIt last) {
+        MyVector(InputIt first, InputIt last) {
         size_type n = static_cast<size_type>(std::distance(first, last));
         data_ = allocate(n);
         capacity_ = n;
@@ -106,20 +106,21 @@ public:
         size_ = n;
     }
 
-    /// Sukuria iš initializer_list: Vector<int> v{1,2,3};
-    Vector(std::initializer_list<T> init) {
+    /// Sukuria iš initializer_list: MyVector<int> v{1,2,3};
+    MyVector(std::initializer_list<T> init) {
         data_ = allocate(init.size());
         capacity_ = init.size();
         size_type i = 0;
         for (const T& val : init) new (data_ + i++) T(val);
         size_ = init.size();
     }
-    // ======================================================
-   // Rule of Five
-   // ======================================================
 
-   /// Kopijavimo konstruktorius — gili kopija.
-    Vector(const Vector& other) {
+    // ======================================================
+    // Rule of Five
+    // ======================================================
+
+    /// Kopijavimo konstruktorius — gili kopija.
+    MyVector(const MyVector& other) {
         data_ = allocate(other.size_);
         capacity_ = other.size_;
         for (size_type i = 0; i < other.size_; ++i)
@@ -128,7 +129,7 @@ public:
     }
 
     /// Perkėlimo konstruktorius — pagrobia resursus, originalą palieka tuščią.
-    Vector(Vector&& other) noexcept
+    MyVector(MyVector&& other) noexcept
         : data_(other.data_), size_(other.size_), capacity_(other.capacity_) {
         other.data_ = nullptr;
         other.size_ = 0;
@@ -136,22 +137,22 @@ public:
     }
 
     /// Destruktorius — sunaikina elementus ir atlaisvina atmintį.
-    ~Vector() {
+    ~MyVector() {
         destroy_elements();
         deallocate(data_);
     }
 
     /// Kopijavimo priskyrimas (copy-and-swap idioma).
-    Vector& operator=(const Vector& other) {
+    MyVector& operator=(const MyVector& other) {
         if (this != &other) {
-            Vector tmp(other);
+            MyVector tmp(other);
             swap(tmp);
         }
         return *this;
     }
 
     /// Perkėlimo priskyrimas.
-    Vector& operator=(Vector&& other) noexcept {
+    MyVector& operator=(MyVector&& other) noexcept {
         if (this != &other) {
             destroy_elements();
             deallocate(data_);
@@ -166,27 +167,28 @@ public:
     }
 
     /// Priskyrimas iš initializer_list.
-    Vector& operator=(std::initializer_list<T> init) {
-        Vector tmp(init);
+    MyVector& operator=(std::initializer_list<T> init) {
+        MyVector tmp(init);
         swap(tmp);
         return *this;
     }
+
     // ======================================================
-   // assign
-   // ======================================================
+    // assign
+    // ======================================================
 
     void assign(size_type count, const T& value) {
-        Vector tmp(count, value);
+        MyVector tmp(count, value);
         swap(tmp);
     }
     template <typename InputIt,
         typename = std::enable_if_t<!std::is_integral<InputIt>::value>>
         void assign(InputIt first, InputIt last) {
-        Vector tmp(first, last);
+        MyVector tmp(first, last);
         swap(tmp);
     }
     void assign(std::initializer_list<T> init) {
-        Vector tmp(init);
+        MyVector tmp(init);
         swap(tmp);
     }
 
@@ -196,13 +198,14 @@ public:
 
     /// Prieiga su ribų tikrinimu — meta std::out_of_range.
     reference at(size_type pos) {
-        if (pos >= size_) throw std::out_of_range("Vector::at: indeksas uz ribu");
+        if (pos >= size_) throw std::out_of_range("MyVector::at: indeksas uz ribu");
         return data_[pos];
     }
     const_reference at(size_type pos) const {
-        if (pos >= size_) throw std::out_of_range("Vector::at: indeksas uz ribu");
+        if (pos >= size_) throw std::out_of_range("MyVector::at: indeksas uz ribu");
         return data_[pos];
     }
+
     /// Prieiga be ribų tikrinimo.
     reference       operator[](size_type pos) { return data_[pos]; }
     const_reference operator[](size_type pos) const { return data_[pos]; }
@@ -216,8 +219,8 @@ public:
     const_pointer data() const noexcept { return data_; }
 
     // ======================================================
-   // Iteratoriai (paprastos rodyklės = random access iteratoriai)
-   // ======================================================
+    // Iteratoriai (paprastos rodyklės = random access iteratoriai)
+    // ======================================================
 
     iterator       begin()        noexcept { return data_; }
     const_iterator begin()  const noexcept { return data_; }
@@ -236,8 +239,8 @@ public:
     const_reverse_iterator crend() const noexcept { return const_reverse_iterator(begin()); }
 
     // ======================================================
-   // Talpa
-   // ======================================================
+    // Talpa
+    // ======================================================
 
     bool      empty()    const noexcept { return size_ == 0; }
     size_type size()     const noexcept { return size_; }
@@ -255,11 +258,12 @@ public:
     void shrink_to_fit() {
         if (capacity_ > size_) reallocate(size_);
     }
-    // ======================================================
-   // Modifikatoriai
-   // ======================================================
 
-   /// Pašalina visus elementus (talpa nekinta).
+    // ======================================================
+    // Modifikatoriai
+    // ======================================================
+
+    /// Pašalina visus elementus (talpa nekinta).
     void clear() noexcept {
         destroy_elements();
         size_ = 0;
@@ -384,7 +388,7 @@ public:
     }
 
     /// Sukeičia turinį su kitu vektoriumi (O(1)).
-    void swap(Vector& other) noexcept {
+    void swap(MyVector& other) noexcept {
         std::swap(data_, other.data_);
         std::swap(size_, other.size_);
         std::swap(capacity_, other.capacity_);
@@ -396,20 +400,20 @@ public:
 // ======================================================
 
 template <typename T>
-bool operator==(const Vector<T>& a, const Vector<T>& b) {
+bool operator==(const MyVector<T>& a, const MyVector<T>& b) {
     if (a.size() != b.size()) return false;
-    for (typename Vector<T>::size_type i = 0; i < a.size(); ++i)
+    for (typename MyVector<T>::size_type i = 0; i < a.size(); ++i)
         if (!(a[i] == b[i])) return false;
     return true;
 }
 
 template <typename T>
-bool operator!=(const Vector<T>& a, const Vector<T>& b) { return !(a == b); }
+bool operator!=(const MyVector<T>& a, const MyVector<T>& b) { return !(a == b); }
 
 template <typename T>
-bool operator<(const Vector<T>& a, const Vector<T>& b) {
-    typename Vector<T>::size_type n = (a.size() < b.size()) ? a.size() : b.size();
-    for (typename Vector<T>::size_type i = 0; i < n; ++i) {
+bool operator<(const MyVector<T>& a, const MyVector<T>& b) {
+    typename MyVector<T>::size_type n = (a.size() < b.size()) ? a.size() : b.size();
+    for (typename MyVector<T>::size_type i = 0; i < n; ++i) {
         if (a[i] < b[i]) return true;
         if (b[i] < a[i]) return false;
     }
@@ -417,12 +421,12 @@ bool operator<(const Vector<T>& a, const Vector<T>& b) {
 }
 
 template <typename T>
-bool operator>(const Vector<T>& a, const Vector<T>& b) { return b < a; }
+bool operator>(const MyVector<T>& a, const MyVector<T>& b) { return b < a; }
 template <typename T>
-bool operator<=(const Vector<T>& a, const Vector<T>& b) { return !(b < a); }
+bool operator<=(const MyVector<T>& a, const MyVector<T>& b) { return !(b < a); }
 template <typename T>
-bool operator>=(const Vector<T>& a, const Vector<T>& b) { return !(a < b); }
+bool operator>=(const MyVector<T>& a, const MyVector<T>& b) { return !(a < b); }
 
 /// Laisva swap funkcija (kad veiktų su std::swap, ADL).
 template <typename T>
-void swap(Vector<T>& a, Vector<T>& b) noexcept { a.swap(b); }
+void swap(MyVector<T>& a, MyVector<T>& b) noexcept { a.swap(b); }
